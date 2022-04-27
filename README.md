@@ -56,7 +56,7 @@ Alternatively, you can type each one of the lines from the script that we called
 ## Summary
 Something like this will give you a solid phylogeny to start exploring patterns:  
 ```mafft FILE.fasta > FILE_align.fasta```  
-```# Manual check of the alignment```  
+```# Manual check of the alignment if unsure of the quality of the sequences```  
 ```trimal -in FILE_align.fasta -out FILE_align_trim30.fasta -gt 30```  
 ```raxmlHPC-PTHREADS-SSE3 -T 2 -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N 100 -n FILE_align_trim30.fasta -s FILE_align_trim_GTRgamma_100BS.fasta```  
 and/or  
