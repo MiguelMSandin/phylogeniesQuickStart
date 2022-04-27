@@ -54,12 +54,12 @@ Something to bear in mind is that MrBayes uses "nexus" format and not "fasta". T
 Alternatively, you can type each one of the lines from the script that we called *phylo_mrBayes.sh* directly in the MrBayes prompt (except for the first line, which sets the autoclosing).  
   
 ## Summary
-Something like this will give you a solid phylogeny to start exploring patterns:
+Something like this will give you a solid phylogeny to start exploring patterns:  
 ```mafft FILE.fasta > FILE_align.fasta```  
 ```# Manual check of the alignment```  
 ```trimal -in FILE_align.fasta -out FILE_align_trim30.fasta -gt 30```  
 ```raxmlHPC-PTHREADS-SSE3 -T 2 -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N 100 -n FILE_align_trim30.fasta -s FILE_align_trim_GTRgamma_100BS.fasta```  
-and/or
+and/or  
 ```iqtree -s FILE_align_trimX.fasta -st "DNA" -pre FILE_align_trim_IQtree_mt -b 100 -seed $(date +%s) -mem 2GB -nt 4 -wbtl```  
-and/or
+and/or  
 ```mb < phylo_mrBayes.sh > FILE_align_trimX_mrBayesgamma.log```  
