@@ -1,5 +1,5 @@
 # A brief hands-on introduction on Phylogenetic Inference  
-Here you will find brief help on how to get started with phylogenetic analyses.
+Here you will find a brief introduction on how to get started with phylogenetic analyses.
   
 ## Softwares for:  
 - **Sequence visualization***: [AliView](https://ormbunkar.se/aliview/) or a much simpler and faster option [SeaView](http://doua.prabi.fr/software/seaview)  
