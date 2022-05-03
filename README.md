@@ -68,6 +68,7 @@ and/or
 and/or  
 ```mb < phylo_mrBayes.sh > FILE_align_trimX_mrBayesgamma.log```  
   
+## Further reading  
 Most of the times, open source softwares are very well documented. I highly encourage you to extend your possiblities and go fancy in phylogenetic inference by looking and epxloring different options through the help command (i.e.; ```iqtree -h```, ```raxml-ng -h```), or through their online manuals and hands-on tutorials:
 - RAxML (not maintained any more): https://github.com/stamatak/standard-RAxML/blob/master/manual/NewManual.pdf  
 - RAxML-NG: https://github.com/amkozlov/raxml-ng/wiki/Tutorial  
