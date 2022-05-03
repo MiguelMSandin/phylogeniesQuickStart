@@ -31,7 +31,7 @@ Here you have different softwares. The first example with **RAxML**:
 or faster and very similar output:  
 ```raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -d -f a -N $BS -n FILE_align_trimX.fasta -s FILE_align_trim_CAT_100BS.fasta```  
   
-With **IQtree** you can also run **modelTest** (you can also do it in **R**, with the packages *ape* and *phangorn*), which is used to select the best model fitting your data:  
+With **IQtree** you can also run **modelTest** (you can also do it in **R**, with the packages *ape* and *phangorn*, see below for further details), which is used to select the best model fitting your data:  
 ```THREADS=2```  
 ```BS=100```  
 ```MEM=2GB```  
