@@ -11,5 +11,5 @@ GAPTHRESHOLD=""
 trimal -in $FILE -out ${FILE/.fasta/_trim$GAPTHRESHOLD.fasta} -gt 0.$GAPTHRESHOLD
 
 # now including also a minimum similarity threshold
-SIMTHRESHOLD=""
-trimal -in $FILE -out ${FILE/.fasta/_trim$GAPTHRESHOLD.fasta} -gt 0.$GAPTHRESHOLD -st $0.SIMTHRESHOLD
+SIMTHRESHOLD="" # Same input format as GAPTHRESHOLD
+trimal -in $FILE -out ${FILE/.fasta/_trim$GAPTHRESHOLD-sim$SIMTHRESHOLD.fasta} -gt 0.$GAPTHRESHOLD -st $0.SIMTHRESHOLD
