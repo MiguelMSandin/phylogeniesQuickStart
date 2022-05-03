@@ -33,7 +33,7 @@ or faster and very similar output:
   
 With **RAxML-ng** you could use the Graphical User Interface option throught their server: [RAxML-NG](https://raxml-ng.vital-it.ch/#/), or have a look at [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.2_RAxML-ng.sh) for further details through the comand line.  
   
-With **IQtree** you can also run **modelTest** (you can also do it in **R**, with the packages *ape* and *phangorn*, see [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.5_PhyML_in_R.R) for further details), which is used to select the best model fitting your data:  
+With **IQtree** you can also run **modelTest** (you can also do it in (**R**)[https://www.r-project.org/], with the packages (*ape*)[https://cran.r-project.org/web/packages/ape/index.html] and (*phangorn*)[https://cran.r-project.org/web/packages/phangorn/index.html], see [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.5_PhyML_in_R.R) for further details), which is used to select the best model fitting your data:  
 ```THREADS=2```  
 ```BS=100```  
 ```MEM=2GB```  
@@ -67,3 +67,10 @@ and/or
 ```iqtree -s FILE_align_trim05.fasta -st "DNA" -pre FILE_align_trim05_IQtree_mt -b 100 -seed $(date +%s) -mem 2GB -nt 4 -wbtl```  
 and/or  
 ```mb < phylo_mrBayes.sh > FILE_align_trimX_mrBayesgamma.log```  
+  
+Most of the times, open source softwares are very well documented. I highly encourage you to extend your possiblities and go fancy in phylogenetic inference by looking and epxloring different options through the help command (i.e.; ```iqtree -h```, ```raxml-ng -h```), or through their online manuals and hands-on tutorials:
+- RAxML (not maintained any more): https://github.com/stamatak/standard-RAxML/blob/master/manual/NewManual.pdf  
+- RAxML-NG: https://github.com/amkozlov/raxml-ng/wiki/Tutorial  
+- IQtree: http://www.iqtree.org/doc/Quickstart  
+- MrBayes: https://github.com/NBISweden/MrBayes/blob/develop/doc/manual/Manual_MrBayes_v3.2.pdf  
+- R: ape and phangorn: https://cran.r-project.org/web/packages/phangorn/vignettes/Trees.html  
