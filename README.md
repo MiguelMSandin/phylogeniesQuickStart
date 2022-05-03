@@ -5,7 +5,7 @@ Here you will find a brief introduction on how to get started with phylogenetic 
 - **Sequence visualization***: [AliView](https://ormbunkar.se/aliview/) or a much simpler and faster option [SeaView](http://doua.prabi.fr/software/seaview)  
 - **Sequence alignments**: [MAFFT](https://mafft.cbrc.jp/alignment/software/)  
 - **Trimming alignment**: [trimAl](http://trimal.cgenomics.org/downloads)  
-- **Phylogenetic reconstruction**: [RAxML](https://github.com/stamatak/standard-RAxML), [IQtree](http://www.iqtree.org/), [MrBayes](https://nbisweden.github.io/MrBayes/)  
+- **Phylogenetic reconstruction**: [RAxML](https://github.com/stamatak/standard-RAxML), [RAxML-ng](https://github.com/amkozlov/raxml-ng), [IQtree](http://www.iqtree.org/), [MrBayes](https://nbisweden.github.io/MrBayes/)  
 - **Tree visualization**: [figTree](http://tree.bio.ed.ac.uk/software/figtree/)  
   
 ## Basic command line pipeline that I normally use for quick analyses  
@@ -31,7 +31,9 @@ Here you have different softwares. The first example with **RAxML**:
 or faster and very similar output:  
 ```raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -d -f a -N $BS -n FILE_align_trimX.fasta -s FILE_align_trim_CAT_100BS.fasta```  
   
-With **IQtree** you can also run **modelTest** (you can also do it in **R**, with the packages *ape* and *phangorn*, see below for further details), which is used to select the best model fitting your data:  
+With **RAxML-ng** you could use the Graphical User Interface option throught their server: [RAxML-NG GUI](https://raxml-ng.vital-it.ch/#/), or have a look at [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.2_RAxML-ng.sh) for further details through the comand line.  
+  
+With **IQtree** you can also run **modelTest** (you can also do it in **R**, with the packages *ape* and *phangorn*, see [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.5_PhyML_in_R.R) for further details), which is used to select the best model fitting your data:  
 ```THREADS=2```  
 ```BS=100```  
 ```MEM=2GB```  
@@ -55,11 +57,13 @@ Alternatively, you can type each one of the lines from the script that we called
   
 ## Summary
 Something like this will give you a solid phylogeny to start exploring patterns:  
-```mafft FILE.fasta > FILE_align.fasta```  
+```mafft FILE > FILE_align.fasta```  
 ```# Manual check of the alignment if unsure of the quality of the sequences```  
-```trimal -in FILE_align.fasta -out FILE_align_trim30.fasta -gt 30```  
-```raxmlHPC-PTHREADS-SSE3 -T 2 -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N 100 -n FILE_align_trim30.fasta -s FILE_align_trim_GTRgamma_100BS.fasta```  
+```trimal -in FILE_align.fasta -out FILE_align_trim05.fasta -gt 05```  
+```raxmlHPC-PTHREADS-SSE3 -T 2 -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N 100 -n FILE_align_trim05.fasta -s FILE_align_trim_GTRgamma_100BS.fasta```  
 and/or  
-```iqtree -s FILE_align_trimX.fasta -st "DNA" -pre FILE_align_trim_IQtree_mt -b 100 -seed $(date +%s) -mem 2GB -nt 4 -wbtl```  
+```raxml-ng --all --msa FILE_align_trim05.fasta --model GTR+G --tree pars{10} --prefix FILE_align_trim05_raxml-ng --seed $RANDOM --threads 2 --bs-trees 100```  
+and/or  
+```iqtree -s FILE_align_trim05.fasta -st "DNA" -pre FILE_align_trim05_IQtree_mt -b 100 -seed $(date +%s) -mem 2GB -nt 4 -wbtl```  
 and/or  
 ```mb < phylo_mrBayes.sh > FILE_align_trimX_mrBayesgamma.log```  
