@@ -9,4 +9,4 @@ BS=""
 THREADS=""
 START_TREES="10"
 
-raxml-ng --all --msa $PREFIX.parser.raxml.rba --model GTR+G --tree pars{$START_TREES} --prefix $PREFIX --seed $RANDOM --threads $THREADS --bs-trees $BS
+raxml-ng --all --msa $PREFIX.parser.raxml.rba --tree pars{$START_TREES} --prefix $PREFIX --seed $RANDOM --threads $THREADS --bs-trees $BS
