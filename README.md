@@ -1,14 +1,19 @@
-# A brief hands-on introduction on Phylogenetic Inference  
+# A brief hands-on introduction about Phylogenetic Inference  
 Here you will find a brief introduction on how to get started with phylogenetic analyses.
   
-## Softwares for:  
+## Dependencies and softwares used for:  
 - **Sequence visualization**: [AliView](https://ormbunkar.se/aliview/) or a much simpler and faster option [SeaView](http://doua.prabi.fr/software/seaview)  
 - **Sequence alignments**: [MAFFT](https://mafft.cbrc.jp/alignment/software/)  
 - **Trimming alignment**: [trimAl](http://trimal.cgenomics.org/downloads)  
 - **Phylogenetic reconstruction**: [RAxML](https://github.com/stamatak/standard-RAxML), [RAxML-ng](https://github.com/amkozlov/raxml-ng), [IQtree](http://www.iqtree.org/), [MrBayes](https://nbisweden.github.io/MrBayes/)  
 - **Tree visualization**: [figTree](http://tree.bio.ed.ac.uk/software/figtree/)  
   
-## Basic command line pipeline that I normally use for quick analyses  
+## Before starting, why phylogenetic inference?  
+(If you are only interested on the 'how', you can directly go to the [Basic pipeline](https://github.com/MiguelMSandin/phylogeniesQuickStart#basic-command-line-pipeline-that-i-normally-use-for-quick-analyses) section).  
+  
+## What is a phylogenetic tree?  
+  
+## Basic command line pipeline that I normally use for quick and exploratory analyses  
   
 ### Align  
 Depending on the sequences you are aligning you may want to play with the options. I recommend playing with them and with different datasets (highly similar or highly divergent sequences) to fully understand them.
