@@ -9,7 +9,7 @@ Here you will find a brief introduction on how to get started with phylogenetic 
 - **Tree visualization**: [figTree](http://tree.bio.ed.ac.uk/software/figtree/)  
   
 ## Before starting, why phylogenetic inference?  
-(If you are only interested on the 'how', you can directly go to the [Basic pipeline](https://github.com/MiguelMSandin/phylogeniesQuickStart#basic-command-line-pipeline-that-i-normally-use-for-quick-analyses) section).  
+(If you are only interested on the 'how', you can directly go to the [Basic pipeline](https://github.com/MiguelMSandin/phylogeniesQuickStart#basic-command-line-pipeline) section).  
   
 ## What is a phylogenetic tree?  
   
