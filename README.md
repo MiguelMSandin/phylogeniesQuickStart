@@ -13,7 +13,9 @@ Here you will find a brief introduction on how to get started with phylogenetic 
   
 ## What is a phylogenetic tree?  
   
-## Basic command line pipeline that I normally use for quick and exploratory analyses  
+## Basic command line pipeline  
+  
+Please, bear in mind that there are many different ways to infer phylogenetic patterns among genes, proteins or even morphological characters. So here I will just guide you through a basic step-by-step pipeline that I normally use for quick and exploratory analyses.  
   
 ### Align  
 Depending on the sequences you are aligning you may want to play with the options. I recommend playing with them and with different datasets (highly similar or highly divergent sequences) to fully understand them.
