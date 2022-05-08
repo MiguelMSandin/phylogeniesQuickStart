@@ -11,11 +11,14 @@ Here you will find a brief introduction on how to get started with phylogenetic 
 ## Before starting, why phylogenetic inference?  
 (If you are only interested on the 'how', you can directly go to the [Basic pipeline](https://github.com/MiguelMSandin/phylogeniesQuickStart#basic-command-line-pipeline) section).  
   
-## What is a phylogenetic tree?  
+Phylogenetic inference .  
   
+## What is a phylogenetic tree?  
+The simplest answer is **an hypothesis** on the evolutionary relationships among the studied set of *species*, understanding *species* as genes, proteins or traits.  
+
 ## Basic command line pipeline  
   
-Please, bear in mind that there are many different ways to infer phylogenetic patterns among genes, proteins or even morphological characters. So here I will just guide you through a basic step-by-step pipeline that I normally use for quick and exploratory analyses.  
+Please, bear in mind that there are many different ways to infer phylogenetic patterns among genes, proteins or even morphological characters (or other traits). So here I will just guide you through a basic step-by-step pipeline that I normally use for quick and exploratory analyses.  
   
 ### Align  
 Depending on the sequences you are aligning you may want to play with the options. I recommend playing with them and with different datasets (highly similar or highly divergent sequences) to fully understand them.
