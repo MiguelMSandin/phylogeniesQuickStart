@@ -23,6 +23,7 @@ The simplest answer is **an hypothesis** on the evolutionary relationships among
 4. Run phylogenetic inference.  
 5. **Understand your phylogenetic tree**.
 6. Come back to step 1.  
+  
 The most important steps of phylogenetic inference are the sequence selection and the interpretation of your resulting trees. Yet, to be able to fully understand a phylogenetic tree, you need to understand and know how to build it. Here we will quickly go through steps 2, 3 and 4.
   
 ## Basic command line pipeline  
