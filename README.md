@@ -42,7 +42,7 @@ Being X the coverage threshold at given position. I normally use 30% for a quick
 We need now new variables:  
   
 ```THREADS=2``` # Normally 1 thread for every 500-1000bp alignment positions works fine.  
-```BS=100```  
+```BS=100```  # The number of Bootstrap  
   
 Here you have different softwares. The first example with **RAxML**:  
 ```OUTPUT="test1_raxml-GTRgamma"```    
@@ -55,9 +55,9 @@ or faster and very similar output:
 With **RAxML-ng** you could use the Graphical User Interface option throught their server: [RAxML-NG](https://raxml-ng.vital-it.ch/#/), or have a look at [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.2_RAxML-ng.sh) for further details through the comand line.  
   
 With **IQtree** you can run **modelTest** (you can also do it in [**R**](https://www.r-project.org/), with the packages [*ape*](https://cran.r-project.org/web/packages/ape/index.html) and [*phangorn*](https://cran.r-project.org/web/packages/phangorn/index.html), see [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.5_PhyML_in_R.R) for further details), which is used to select the best model fitting your data:  
+  
 ```OUTPUT="test1-iqtree"```  
 ```MEM=2GB```  
-  
 ```iqtree -s $FILE -st "DNA" -pre $OUTPUT -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
   
 And if you know the model of evolution to be used you can add it to the command for example with GTR+G+I (which is normally the best choice): ```-m GTR+I+G```  
@@ -79,14 +79,19 @@ Alternatively, you can type each one of the lines from the script that we called
   
 ## Summary
 Something like this will give you a solid phylogeny to start exploring patterns:  
-```mafft FILE > FILE_align.fasta```  
+Firt setting the variables:  
+```FASTA="file.fasta"```  
+```ALIGNED=${INPUT/.fasta/_align.fasta}```  
+```FILE=${ALIGNED/.fasta/_trimed.fasta}```  
+  
+```mafft $FASTA > $ALIGNED```  
 ```# Manual check of the alignment if unsure of the quality of the sequences```  
-```trimal -in FILE_align.fasta -out FILE_align_trim05.fasta -gt 05```  
-```raxmlHPC-PTHREADS-SSE3 -T 2 -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N 100 -n FILE_align_trim05.fasta -s FILE_align_trim_GTRgamma_100BS.fasta```  
+```trimal -in $ALIGNED -out $FILE -gt 05```  
+```raxmlHPC-PTHREADS-SSE3 -T 2 -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N 100 -n ${OUTPUT}_raxml-GTRgamma -s $FILE```  
 and/or  
-```raxml-ng --all --msa FILE_align_trim05.fasta --model GTR+G --tree pars{10} --prefix FILE_align_trim05_raxml-ng --seed $RANDOM --threads 2 --bs-trees 100```  
+```raxml-ng --all --msa $FILE --model GTR+G --tree pars{10} --prefix ${OUTPUT}_raxml-ng-GTRgamma --seed $RANDOM --threads 2 --bs-trees 100```  
 and/or  
-```iqtree -s FILE_align_trim05.fasta -st "DNA" -pre FILE_align_trim05_IQtree_mt -b 100 -seed $(date +%s) -mem 2GB -nt 4 -wbtl```  
+```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree-mt -b 100 -seed $(date +%s) -mem 2GB -nt 4 -wbtl```  
 and/or  
 ```mb < phylo_mrBayes.sh > FILE_align_trimX_mrBayesgamma.log```  
   
