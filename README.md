@@ -85,7 +85,7 @@ Firt setting the variables:
 ```FILE=${ALIGNED/.fasta/_trimed.fasta}```  
   
 ```mafft $FASTA > $ALIGNED```  
-```# Manual check of the alignment if unsure of the quality of the sequences```  
+Manual check of the alignment if unsure of the quality of the sequences  
 ```trimal -in $ALIGNED -out $FILE -gt 05```  
 ```raxmlHPC-PTHREADS-SSE3 -T 2 -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N 100 -n ${OUTPUT}_raxml-GTRgamma -s $FILE```  
 and/or  
