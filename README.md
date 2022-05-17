@@ -21,9 +21,9 @@ The simplest answer is **an hypothesis** on the evolutionary relationships among
 Please, bear in mind that there are many different ways to infer phylogenetic patterns among genes, proteins or even morphological characters (or other traits). So here I will just guide you through a basic step-by-step pipeline that I normally use for quick and exploratory analyses.  
   
 Let's name our input and output files as follows:  
-```FASTA="file.fasta"```  
-```ALIGNED=${INPUT/.fasta/_align.fasta}```  
-```FILE=${ALIGNED/.fasta/_trimed.fasta}```  
+```FASTA="file.fasta"```  # The raw fasta file  
+```ALIGNED=${INPUT/.fasta/_align.fasta}```  # The aligned fasta file  
+```FILE=${ALIGNED/.fasta/_trimed.fasta}```  # The aligned and trimmed fasta file ready for phylogenetic inference  
   
 ### Align  
 Depending on the sequences you are aligning you may want to play with the options. I recommend playing with them and with different datasets (highly similar or highly divergent sequences) to fully understand them.
