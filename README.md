@@ -15,7 +15,16 @@ Phylogenetic inference .
   
 ## What is a phylogenetic tree?  
 The simplest answer is **an hypothesis** on the evolutionary relationships among the studied set of *species*, understanding *species* as genes, proteins or traits.  
-
+  
+## Main steps 
+1. **Select your sequences**.
+2. Align sequences.  
+3. Remove uninformative positions/columns.  
+4. Run phylogenetic inference.  
+5. **Understand your phylogenetic tree**.
+6. Come back to step 1.  
+The most important steps of phylogenetic inference are the sequence selection and the interpretation of your resulting trees. Yet, to be able to fully understand a phylogenetic tree, you need to understand and know how to build it. Here we will quickly go through steps 2, 3 and 4.
+  
 ## Basic command line pipeline  
   
 Please, bear in mind that there are many different ways to infer phylogenetic patterns among genes, proteins or even morphological characters (or other traits). So here I will just guide you through a basic step-by-step pipeline that I normally use for quick and exploratory analyses.  
