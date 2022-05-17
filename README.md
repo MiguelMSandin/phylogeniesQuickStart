@@ -35,11 +35,11 @@ Being X the coverage threshold at given position. I normally use 30% for a quick
   
 ### Phylogenetic analyses with Maximum Likelihood  
 Here you have different softwares. The first example with **RAxML**:  
-```THREADS=X # Being X the preferred number of threads. Normally 1 thread for every 500-1000bp alignment positions works fine.  ```
+```THREADS=X``` # Being X the preferred number of threads. Normally 1 thread for every 500-1000bp alignment positions works fine.  
 ```BS=100```  
-```raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N $BS -n FILE_align_trimX.fasta -s FILE_align_trim_GTRgamma_100BS.fasta```  
+```raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -n FILE_align_trimX.fasta -s FILE_align_trim_GTRgamma_100BS.fasta```  
 or faster and very similar output:  
-```raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -d -f a -N $BS -n FILE_align_trimX.fasta -s FILE_align_trim_CAT_100BS.fasta```  
+```raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -f a -N $BS -n FILE_align_trimX.fasta -s FILE_align_trim_CAT_100BS.fasta```  
   
 With **RAxML-ng** you could use the Graphical User Interface option throught their server: [RAxML-NG](https://raxml-ng.vital-it.ch/#/), or have a look at [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.2_RAxML-ng.sh) for further details through the comand line.  
   
@@ -70,7 +70,7 @@ Something like this will give you a solid phylogeny to start exploring patterns:
 ```mafft FILE > FILE_align.fasta```  
 ```# Manual check of the alignment if unsure of the quality of the sequences```  
 ```trimal -in FILE_align.fasta -out FILE_align_trim05.fasta -gt 05```  
-```raxmlHPC-PTHREADS-SSE3 -T 2 -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N 100 -n FILE_align_trim05.fasta -s FILE_align_trim_GTRgamma_100BS.fasta```  
+```raxmlHPC-PTHREADS-SSE3 -T 2 -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N 100 -n FILE_align_trim05.fasta -s FILE_align_trim_GTRgamma_100BS.fasta```  
 and/or  
 ```raxml-ng --all --msa FILE_align_trim05.fasta --model GTR+G --tree pars{10} --prefix FILE_align_trim05_raxml-ng --seed $RANDOM --threads 2 --bs-trees 100```  
 and/or  
