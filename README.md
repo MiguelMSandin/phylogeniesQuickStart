@@ -46,11 +46,11 @@ We need now new variables:
   
 Here you have different softwares. The first example with **RAxML**:  
 ```OUTPUT="test1_raxml-GTRgamma"```    
-```raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -n $OUTPUT -s $FILE```  
+```raxmlHPC-PTHREADS-SSE3 -n $OUTPUT -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T $THREADS```  
   
 or faster and very similar output:  
 ```OUTPUT="test1_raxml-GTRcat"```    
-```raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -f a -N $BS -n $OUTPUT -s $FILE```  
+```raxmlHPC-PTHREADS-SSE3 -n $OUTPUT -s $FILE -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -f a -N $BS -T $THREADS```  
   
 With **RAxML-ng** you could use the Graphical User Interface option throught their server: [RAxML-NG](https://raxml-ng.vital-it.ch/#/), or have a look at [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.2_RAxML-ng.sh) for further details through the comand line.  
   
@@ -83,15 +83,19 @@ Firt setting the variables:
 ```FASTA="file.fasta"```  
 ```ALIGNED=${INPUT/.fasta/_align.fasta}```  
 ```FILE=${ALIGNED/.fasta/_trimed.fasta}```  
+```OUTPUT="test1"```  
+```THREADS=2```  
+```BS=100```  
+```MEM="2GB"```  
   
 ```mafft $FASTA > $ALIGNED```  
 Manual check of the alignment if unsure of the quality of the sequences  
 ```trimal -in $ALIGNED -out $FILE -gt 05```  
-```raxmlHPC-PTHREADS-SSE3 -T 2 -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N 100 -n ${OUTPUT}_raxml-GTRgamma -s $FILE```  
+```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRgamma -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T 2```  
 and/or  
-```raxml-ng --all --msa $FILE --model GTR+G --tree pars{10} --prefix ${OUTPUT}_raxml-ng-GTRgamma --seed $RANDOM --threads 2 --bs-trees 100```  
+```raxml-ng --all --msa $FILE --model GTR+G --tree pars{10} --prefix ${OUTPUT}_raxml-ng-GTRgamma --seed $RANDOM --threads $THREADS --bs-trees $BS```  
 and/or  
-```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree-mt -b 100 -seed $(date +%s) -mem 2GB -nt 4 -wbtl```  
+```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree-mt -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
 and/or  
 ```mb < phylo_mrBayes.sh > FILE_align_trimX_mrBayesgamma.log```  
   
