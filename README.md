@@ -20,48 +20,60 @@ The simplest answer is **an hypothesis** on the evolutionary relationships among
   
 Please, bear in mind that there are many different ways to infer phylogenetic patterns among genes, proteins or even morphological characters (or other traits). So here I will just guide you through a basic step-by-step pipeline that I normally use for quick and exploratory analyses.  
   
+Let's name our input and output files as follows:  
+```FASTA="file.fasta"```  
+```ALIGNED=${INPUT/.fasta/_align.fasta}```  
+```FILE=${ALIGNED/.fasta/_trimed.fasta}```  
+  
 ### Align  
 Depending on the sequences you are aligning you may want to play with the options. I recommend playing with them and with different datasets (highly similar or highly divergent sequences) to fully understand them.
 For large dataset I normally use the default options:  
-```mafft FILE.fasta > FILE_align.fasta```  
+```mafft $FASTA > $ALIGNED```  
 For a small dataset (<200 sequences of similarish length ~2000bp) of specific groups, I normally use  
-```mafft --maxiterate 1000 --localpair FILE.fasta > FILE_align.fasta```  
+```mafft --maxiterate 1000 --localpair $FASTA > $ALIGNED```  
   
 It is important to manually check the alignment in AliView (or SeaView) if you are working with recently sequenced sequences. There might be some misalignment or weird stuff easy to spot due to bad quality or errors sequencing.  
   
 ### Trim alignment of redundant or low informative positions (columns)  
-```trimal -in FILE_align.fasta -out FILE_align_trimX.fasta -gt X```  
+```trimal -in $FASTA -out $FILE -gt X```  
 Being X the coverage threshold at given position. I normally use 30% for a quick analysis and 5% for a more resolutive analysis. Again, depending on your scope you will have to play with different options. Other useful options are "```-st```", "```-nogaps```" and "```-noallgaps```".  
   
 ### Phylogenetic analyses with Maximum Likelihood  
-Here you have different softwares. The first example with **RAxML**:  
-```THREADS=X``` # Being X the preferred number of threads. Normally 1 thread for every 500-1000bp alignment positions works fine.  
+We need now new variables:  
+  
+```THREADS=2``` # Normally 1 thread for every 500-1000bp alignment positions works fine.  
 ```BS=100```  
-```raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -n FILE_align_trimX.fasta -s FILE_align_trim_GTRgamma_100BS.fasta```  
+  
+Here you have different softwares. The first example with **RAxML**:  
+```OUTPUT="test1_raxml-GTRgamma"```    
+```raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -n $OUTPUT -s $FILE```  
+  
 or faster and very similar output:  
-```raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -f a -N $BS -n FILE_align_trimX.fasta -s FILE_align_trim_CAT_100BS.fasta```  
+```OUTPUT="test1_raxml-GTRcat"```    
+```raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -f a -N $BS -n $OUTPUT -s $FILE```  
   
 With **RAxML-ng** you could use the Graphical User Interface option throught their server: [RAxML-NG](https://raxml-ng.vital-it.ch/#/), or have a look at [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.2_RAxML-ng.sh) for further details through the comand line.  
   
 With **IQtree** you can run **modelTest** (you can also do it in [**R**](https://www.r-project.org/), with the packages [*ape*](https://cran.r-project.org/web/packages/ape/index.html) and [*phangorn*](https://cran.r-project.org/web/packages/phangorn/index.html), see [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.5_PhyML_in_R.R) for further details), which is used to select the best model fitting your data:  
-```THREADS=2```  
-```BS=100```  
+```OUTPUT="test1-iqtree"```  
 ```MEM=2GB```  
-```iqtree -s FILE_align_trimX.fasta -st "DNA" -pre FILE_align_trim_IQtree_mt -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
+  
+```iqtree -s $FILE -st "DNA" -pre $OUTPUT -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
+  
 And if you know the model of evolution to be used you can add it to the command for example with GTR+G+I (which is normally the best choice): ```-m GTR+I+G```  
 But again, different options will address better different questions...  
   
 ### Phylogenetic analyses with Bayesian inference  
 Bayesian analysis are a bit special, since they need most of the time to be run in different blocks, and therefore needing many different parameters to be set that will influence your analysis. Here you have an example of a script, let's save it as "**phylo_mrBayes.sh**":  
 ```set autoclose=yes nowarnings=yes```  
-```execute FILE_align_trimX.nexus```  
+```execute FILE.nexus```  
 ```lset nst=6 rates=gamma```  
-```mcmc ngen=10000000 Nruns=3 savebrlens=yes file=FILE_align_trimX_mrBayesgamma```  
+```mcmc ngen=10000000 Nruns=3 savebrlens=yes file=OUTPUT_mrBayesgamma```  
 ```sump```  
 ```sumt```  
 ```quit```  
 That can be run as follows (considering the previous script is called "phylo_mrBayes.sh"):  
-```mb < phylo_mrBayes.sh > FILE_align_trimX_mrBayesgamma.log &```  
+```mb < phylo_mrBayes.sh > OUTPUT_mrBayesgamma.log &```  
 Something to bear in mind is that MrBayes uses "nexus" format and not "fasta". This can be easily exported/transformed in AliView.  
 Alternatively, you can type each one of the lines from the script that we called *phylo_mrBayes.sh* directly in the MrBayes prompt (except for the first line, which sets the autoclosing).  
   
