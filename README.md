@@ -78,7 +78,7 @@ With **IQtree** you can run **modelTest** (you can also do it in [**R**](https:/
 And if you know the model of evolution to be used you can add it to the command for example with GTR+G+I (which is normally the best choice): ```-m GTR+I+G```  
 But again, different options will address better different questions...  
   
-#### Using Bayesian approach  
+#### Using a Bayesian approach  
 Bayesian analysis are a bit special, since they need most of the time to be run in different blocks, and therefore needing many different parameters to be set that will influence your analysis. Here you have an example of a script, let's save it as "**phylo_mrBayes.sh**":  
 ```set autoclose=yes nowarnings=yes```  
 ```execute FILE.nexus```  
