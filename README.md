@@ -52,7 +52,8 @@ It is important to manually check the alignment in AliView (or SeaView) if you a
 ```trimal -in $FASTA -out $FILE -gt X```  
 Being X the coverage threshold at given position. I normally use 30% for a quick analysis and 5% for a more resolutive analysis. Again, depending on your scope you will have to play with different options. Other useful options are "```-st```", "```-nogaps```" and "```-noallgaps```".  
   
-### Phylogenetic analyses with Maximum Likelihood (step 4)  
+### Phylogenetic analyses (step 4)  
+#### Using a Maximum Likelihood approach  
 We need now new variables:  
   
 ```THREADS=2``` # Normally 1 thread for every 500-1000bp alignment positions works fine.  
@@ -77,7 +78,7 @@ With **IQtree** you can run **modelTest** (you can also do it in [**R**](https:/
 And if you know the model of evolution to be used you can add it to the command for example with GTR+G+I (which is normally the best choice): ```-m GTR+I+G```  
 But again, different options will address better different questions...  
   
-### Phylogenetic analyses with Bayesian inference  
+#### Using Bayesian approach  
 Bayesian analysis are a bit special, since they need most of the time to be run in different blocks, and therefore needing many different parameters to be set that will influence your analysis. Here you have an example of a script, let's save it as "**phylo_mrBayes.sh**":  
 ```set autoclose=yes nowarnings=yes```  
 ```execute FILE.nexus```  
