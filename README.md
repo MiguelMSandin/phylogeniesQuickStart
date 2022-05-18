@@ -9,7 +9,7 @@ Here you will find a brief introduction on how to get started with phylogenetic 
 - **Tree visualization**: [figTree](http://tree.bio.ed.ac.uk/software/figtree/)  
   
 ## Before starting, why phylogenetic inference?  
-(If you are only interested on the 'how', you can directly go to the [Basic pipeline](https://github.com/MiguelMSandin/phylogeniesQuickStart#basic-command-line-pipeline) section).  
+(If you are only interested on the 'how', you can directly go to the [Basic pipeline](https://github.com/MiguelMSandin/phylogeniesQuickStart#basic-pipeline) section).  
   
 Phylogenetic inference .  
   
@@ -17,16 +17,20 @@ Phylogenetic inference .
 The simplest answer is **an hypothesis** on the evolutionary relationships among the studied set of *species*, understanding *species* as genes, proteins or traits.  
   
 ## Main steps 
-1. **Select your sequences**.
+1. Select your *species*.
 2. Align sequences.  
 3. Remove uninformative positions/columns.  
 4. Run phylogenetic inference.  
-5. **Understand your phylogenetic tree**.
+5. Understand your phylogenetic tree.
 6. Come back to step 1.  
   
-The most important steps of phylogenetic inference are the sequence selection and the interpretation of your resulting trees. Yet, to be able to fully understand a phylogenetic tree, you need to understand and know how to build it. Here we will quickly go through steps 2, 3 and 4.
+The most important steps of phylogenetic inference are the ***species* selection** and the **interpretation of your resulting tree**. Yet, to be able to fully understand a phylogenetic tree, you need to understand and know how to build it. Here we will quickly go through every step. Yet keep in mind that **each tree is an hypothesis** of your given data, and therefore the selection of your *species* and the interpretation of the tree will highly rely on your **scientific question**.  
   
-## Basic command line pipeline  
+## *Species* selection (step 1)
+  
+On the Root of the tree.  
+  
+## Basic pipeline  
   
 Please, bear in mind that there are many different ways to infer phylogenetic patterns among genes, proteins or even morphological characters (or other traits). So here I will just guide you through a basic step-by-step pipeline that I normally use for quick and exploratory analyses.  
   
@@ -35,7 +39,7 @@ Let's name our input and output files as follows:
 ```ALIGNED=${INPUT/.fasta/_align.fasta}```  # The aligned fasta file  
 ```FILE=${ALIGNED/.fasta/_trimed.fasta}```  # The aligned and trimmed fasta file ready for phylogenetic inference  
   
-### Align  
+### Align (step 2)  
 Depending on the sequences you are aligning you may want to play with the options. I recommend playing with them and with different datasets (highly similar or highly divergent sequences) to fully understand them.
 For large dataset I normally use the default options:  
 ```mafft $FASTA > $ALIGNED```  
@@ -44,11 +48,11 @@ For a small dataset (<200 sequences of similarish length ~2000bp) of specific gr
   
 It is important to manually check the alignment in AliView (or SeaView) if you are working with recently sequenced sequences. There might be some misalignment or weird stuff easy to spot due to bad quality or errors sequencing.  
   
-### Trim alignment of redundant or low informative positions (columns)  
+### Trim alignment of redundant or low informative positions/columns (step 3)  
 ```trimal -in $FASTA -out $FILE -gt X```  
 Being X the coverage threshold at given position. I normally use 30% for a quick analysis and 5% for a more resolutive analysis. Again, depending on your scope you will have to play with different options. Other useful options are "```-st```", "```-nogaps```" and "```-noallgaps```".  
   
-### Phylogenetic analyses with Maximum Likelihood  
+### Phylogenetic analyses with Maximum Likelihood (step 4)  
 We need now new variables:  
   
 ```THREADS=2``` # Normally 1 thread for every 500-1000bp alignment positions works fine.  
@@ -86,6 +90,8 @@ That can be run as follows (considering the previous script is called "phylo_mrB
 ```mb < phylo_mrBayes.sh > OUTPUT_mrBayesgamma.log &```  
 Something to bear in mind is that MrBayes uses "nexus" format and not "fasta". This can be easily exported/transformed in AliView.  
 Alternatively, you can type each one of the lines from the script that we called *phylo_mrBayes.sh* directly in the MrBayes prompt (except for the first line, which sets the autoclosing).  
+  
+## Interpreting the tree (step 6)  
   
 ## Summary
 Something like this will give you a solid phylogeny to start exploring patterns:  
