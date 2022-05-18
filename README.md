@@ -94,6 +94,13 @@ Alternatively, you can type each one of the lines from the script that we called
   
 ## Interpreting the tree (step 6)  
   
+This might be the most complicated step, and only getting easier with experience and failing. Briefly, you want a tree:  
+(1) highly supported,  
+(2) with no polytomies or near-0 internal bracnh lengths,  
+(3) with no *very long* branches and  
+(4) different from your outgroup(s) or root but not *too* different.  
+Understanding that each concept is relative and may vary among different trees.  
+  
 ## Summary
 Something like this will give you a solid phylogeny to start exploring patterns:  
 Firt setting the variables:  
