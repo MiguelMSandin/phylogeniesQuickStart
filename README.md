@@ -9,7 +9,7 @@ Here you will find a brief introduction on how to get started with phylogenetic 
 - **Tree visualization**: [figTree](http://tree.bio.ed.ac.uk/software/figtree/)  
   
 ## Before starting, why phylogenetic inference?  
-(If you are only interested on the 'how', you can directly go to the [Basic pipeline](https://github.com/MiguelMSandin/phylogeniesQuickStart#basic-pipeline) section).  
+(If you are only interested on the 'how', you can directly go to the [summary](https://github.com/MiguelMSandin/phylogeniesQuickStart#summary) section).  
   
 Phylogenetic inference .  
   
@@ -39,7 +39,7 @@ Let's name our input and output files as follows:
 ```ALIGNED=${INPUT/.fasta/_align.fasta}```  # The aligned fasta file  
 ```FILE=${ALIGNED/.fasta/_trimed.fasta}```  # The aligned and trimmed fasta file ready for phylogenetic inference  
   
-### Align (step 2)  
+## Align (step 2)  
   
 ![Step2 align sequences](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step2_align.png)  
   
@@ -52,14 +52,23 @@ For a small dataset (<200 sequences of similarish length ~2000bp) of specific gr
   
 It is important to manually check the alignment in AliView (or SeaView) if you are working with recently sequenced sequences. There might be some misalignment or weird stuff easy to spot due to bad quality or errors sequencing.  
   
-### Trim alignment of redundant or low informative positions/columns (step 3)  
+## Trim alignment of redundant or low informative positions/columns (step 3)  
+  
+![Step3 trim alignment](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step3_trim.png)  
   
 ```trimal -in $FASTA -out $FILE -gt X```  
   
 Being X the coverage threshold at given position. I normally use 30% for a quick analysis and 5% for a more resolutive analysis. Again, depending on your scope you will have to play with different options. Other useful options are "```-st```", "```-nogaps```" and "```-noallgaps```".  
   
-### Phylogenetic analyses (step 4)  
-#### Using a Maximum Likelihood approach  
+## Phylogenetic analyses (step 4)  
+  
+![Step4.1](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.1_model_of_evolution.png)  
+  
+### Using a Maximum Likelihood approach  
+  
+Maximizes model parameters accross different replicates (bootstraps) to find a higher likelihood  
+![Step4.2](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.2_ML.png)  
+  
 We need now new variables:  
   
 ```THREADS=2``` # Normally 1 thread for every 500-1000bp alignment positions works fine.  
@@ -84,7 +93,11 @@ With **IQtree** you can run **modelTest** (you can also do it in [**R**](https:/
 And if you know the model of evolution to be used you can add it to the command for example with GTR+G+I (which is normally the best choice): ```-m GTR+I+G```  
 But again, different options will address better different questions...  
   
-#### Using a Bayesian approach  
+### Using a Bayesian approach  
+  
+Model parameters are randomly estimated accross a statistical distribution resulting in different trees with different likelihood  
+![Step4.3](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.3_BI.png)  
+  
 Bayesian analysis are a bit special, since they need most of the time to be run in different blocks, and therefore needing many different parameters to be set that will influence your analysis. Here you have an example of a script, let's save it as "**phylo_mrBayes.sh**":  
 ```set autoclose=yes nowarnings=yes```  
 ```execute FILE.nexus```  
@@ -117,16 +130,18 @@ Firt setting the variables:
 ```THREADS=2```  
 ```BS=100```  
 ```MEM="2GB"```  
-  
+
+Align the sequences:  
 ```mafft $FASTA > $ALIGNED```  
-Manual check of the alignment if unsure of the quality of the sequences  
+Manual check of the alignment if unsure of the quality of the sequences before trimming:  
 ```trimal -in $ALIGNED -out $FILE -gt 05```  
+Run a phylogeny with RAxML:  
 ```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRgamma -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T 2```  
-and/or  
+and/or RAxML-ng:  
 ```raxml-ng --all --msa $FILE --model GTR+G --tree pars{10} --prefix ${OUTPUT}_raxml-ng-GTRgamma --seed $RANDOM --threads $THREADS --bs-trees $BS```  
-and/or  
+and/or IQtree:  
 ```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree-mt -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
-and/or  
+and/or MrBayes:  
 ```mb < phylo_mrBayes.sh > FILE_align_trimX_mrBayesgamma.log```  
   
 ## Further reading  
