@@ -56,17 +56,22 @@ It is important to manually check the alignment in AliView (or SeaView) if you a
   
 ![Step3 trim alignment](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step3_trim.png)  
   
+We can automatically do that with trimal as follows:  
+  
 ```trimal -in $FASTA -out $FILE -gt X```  
   
-Being X the coverage threshold at given position. I normally use 30% for a quick analysis and 5% for a more resolutive analysis. Again, depending on your scope you will have to play with different options. Other useful options are "```-st```", "```-nogaps```" and "```-noallgaps```".  
+Being X the coverage threshold at a given position. I normally use 30% for a quick analysis and 5% for a more resolutive analysis. Again, depending on your scope you will have to play with different options. Other useful options are "```-st```", "```-nogaps```" and "```-noallgaps```".  
+Besides, you can also trim the alignment based on the entropy of the columns, based on expected errors, etc.  
   
 ## Phylogenetic analyses (step 4)  
   
+The alignment provides now a basis to meassure differences/similarities among sequences. Although not every difference of nucleotide has the same evolutionary consequence. In this sense, different models of evolution assume different parameters resulting in different rates of evolution among the same sequences.  
 ![Step4.1](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.1_model_of_evolution.png)  
   
 ### Using a Maximum Likelihood approach  
   
 Maximizes model parameters accross different replicates (bootstraps) to find a higher likelihood  
+  
 ![Step4.2](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.2_ML.png)  
   
 We need now new variables:  
@@ -122,7 +127,7 @@ Understanding that each concept is relative and may vary among different trees.
   
 ## Summary
 Something like this will give you a solid phylogeny to start exploring patterns:  
-Firt setting the variables:  
+First setting the variables:  
 ```FASTA="file.fasta"```  
 ```ALIGNED=${INPUT/.fasta/_align.fasta}```  
 ```FILE=${ALIGNED/.fasta/_trimed.fasta}```  
@@ -142,7 +147,7 @@ and/or RAxML-ng:
 and/or IQtree:  
 ```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree-mt -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
 and/or MrBayes:  
-```mb < phylo_mrBayes.sh > FILE_align_trimX_mrBayesgamma.log```  
+```mb < phylo_mrBayes.sh > ${OUTPUT]_mrBayesgamma.log```  
   
 ## Further reading  
 Most of the times, open source softwares are very well documented. I highly encourage you to extend your possiblities and go fancy in phylogenetic inference by looking and epxloring different options through the help command (i.e.; ```iqtree -h```, ```raxml-ng -h```), or through their online manuals and hands-on tutorials:
