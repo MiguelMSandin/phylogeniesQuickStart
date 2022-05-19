@@ -40,7 +40,11 @@ Let's name our input and output files as follows:
 ```FILE=${ALIGNED/.fasta/_trimed.fasta}```  # The aligned and trimmed fasta file ready for phylogenetic inference  
   
 ### Align (step 2)  
-Depending on the sequences you are aligning you may want to play with the options. I recommend playing with them and with different datasets (highly similar or highly divergent sequences) to fully understand them.
+  
+![Step2 align sequences](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step2_align.png)  
+  
+Depending on the sequences you are aligning you may want to play with the different options that MAFFT offer. I recommend playing with them and with different datasets (highly similar and highly divergent sequences) to fully understand them.  
+  
 For large dataset I normally use the default options:  
 ```mafft $FASTA > $ALIGNED```  
 For a small dataset (<200 sequences of similarish length ~2000bp) of specific groups, I normally use  
@@ -49,7 +53,9 @@ For a small dataset (<200 sequences of similarish length ~2000bp) of specific gr
 It is important to manually check the alignment in AliView (or SeaView) if you are working with recently sequenced sequences. There might be some misalignment or weird stuff easy to spot due to bad quality or errors sequencing.  
   
 ### Trim alignment of redundant or low informative positions/columns (step 3)  
+  
 ```trimal -in $FASTA -out $FILE -gt X```  
+  
 Being X the coverage threshold at given position. I normally use 30% for a quick analysis and 5% for a more resolutive analysis. Again, depending on your scope you will have to play with different options. Other useful options are "```-st```", "```-nogaps```" and "```-noallgaps```".  
   
 ### Phylogenetic analyses (step 4)  
