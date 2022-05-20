@@ -15,8 +15,9 @@ Phylogenetic inference .
   
 ## What is a phylogenetic tree?  
 The simplest answer is **a hypothesis** on the evolutionary relationships among the studied set of taxa or *phylogenetic species*, understanding *species* as genes, proteins or traits.  
-A phylogenetic tree represents a comparative method that meassures the accumulated change among *species*, normally meassured in rate of nucleotide substitution and interpreted as evolutionary change.  
-Briefly, the structure of a tree is rather simple. A phylogenetic tree assumes a bifurcating evolution in which a given branch splits into two branches in a given node. Each node and all its descendent taxa correspond to a (monophyletic) clade.  
+A phylogenetic tree represents a comparative method that meassures the accumulated change between pairs of *species*, normally meassured in rate of nucleotide substitution and interpreted as evolutionary change. In this sense, the phylogenetic distance between two given species is the accumulated horizontal length betweem them, independently of their vertical position in the tree.  
+Briefly, the structure of a tree is rather simple. A phylogenetic tree assumes a bifurcating evolution in which a given branch splits into two branches in one given node. Each node and all its descendent taxa correspond to a (monophyletic) clade. A node with no further descendents is a terminal node and is frequently called tip or leave of the tree, representing the *phylogenetic species*.  
+The node gathering all *species* is called the root of the tree, and is normally used to give a biological and evolutionary interpretation of the tree beyond a pure relative comparison among the *species*. This node, when present, normally separates the outgroup or outgroups and the ingroup (please, see [Step 1](https://github.com/MiguelMSandin/phylogeniesQuickStart#species-selection-step-1) for further details on the root and the outgroups and ingroup).  
   
 ![Tree structure](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure.png)  
   
