@@ -14,12 +14,14 @@ Here you will find a brief introduction on how to get started with phylogenetic 
 Phylogenetic inference .  
   
 ## What is a phylogenetic tree?  
-The simplest answer is **an hypothesis** on the evolutionary relationships among the studied set of *species*, understanding *species* as genes, proteins or traits.  
+The simplest answer is **a hypothesis** on the evolutionary relationships among the studied set of taxa or *phylogenetic species*, understanding *species* as genes, proteins or traits.  
+A phylogenetic tree represents a comparative method that meassures the accumulated change among *species*, normally meassured in rate of nucleotide substitution and interpreted as evolutionary change.  
+Briefly, the structure of a tree is rather simple. A phylogenetic tree assumes a bifurcating evolution in which a given branch splits into two branches in a given node. Each node and all its descendent taxa correspond to a (monophyletic) clade.  
   
 ![Tree structure](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure.png)  
   
-## Main steps 
-1. Select your *species*.
+## Main steps for phylogenetic reconstruction
+1. Select your *species*.  
 2. Align sequences.  
 3. Remove uninformative positions/columns.  
 4. Run phylogenetic inference.  
