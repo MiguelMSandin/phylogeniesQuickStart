@@ -16,6 +16,8 @@ Phylogenetic inference .
 ## What is a phylogenetic tree?  
 The simplest answer is **an hypothesis** on the evolutionary relationships among the studied set of *species*, understanding *species* as genes, proteins or traits.  
   
+![Tree structure](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure.png)  
+  
 ## Main steps 
 1. Select your *species*.
 2. Align sequences.  
@@ -124,6 +126,8 @@ This might be the most complicated step, and only getting easier with experience
 (3) with no *very long* branches and  
 (4) different from your outgroup(s) or root but not *too* different.  
 Understanding that each concept is relative and may vary among different trees.  
+  
+![Tree structure unresolved](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure_unresolved.png)  
   
 ## Summary
 Something like this will give you a solid phylogeny to start exploring patterns:  
