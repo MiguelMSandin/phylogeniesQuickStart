@@ -71,6 +71,9 @@ Besides, you can also trim the alignment based on the entropy of the columns, ba
 ## Phylogenetic analyses (step 4)  
   
 The alignment provides now a basis to meassure differences/similarities among sequences. Although not every difference of nucleotide has the same evolutionary consequence. In this sense, different models of evolution assume different parameters resulting in different rates of evolution among the same sequences.  
+  
+Bootstraps  
+  
 ![Step4.1](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.1_model_of_evolution.png)  
   
 ### Using a Maximum Likelihood approach  
@@ -106,6 +109,9 @@ But again, different options will address better different questions...
 ### Using a Bayesian approach  
   
 Model parameters are randomly estimated accross a statistical distribution resulting in different trees with different likelihood  
+  
+Posterior Probabilities  
+  
 ![Step4.3](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.3_BI.png)  
   
 Bayesian analysis are a bit special, since they need most of the time to be run in different blocks, and therefore needing many different parameters to be set that will influence your analysis. Here you have an example of a script, let's save it as "**phylo_mrBayes.sh**":  
