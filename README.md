@@ -158,7 +158,7 @@ Set the variables:
 **Step 3**. Manual check of the alignment if unsure of the quality of the sequences before trimming:  
 ```trimal -in $ALIGNED -out $FILE -gt 05```  
   
-**Step 4**. Run a phylogeny using a **Maximum Likelihood** approach:
+**Step 4**. Run a phylogeny using a **Maximum Likelihood** approach:  
 with RAxML:  
 ```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRgamma -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T 2```  
 and/or RAxML-ng:  
