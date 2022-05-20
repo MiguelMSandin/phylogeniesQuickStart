@@ -127,7 +127,10 @@ Understanding that each concept is relative and may vary among different trees.
   
 ## Summary
 Something like this will give you a solid phylogeny to start exploring patterns:  
-First setting the variables:  
+  
+**Step 1**. **Select your *species* carefully**, both the ingroup and the outgroup, depending on your **scientifc question**.
+  
+Set the variables:  
 ```FASTA="file.fasta"```  
 ```ALIGNED=${INPUT/.fasta/_align.fasta}```  
 ```FILE=${ALIGNED/.fasta/_trimed.fasta}```  
@@ -136,21 +139,32 @@ First setting the variables:
 ```BS=100```  
 ```MEM="2GB"```  
 
-Align the sequences:  
+**Step 2**. Align the sequences:  
 ```mafft $FASTA > $ALIGNED```  
-Manual check of the alignment if unsure of the quality of the sequences before trimming:  
+  
+**Step 3**. Manual check of the alignment if unsure of the quality of the sequences before trimming:  
 ```trimal -in $ALIGNED -out $FILE -gt 05```  
-Run a phylogeny with RAxML:  
+  
+**Step 4**. Run a phylogeny using a **Maximum Likelihood** approach:
+with RAxML:  
 ```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRgamma -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T 2```  
 and/or RAxML-ng:  
 ```raxml-ng --all --msa $FILE --model GTR+G --tree pars{10} --prefix ${OUTPUT}_raxml-ng-GTRgamma --seed $RANDOM --threads $THREADS --bs-trees $BS```  
 and/or IQtree:  
 ```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree-mt -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
-and/or MrBayes:  
+and/or using a **Bayesian Inference** appraoch with MrBayes (you can find an example script here: [phylo_mrBayes.sh](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/scripts/3.4.1_MrBayes_set.sh)):  
 ```mb < phylo_mrBayes.sh > ${OUTPUT]_mrBayesgamma.log```  
   
+**Step 5**. **Interpret your phylogenetic tree**.  
+First from a methodological point of view: Are all nodes highly supported? Are there no nodes polytomies? Are there no long branches?  
+Then we add the biological thinking: Are the outgroups clearly defined and independent from the ingroup? Are the patterns among clades as previously reported/suggested/expected? Can you explain the tree topology according to the *species* you used (e.g.; rRNA genes, plastids, proteins)? Can you explain the tree in a biological integrative context? For example if using genes/proteins, can you explain it from a morphological or ecological point of view?  
+If not, then you should come back to **Step 1**, and think again on the chosen *species* and/or try to use different trimming options according to your scientific question.   
+  
 ## Further reading  
-Most of the times, open source softwares are very well documented. I highly encourage you to extend your possiblities and go fancy in phylogenetic inference by looking and epxloring different options through the help command (i.e.; ```iqtree -h```, ```raxml-ng -h```), or through their online manuals and hands-on tutorials:
+  
+The first phylogenetic analysis performed by Carl Woese and George Fox defined the primary domains of life through 16S rRNA characterization ((Woese and Fox, 1977)[https://www.pnas.org/doi/full/10.1073/pnas.74.11.5088]). And ever since, **phylogenetic thinking** continued developing. The number of references about phylogenetic analysis and understanding is overwhelming, and therefore providing an exhaustive list is imposible. As a brief example, you can simply check one of the latest and the references therein ((Evans et al., 2021)[https://royalsocietypublishing.org/doi/10.1098/rstb.2020.0056]).  
+  
+Regarding the methodological aspect of phylogenetic reconstruction, you will also find many different options. Yet again, I refer to one of the latest I am aware of and point to the references therein ((Irisarri 2021)[https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470015902.a0029211]). Most of the times, open source softwares are very well documented. I highly encourage you to extend your possiblities and go fancy in phylogenetic inference by looking and epxloring different options through the help command (i.e.; ```iqtree -h```, ```raxml-ng -h```), or through their online manuals and hands-on tutorials:
 - RAxML (not maintained any more): https://github.com/stamatak/standard-RAxML/blob/master/manual/NewManual.pdf  
 - RAxML-NG: https://github.com/amkozlov/raxml-ng/wiki/Tutorial  
 - IQtree: http://www.iqtree.org/doc/Quickstart  
