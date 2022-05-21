@@ -79,13 +79,15 @@ The simplest tree is a Neighbor Joining tree, representing the direct distance b
   
 ![Step4.1](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.1_model_of_evolution.png)  
   
-A pairwise comparison between group of *species* gives a first quick look of the alignment and the *species* themselves. However the phylogenetic relatedness is not directly link to the similarity or dissimilarity of the *species*, since not every region of sequence evolve at the same rate. 
-In this sense, some columns of the alignment will be prone to be more conservative and others to be more variable. Therefore the same nucleotide change may imply different weight depending on their alignment position. Different **models of evolution** assume different parameters resulting in different rates of evolution among the same sequences, and allows comparing not only *species* but also different columns of the alignment.  
+A pairwise comparison between group of *species* gives a first quick look of the alignment and the *species* themselves. However the phylogenetic relatedness is not directly link to the similarity or dissimilarity of the *species*, since not every region of the sequence evolve at the same rate. 
+  
+In this sense, some columns of the alignment will be prone to be more conservative and others to be more variable. Therefore the same nucleotide change may imply different weight depending on their position in the alignment. Different **models of evolution** assume different parameters resulting in different rates of evolution among the same sequences, and allows comparing not only *species* but also different columns of the alignment.  
+  
 Despite models of evolution allow the reconstruction of phylogenetic relatedness between *species* beyond a pure similarity comparison, they rely on many assumptions and parameters. Such parameters need to be estimated, adjusted and improved in order to better fit the given dataset. And to do so, several approaches have been proposed:  
   
 ### Using a Maximum Likelihood approach  
   
-Maximizes model parameters accross different replicates (bootstraps) to find a higher likelihood  
+Maximum Likelihood (LM) maximizes model parameters accross different replicates (bootstraps) to find a higher likelihood  
   
 ![Step4.2](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.2_ML.png)  
   
@@ -173,11 +175,11 @@ and/or RAxML-ng:
 ```raxml-ng --all --msa $FILE --model GTR+G --tree pars{10} --prefix ${OUTPUT}_raxml-ng-GTRgamma --seed $RANDOM --threads $THREADS --bs-trees $BS```  
 and/or IQtree:  
 ```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree-mt -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
-and/or using a **Bayesian Inference** appraoch with MrBayes (you can find an example script here: [phylo_mrBayes.sh](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/scripts/3.4.1_MrBayes_set.sh)):  
+and/or using a **Bayesian Inference** approach with MrBayes (you can find an example script here: [phylo_mrBayes.sh](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/scripts/3.4.1_MrBayes_set.sh)):  
 ```mb < phylo_mrBayes.sh > ${OUTPUT]_mrBayesgamma.log```  
   
 **Step 5**. **Interpret your phylogenetic tree**.  
-First from a methodological point of view: Are all nodes highly supported? Are there no nodes polytomies? Are there no long branches?  
+First from a methodological point of view: Are all nodes highly supported? Are there no polytomic nodes? Are there no long branches?  
 Then we add the biological thinking: Are the outgroups clearly defined and independent from the ingroup? Are the patterns among clades as previously reported/suggested/expected? Can you explain the tree topology according to the *species* you used (e.g.; rRNA genes, plastids, proteins)? Can you explain the tree in a biological integrative context? For example if using genes/proteins, can you explain it from a morphological or ecological point of view?  
 If not, then you should come back to **Step 1**, and think again on the chosen *species* and/or try to use different trimming options according to your scientific question.   
   
