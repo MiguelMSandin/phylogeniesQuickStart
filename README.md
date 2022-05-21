@@ -15,7 +15,7 @@ Phylogenetic inference .
   
 ## What is a phylogenetic tree?  
 The simplest answer is **a hypothesis** on the evolutionary relationships among the studied set of taxa or *phylogenetic species*, understanding *species* as genes, proteins or traits.  
-A phylogenetic tree represents a comparative method that meassures the accumulated change between pairs of *species*, normally meassured in rate of nucleotide substitution and interpreted as evolutionary change. In this sense, the phylogenetic distance between two given species is the accumulated horizontal length betweem them, independently of their vertical position in the tree.  
+A phylogenetic tree is a comparative analysis that meassures the accumulated change between pairs of *species*, normally meassured in rate of nucleotide substitution and interpreted as evolutionary change. In this sense, the phylogenetic distance between two given species is the accumulated horizontal length betweem them, independently of their vertical position in the tree.  
 Briefly, the structure of a tree is rather simple. A phylogenetic tree assumes a bifurcating evolution in which a given branch splits into two branches in one given node. Each node and all its descendent taxa correspond to a (monophyletic) clade. A node with no further descendents is a terminal node and is frequently called tip or leave of the tree, representing the *phylogenetic species*.  
 The node gathering all *species* is called the root of the tree, and is normally used to give a biological and evolutionary interpretation of the tree beyond a pure relative comparison among the *species*. This node, when present, normally separates the outgroup or outgroups and the ingroup (please, see [Step 1](https://github.com/MiguelMSandin/phylogeniesQuickStart#species-selection-step-1) for further details on the root and the outgroups and ingroup).  
   
@@ -27,9 +27,9 @@ The node gathering all *species* is called the root of the tree, and is normally
 3. Remove uninformative positions/columns.  
 4. Run phylogenetic inference.  
 5. Understand your phylogenetic tree.
-6. Come back to step 1.  
+6. Come back to step 1, if needed.  
   
-The most important steps of phylogenetic inference are the ***species* selection** and the **interpretation of your resulting tree**. Yet, to be able to fully understand a phylogenetic tree, you need to understand and know how to build it. Here we will quickly go through every step. Yet keep in mind that **each tree is an hypothesis** of your given data, and therefore the selection of your *species* and the interpretation of the tree will highly rely on your **scientific question**.  
+The most important steps of phylogenetic inference are the ***species* selection** and the **interpretation of your resulting tree**. Yet, to be able to fully understand a phylogenetic tree, you need to understand and know how to build it. Here we will quickly go through every step. Yet keep in mind that **each tree is a hypothesis** of your given data, and therefore the selection of your *species* and the interpretation of the tree will highly rely on your **scientific question**.  
   
 ## *Species* selection (step 1)
   
