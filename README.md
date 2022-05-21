@@ -70,13 +70,15 @@ Besides, you can also trim the alignment based on the entropy of the columns, ba
   
 ## Phylogenetic analyses (step 4)  
   
-The alignment provides now a basis to meassure differences/similarities among sequences. Although not every difference of nucleotide has the same evolutionary consequence. In this sense, different models of evolution assume different parameters resulting in different rates of evolution among the same sequences.  
-  
-Bootstraps  
+The alignment provides now a basis to meassure differences/similarities among sequences. Although not every difference of nucleotide has the same evolutionary consequence.  
+The simplest tree, is a neighbor joining tree.  
+In this sense, different models of evolution assume different parameters resulting in different rates of evolution among the same sequences.  
   
 ![Step4.1](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.1_model_of_evolution.png)  
   
 ### Using a Maximum Likelihood approach  
+  
+Bootstraps  
   
 Maximizes model parameters accross different replicates (bootstraps) to find a higher likelihood  
   
