@@ -1,11 +1,11 @@
 # A brief hands-on introduction about Phylogenetic Inference  
-Here you will find a brief introduction on how to get started with phylogenetic analyses.
+Here you will find a brief introduction on how to get started with phylogenetic analyses. All examples are given for nucleotide sequences, yet once you have gone through every step, you will feel more confortable to try different models and datasets.  
   
 ## Dependencies and softwares used for:  
 - **Sequence visualization**: [AliView](https://ormbunkar.se/aliview/) or a much simpler and faster option [SeaView](http://doua.prabi.fr/software/seaview)  
 - **Sequence alignments**: [MAFFT](https://mafft.cbrc.jp/alignment/software/)  
 - **Trimming alignment**: [trimAl](http://trimal.cgenomics.org/downloads)  
-- **Phylogenetic reconstruction**: [RAxML](https://github.com/stamatak/standard-RAxML), [RAxML-ng](https://github.com/amkozlov/raxml-ng), [IQtree](http://www.iqtree.org/), [MrBayes](https://nbisweden.github.io/MrBayes/)  
+- **Phylogenetic reconstruction**:[rapidNJ](https://birc.au.dk/software/rapidnj/), [RAxML](https://github.com/stamatak/standard-RAxML), [RAxML-ng](https://github.com/amkozlov/raxml-ng), [IQtree](http://www.iqtree.org/), [MrBayes](https://nbisweden.github.io/MrBayes/)  
 - **Tree visualization**: [figTree](http://tree.bio.ed.ac.uk/software/figtree/)  
   
 ## Before starting, why phylogenetic inference?  
@@ -43,6 +43,7 @@ Let's name our input and output files as follows:
 ```FASTA="file.fasta"```  # The raw fasta file  
 ```ALIGNED=${INPUT/.fasta/_align.fasta}```  # The aligned fasta file  
 ```FILE=${ALIGNED/.fasta/_trimed.fasta}```  # The aligned and trimmed fasta file ready for phylogenetic inference  
+```OUTPUT="test1"```  
   
 ## Align (step 2)  
   
@@ -71,14 +72,18 @@ Besides, you can also trim the alignment based on the entropy of the columns, ba
 ## Phylogenetic analyses (step 4)  
   
 The alignment provides now a basis to meassure differences/similarities among sequences. Although not every difference of nucleotide has the same evolutionary consequence.  
-The simplest tree, is a neighbor joining tree.  
-In this sense, different models of evolution assume different parameters resulting in different rates of evolution among the same sequences.  
+  
+The simplest tree is a Neighbor Joining tree, representing the direct distance between the *species*. In this approach, *species* are grouped together based on similarity, until there is no more *species* left.  
+   
+```rapidnj $FILE > ${OUTPUT}_NJ.tre```  
   
 ![Step4.1](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.1_model_of_evolution.png)  
   
-### Using a Maximum Likelihood approach  
+A pairwise comparison between group of *species* gives a first quick look of the alignment and the *species* themselves. However the phylogenetic relatedness is not directly link to the similarity or dissimilarity of the *species*, since not every region of sequence evolve at the same rate. 
+In this sense, some columns of the alignment will be prone to be more conservative and others to be more variable. Therefore the same nucleotide change may imply different weight depending on their alignment position. Different **models of evolution** assume different parameters resulting in different rates of evolution among the same sequences, and allows comparing not only *species* but also different columns of the alignment.  
+Despite models of evolution allow the reconstruction of phylogenetic relatedness between *species* beyond a pure similarity comparison, they rely on many assumptions and parameters. Such parameters need to be estimated, adjusted and improved in order to better fit the given dataset. And to do so, several approaches have been proposed:  
   
-Bootstraps  
+### Using a Maximum Likelihood approach  
   
 Maximizes model parameters accross different replicates (bootstraps) to find a higher likelihood  
   
@@ -90,20 +95,17 @@ We need now new variables:
 ```BS=100```  # The number of Bootstrap  
   
 Here you have different softwares. The first example with **RAxML**:  
-```OUTPUT="test1_raxml-GTRgamma"```    
-```raxmlHPC-PTHREADS-SSE3 -n $OUTPUT -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T $THREADS```  
+```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRgamma -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T $THREADS```  
   
 or faster and very similar output:  
-```OUTPUT="test1_raxml-GTRcat"```    
-```raxmlHPC-PTHREADS-SSE3 -n $OUTPUT -s $FILE -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -f a -N $BS -T $THREADS```  
+```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRcat -s $FILE -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -f a -N $BS -T $THREADS```  
   
 With **RAxML-ng** you could use the Graphical User Interface option throught their server: [RAxML-NG](https://raxml-ng.vital-it.ch/#/), or have a look at [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.2_RAxML-ng.sh) for further details through the comand line.  
   
 With **IQtree** you can run **modelTest** (you can also do it in [**R**](https://www.r-project.org/), with the packages [*ape*](https://cran.r-project.org/web/packages/ape/index.html) and [*phangorn*](https://cran.r-project.org/web/packages/phangorn/index.html), see [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.5_PhyML_in_R.R) for further details), which is used to select the best model fitting your data:  
   
-```OUTPUT="test1-iqtree"```  
 ```MEM=2GB```  
-```iqtree -s $FILE -st "DNA" -pre $OUTPUT -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
+```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
   
 And if you know the model of evolution to be used you can add it to the command for example with GTR+G+I (which is normally the best choice): ```-m GTR+I+G```  
 But again, different options will address better different questions...  
@@ -125,9 +127,13 @@ Bayesian analysis are a bit special, since they need most of the time to be run 
 ```sumt```  
 ```quit```  
 That can be run as follows (considering the previous script is called "phylo_mrBayes.sh"):  
-```mb < phylo_mrBayes.sh > OUTPUT_mrBayesgamma.log &```  
+```mb < phylo_mrBayes.sh > ${OUTPUT}_mrBayesgamma.log &```  
 Something to bear in mind is that MrBayes uses "nexus" format and not "fasta". This can be easily exported/transformed in AliView.  
 Alternatively, you can type each one of the lines from the script that we called *phylo_mrBayes.sh* directly in the MrBayes prompt (except for the first line, which sets the autoclosing).  
+  
+### Using a parsimony approach
+  
+The parsimony approach assumes that two sequences are related to one another if .  
   
 ## Interpreting the tree (step 6)  
   
