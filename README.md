@@ -11,12 +11,10 @@ Here you will find a brief introduction on how to get started with phylogenetic 
 ## Before starting, why phylogenetic inference?  
 (If you are only interested on the 'how', you can directly go to the [summary](https://github.com/MiguelMSandin/phylogeniesQuickStart#summary) section).  
   
-Phylogenetic inference allows the exploration of evolutionary relationships among taxa beyond .  
-  
-![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/different_pictures_of_the_same_reality.png)  
+Phylogenetic inference allows the exploration of **evolutionary relationships** among taxa beyond a pure pair-wise comparison. Evolutionary relationships are normally inferred from observed intrinsic properties of a group of organisms such as DNA sequences, protein sequences or morphological traits. When reconstructing evolutionary patterns, we assume common ancestry and a bifurcating history in the diversification of the studied organisms. And the best (or most accepted) way to represent such patterns is the so called **phylogenetic tree**.  
   
 ## What is a phylogenetic tree?  
-The simplest answer is **a hypothesis** on the evolutionary relationships among the studied set of taxa or *phylogenetic species*, understanding *species* as genes, proteins or traits.  
+The simplest answer is **a hypothesis** on the evolutionary relationships among the studied set of taxa or *phylogenetic species*, understanding *species* as genes, proteins or sepcific morphological traits.  
 A phylogenetic tree is a comparative analysis that meassures the **accumulated change** between pairs of *species*, normally meassured in rate of nucleotide substitution and interpreted as evolutionary change. In this sense, the **phylogenetic distance** between two given species is the accumulated horizontal length betweem them, independently of their vertical position in the tree.  
 Briefly, the structure of a tree is rather simple. A phylogenetic tree assumes a **bifurcating evolution** in which a given **branch** splits into two branches in one given **node**. Each node and all its descendent taxa correspond to a (monophyletic) **clade**. A node with no further descendents is a terminal node and is frequently called **tip or leave** of the tree, representing the *phylogenetic species*.  
 The node gathering all *species* is called the **root** of the tree, and is normally used to give a biological and evolutionary interpretation of the tree beyond a pure relative comparison among the *species*. This node, when present, normally separates the outgroup (or outgroups) and the ingroup (please, see [Step 1](https://github.com/MiguelMSandin/phylogeniesQuickStart#species-selection-step-1) for further details on the root and the outgroups and ingroup).  
@@ -38,9 +36,13 @@ The most important steps of phylogenetic inference are the ***species* selection
   
 ## *Species* selection (step 1)
   
-As for any other project or analysis, the most important aspect is your *scientific question*. Why do you want to infer a phylogen? How is the phylogeny going to contribute to your study? In what depth other studies will benefit from your phylogeny?  
+As for any other project or analysis, the most important aspect is your **scientific question**. Why do you want to infer a phylogeny? What is the importance of the phylogeny for your study? How other studies will benefit from your phylogeny?  
   
-On the Root of the tree.  
+If you have recently sequenced some organisms and you simply want to have a rough idea of what taxonomic identity these sequences have, maybe a [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) or a pair-wise comparison to reference databases (such as [PR2](https://pr2-database.org/) or [SILVA](https://www.arb-silva.de/)) is more suited to your question.  
+  
+Anyways, retrieving closely related sequences or proteins from public databases might be the first step towards the selection of the *species* to build a phylogenetic tree.  
+  
+On **the Root of the tree**.  
   
 ## Basic pipeline  
   
@@ -146,14 +148,16 @@ The parsimony approach assumes that two sequences are related to one another if 
   
 ## Interpreting the tree (step 6)  
   
-This might be the most complicated step, and only getting easier with experience and failing. Briefly, you want a tree:  
+This might be the most complicated step, and it is only getting easier with experience and after failing many times. Briefly, from a methodological point of view, you want a tree:  
 (1) highly supported,  
 (2) with no polytomies or near-0 internal bracnh lengths,  
 (3) with no *very long* branches and  
-(4) different from your outgroup(s) or root but not *too* different.  
+(4) different from your outgroup(s) but not *too* different.  
 Understanding that each concept is relative and may vary among different trees.  
   
 ![Tree structure unresolved](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure_unresolved.png)  
+  
+![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/different_pictures_of_the_same_reality.png)  
   
 ## Summary
 Something like this will give you a solid phylogeny to start exploring patterns:  
