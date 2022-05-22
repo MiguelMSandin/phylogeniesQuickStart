@@ -11,7 +11,7 @@ Here you will find a brief introduction on how to get started with phylogenetic 
 ## Before starting, why phylogenetic inference?  
 (If you are only interested on the 'how', you can directly go to the [summary](https://github.com/MiguelMSandin/phylogeniesQuickStart#summary) section).  
   
-Phylogenetic inference allows the exploration of evolutionary relationships among taxa.  
+Phylogenetic inference allows the exploration of evolutionary relationships among taxa beyond .  
   
 ![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/different_pictures_of_the_same_reality.png)  
   
@@ -23,7 +23,7 @@ The node gathering all *species* is called the **root** of the tree, and is norm
   
 ![Tree structure](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure.png)  
   
-In terms of writing and formating, the simplest tree format is called [newick](https://en.wikipedia.org/wiki/Newick_format), and it is simply a nested grouping of trees, where tips are separated by commas, and groups are grouped by parentheses. The example above would look like as follows (without branch lengths, which are given after the given tip or node preceded of a semicolon ":"):  
+In terms of writing and formating, the simplest tree format is called [newick](https://en.wikipedia.org/wiki/Newick_format), and it is simply a nested grouping of trees, where tips are separated by commas, and groups are grouped by parentheses. The example above would look like as follows (without branch lengths, which are given after the given tip or node separated by a semicolon ":"):  
 ((a,b),((c,d),(e,f)));
   
 ## Main steps for phylogenetic reconstruction
