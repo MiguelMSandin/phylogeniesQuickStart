@@ -21,6 +21,9 @@ The node gathering all *species* is called the root of the tree, and is normally
   
 ![Tree structure](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure.png)  
   
+In terms of writing and formating, the simplest tree format is called newick, and it is simply a nested grouping of trees, where tips are separated by commas, and groups by parentheses. The example above would look like as follows (without branch lengths):  
+((a,b),((c,d),(e,f)));
+  
 ## Main steps for phylogenetic reconstruction
 1. Select your *species*.  
 2. Align sequences.  
@@ -32,6 +35,8 @@ The node gathering all *species* is called the root of the tree, and is normally
 The most important steps of phylogenetic inference are the ***species* selection** and the **interpretation of your resulting tree**. Yet, to be able to fully understand a phylogenetic tree, you need to understand and know how to build it. Here we will quickly go through every step. Yet keep in mind that **each tree is a hypothesis** of your given data, and therefore the selection of your *species* and the interpretation of the tree will highly rely on your **scientific question**.  
   
 ## *Species* selection (step 1)
+  
+As for any other project or analysis, the most important aspect is your *scientific question*. Why do you want to infer a phylogen? How is the phylogeny going to contribute to your study? In what depth other studies will benefit from your phylogeny?  
   
 On the Root of the tree.  
   
