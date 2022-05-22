@@ -15,8 +15,11 @@ Phylogenetic inference allows the exploration of **evolutionary relationships** 
   
 ## What is a phylogenetic tree?  
 The simplest answer is **a hypothesis** on the evolutionary relationships among the studied set of taxa or *phylogenetic species*, understanding *species* as genes, proteins or sepcific morphological traits.  
+  
 A phylogenetic tree is a comparative analysis that meassures the **accumulated change** between pairs of *species*, normally meassured in rate of nucleotide substitution and interpreted as evolutionary change. In this sense, the **phylogenetic distance** between two given species is the accumulated horizontal length betweem them, independently of their vertical position in the tree.  
+  
 Briefly, the structure of a tree is rather simple. A phylogenetic tree assumes a **bifurcating evolution** in which a given **branch** splits into two branches in one given **node**. Each node and all its descendent taxa correspond to a (monophyletic) **clade**. A node with no further descendents is a terminal node and is frequently called **tip or leave** of the tree, representing the *phylogenetic species*.  
+  
 The node gathering all *species* is called the **root** of the tree, and is normally used to give a biological and evolutionary interpretation of the tree beyond a pure relative comparison among the *species*. This node, when present, normally separates the outgroup (or outgroups) and the ingroup (please, see [Step 1](https://github.com/MiguelMSandin/phylogeniesQuickStart#species-selection-step-1) for further details on the root and the outgroups and ingroup).  
   
 ![Tree structure](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure.png)  
@@ -41,6 +44,7 @@ As for any other project or analysis, the most important aspect is your **scient
 If you have recently sequenced some organisms and you simply want to have a rough idea of what taxonomic identity these sequences have, maybe a [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) or a pair-wise comparison to reference databases (such as [PR2](https://pr2-database.org/) or [SILVA](https://www.arb-silva.de/)) is more suited to your question.  
   
 Anyways, **retrieving closely related sequences or proteins** from public databases might be the first step towards the selection of the *species* to build a phylogenetic tree. Here you are interested in integrating your group of interest in a broader evolutioanry context, either within other biological entities or to explore the relationships within your group of interest. And to do so, you need a good representation of all known diversity.  
+  
 Unfortunately, accessing all known diversity is not a straight forward task. **Artifacts**, such as [chimeric](https://en.wikipedia.org/wiki/Chimera_(molecular_biology)) sequences produced during amplification or errors during sequencing, might affect the quality and reliability of the molecular diversity. Therefore, and once again, depending on your scientific question you might tackle this step differently.  
 
 Let's supposed that you have sequenced one organism that have never been sequenced and you want to know its phylogenetic patterns. A quick BLAST will let you know what broad group you are dealing with. Now comes the **literature research**: check previous phylogenetic analysis of the group of interest and try to retrieve similar sequences that have been previoulsy used in other studies. I normally prefer to start from well established sequences and then remove and add more sequences step by step, depending on the given results and my question.  
@@ -56,7 +60,9 @@ In the example below, the tree on the left is unrooted and on the right is the s
  ![Unrooted and rooted tree](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_root.png)   
   
 When it comes to real data, you might be interested in the closest relatives of your group of interest (or **outgroup**) that are not your group of interest (or **ingroup**). For example if your group of interest are birds, then you might want to choose an outgroup with reptiles.  
+  
 And if you are unsure of the quality or nature of your sequences, chosing more than one outgroup is very important to quickly spot artifacts or alignment problems.  
+  
 Chosing a correct outgroup(s), is yet again one of the most important steps when it comes to phylogenetic inference. However many times it is simply not possible to choose, because of lack of ressolved phylogenetic patterns, so you will have to take a decission among different options.  
   
 ## Basic pipeline  
