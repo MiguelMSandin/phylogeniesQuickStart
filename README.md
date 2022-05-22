@@ -11,17 +11,19 @@ Here you will find a brief introduction on how to get started with phylogenetic 
 ## Before starting, why phylogenetic inference?  
 (If you are only interested on the 'how', you can directly go to the [summary](https://github.com/MiguelMSandin/phylogeniesQuickStart#summary) section).  
   
-Phylogenetic inference .  
+Phylogenetic inference allows the exploration of evolutionary relationships among taxa.  
+  
+![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/different_pictures_of_the_same_reality.png)  
   
 ## What is a phylogenetic tree?  
 The simplest answer is **a hypothesis** on the evolutionary relationships among the studied set of taxa or *phylogenetic species*, understanding *species* as genes, proteins or traits.  
-A phylogenetic tree is a comparative analysis that meassures the accumulated change between pairs of *species*, normally meassured in rate of nucleotide substitution and interpreted as evolutionary change. In this sense, the phylogenetic distance between two given species is the accumulated horizontal length betweem them, independently of their vertical position in the tree.  
-Briefly, the structure of a tree is rather simple. A phylogenetic tree assumes a bifurcating evolution in which a given branch splits into two branches in one given node. Each node and all its descendent taxa correspond to a (monophyletic) clade. A node with no further descendents is a terminal node and is frequently called tip or leave of the tree, representing the *phylogenetic species*.  
-The node gathering all *species* is called the root of the tree, and is normally used to give a biological and evolutionary interpretation of the tree beyond a pure relative comparison among the *species*. This node, when present, normally separates the outgroup or outgroups and the ingroup (please, see [Step 1](https://github.com/MiguelMSandin/phylogeniesQuickStart#species-selection-step-1) for further details on the root and the outgroups and ingroup).  
+A phylogenetic tree is a comparative analysis that meassures the **accumulated change** between pairs of *species*, normally meassured in rate of nucleotide substitution and interpreted as evolutionary change. In this sense, the **phylogenetic distance** between two given species is the accumulated horizontal length betweem them, independently of their vertical position in the tree.  
+Briefly, the structure of a tree is rather simple. A phylogenetic tree assumes a **bifurcating evolution** in which a given **branch** splits into two branches in one given **node**. Each node and all its descendent taxa correspond to a (monophyletic) **clade**. A node with no further descendents is a terminal node and is frequently called **tip or leave** of the tree, representing the *phylogenetic species*.  
+The node gathering all *species* is called the **root** of the tree, and is normally used to give a biological and evolutionary interpretation of the tree beyond a pure relative comparison among the *species*. This node, when present, normally separates the outgroup (or outgroups) and the ingroup (please, see [Step 1](https://github.com/MiguelMSandin/phylogeniesQuickStart#species-selection-step-1) for further details on the root and the outgroups and ingroup).  
   
 ![Tree structure](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure.png)  
   
-In terms of writing and formating, the simplest tree format is called newick, and it is simply a nested grouping of trees, where tips are separated by commas, and groups by parentheses. The example above would look like as follows (without branch lengths):  
+In terms of writing and formating, the simplest tree format is called [newick](https://en.wikipedia.org/wiki/Newick_format), and it is simply a nested grouping of trees, where tips are separated by commas, and groups are grouped by parentheses. The example above would look like as follows (without branch lengths, which are given after the given tip or node preceded of a semicolon ":"):  
 ((a,b),((c,d),(e,f)));
   
 ## Main steps for phylogenetic reconstruction
@@ -32,7 +34,7 @@ In terms of writing and formating, the simplest tree format is called newick, an
 5. Understand your phylogenetic tree.
 6. Come back to step 1, if needed.  
   
-The most important steps of phylogenetic inference are the ***species* selection** and the **interpretation of your resulting tree**. Yet, to be able to fully understand a phylogenetic tree, you need to understand and know how to build it. Here we will quickly go through every step. Yet keep in mind that **each tree is a hypothesis** of your given data, and therefore the selection of your *species* and the interpretation of the tree will highly rely on your **scientific question**.  
+The most important steps of phylogenetic inference are the ***species* selection** and the **interpretation of your resulting tree**. Yet, to be able to fully understand a phylogenetic tree, you need to understand how to build it. Here we will quickly go through every step. Yet keep in mind that **each tree is a hypothesis** of your given data, and therefore the selection of your *species*, the phylogenetic inference and the interpretation of the tree will highly rely on your **scientific question**.  
   
 ## *Species* selection (step 1)
   
