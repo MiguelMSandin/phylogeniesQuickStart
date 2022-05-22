@@ -40,9 +40,16 @@ As for any other project or analysis, the most important aspect is your **scient
   
 If you have recently sequenced some organisms and you simply want to have a rough idea of what taxonomic identity these sequences have, maybe a [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) or a pair-wise comparison to reference databases (such as [PR2](https://pr2-database.org/) or [SILVA](https://www.arb-silva.de/)) is more suited to your question.  
   
-Anyways, retrieving closely related sequences or proteins from public databases might be the first step towards the selection of the *species* to build a phylogenetic tree.  
+Anyways, **retrieving closely related sequences or proteins** from public databases might be the first step towards the selection of the *species* to build a phylogenetic tree. Here you are interested in integrating your group of interest in a broader evolutioanry context, either within other biological entities or to explore the relationships within your group of interest. And to do so, you need a good representation of all known diversity.  
+Unfortunately, accessing all known diversity is not a straight forward task. **Artifacts**, such as [chimeric](https://en.wikipedia.org/wiki/Chimera_(molecular_biology)) sequences produced during amplification or errors during sequencing, might affect the quality and reliability of the molecular diversity. Therefore, and once again, depending on your scientific question you might tackle this step differently.  
+
+Let's supposed that you have sequenced one organism that have never been sequenced and you want to know its phylogenetic patterns. A quick BLAST will let you know what broad group you are dealing with. Now comes the **literature research**: check previous phylogenetic analysis of the group of interest and try to retrieve similar sequences that have been previoulsy used in other studies. I normally prefer to start from well established sequences and then remove and add more sequences step by step, depending on the given results and my question.  
   
-On **the Root of the tree**.  
+Closely related sequences will allow you accessing the phylogenetic relationships of your group of interest. However, most of the times you will be interested in the broader context of your group of interest and how it relates to other closely related groups. In this sense we need to "order" the tree in an evolutionary sense: we need to **root the tree**.  
+  
+### What is the Root of the tree?  
+  
+.  
   
 ## Basic pipeline  
   
