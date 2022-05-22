@@ -25,11 +25,11 @@ In terms of writing and formating, the simplest tree format is called [newick](h
 ((a,b),((c,d),(e,f)));
   
 ## Main steps for phylogenetic reconstruction
-1. Select your *species*.  
-2. Align sequences.  
-3. Remove uninformative positions/columns.  
-4. Run phylogenetic inference.  
-5. Understand your phylogenetic tree.
+[1.](https://github.com/MiguelMSandin/phylogeniesQuickStart#species-selection-step-1) Select your *species*.  (<-- the most important step!)  
+[2.](https://github.com/MiguelMSandin/phylogeniesQuickStart#align-step-2) Align sequences.  
+[3.](https://github.com/MiguelMSandin/phylogeniesQuickStart#trim-alignment-of-redundant-or-low-informative-positionscolumns-step-3) Remove uninformative positions/columns.  
+[4.](https://github.com/MiguelMSandin/phylogeniesQuickStart#phylogenetic-analyses-step-4) Run phylogenetic inference.  
+[5.](https://github.com/MiguelMSandin/phylogeniesQuickStart#interpreting-the-tree-step-6) Understand your phylogenetic tree.  (<-- the most important step!)  
 6. Come back to step 1, if needed.  
   
 The most important steps of phylogenetic inference are the ***species* selection** and the **interpretation of your resulting tree**. Yet, to be able to fully understand a phylogenetic tree, you need to understand how to build it. Here we will quickly go through every step. Yet keep in mind that **each tree is a hypothesis** of your given data, and therefore the selection of your *species*, the phylogenetic inference and the interpretation of the tree will highly rely on your **scientific question**.  
