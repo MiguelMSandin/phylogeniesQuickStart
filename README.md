@@ -45,21 +45,31 @@ Unfortunately, accessing all known diversity is not a straight forward task. **A
 
 Let's supposed that you have sequenced one organism that have never been sequenced and you want to know its phylogenetic patterns. A quick BLAST will let you know what broad group you are dealing with. Now comes the **literature research**: check previous phylogenetic analysis of the group of interest and try to retrieve similar sequences that have been previoulsy used in other studies. I normally prefer to start from well established sequences and then remove and add more sequences step by step, depending on the given results and my question.  
   
-Closely related sequences will allow you accessing the phylogenetic relationships of your group of interest. However, most of the times you will be interested in the broader context of your group of interest and how it relates to other closely related groups. In this sense we need to "order" the tree in an evolutionary sense: we need to **root the tree**.  
+Closely related sequences will allow you accessing the phylogenetic relationships of your group of interest. Yet, to infer an evolutionary history and get a broader context of your group of interest it is needed to "order" the tree in an evolutionary sense: we need to **root the tree**.  
   
 ### What is the Root of the tree?  
   
-.  
+The root of the tree represents the last common ancestor of all *species* in the tree. It tells you what are the earliest diverging nodes and therefore the "direction" of the evolution.  
+  
+In the example below, the tree on the left is unrooted and on the right is the same tree but rooted. In this example the root is given by the clade gathering "a" and "b", being the first diverging clade.  
+  
+ ![Unrooted and rooted tree](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_root.png)   
+  
+When it comes to real data, you might be interested in the closest relatives of your group of interest (or **outgroup**) that are not your group of interest (or **ingroup**). For example if your group of interest are birds, then you might want to choose an outgroup with reptiles.  
+And if you are unsure of the quality or nature of your sequences, chosing more than one outgroup is very important to quickly spot artifacts or alignment problems.  
+Chosing a correct outgroup(s), is yet again one of the most important steps when it comes to phylogenetic inference. However many times it is simply not possible to choose, because of lack of ressolved phylogenetic patterns, so you will have to take a decission among different options.  
   
 ## Basic pipeline  
   
-Please, bear in mind that there are many different ways to infer phylogenetic patterns among genes, proteins or even morphological characters (or other traits). So here I will just guide you through a basic step-by-step pipeline that I normally use for quick and exploratory analyses.  
+Let's assume we have already selected our ingroup and outgroup(s), let's build now a phylogenetic tree.  
+  
+Please, bear in mind that there are many different ways to infer phylogenetic patterns among genes, proteins or even morphological characters (or other traits). Here I will just guide you through a basic step-by-step pipeline that I normally use for quick and exploratory analyses of DNA sequences.  
   
 Let's name our input and output files as follows:  
 ```FASTA="file.fasta"```  # The raw fasta file  
 ```ALIGNED=${INPUT/.fasta/_align.fasta}```  # The aligned fasta file  
 ```FILE=${ALIGNED/.fasta/_trimed.fasta}```  # The aligned and trimmed fasta file ready for phylogenetic inference  
-```OUTPUT="test1"```  
+```OUTPUT="test1"```  # The basic tree name  
   
 ## Align (step 2)  
   
