@@ -117,11 +117,11 @@ A pairwise comparison between group of *species* gives a first quick look of the
   
 In this sense, some columns of the alignment will be prone to be more conservative and others to be more variable. Therefore the same nucleotide change may imply different weight depending on their position in the alignment. Different **models of evolution** assume different parameters resulting in different rates of evolution among the same sequences, and allows comparing not only *species* but also different columns of the alignment.  
   
-Despite models of evolution allow the reconstruction of phylogenetic relatedness between *species* beyond a pure similarity comparison, they rely on many assumptions and parameters. Such parameters need to be estimated, adjusted and improved in order to better fit the given dataset. And to do so, several approaches have been proposed:  
+Models of evolution rely on many assumptions and parameters that need to be estimated, adjusted and improved in order to better fit the given dataset. And to do so, several approaches have been proposed:  
   
 ### Using a Maximum Likelihood approach  
   
-Maximum Likelihood (LM) maximizes model parameters accross different replicates (bootstraps) to find a higher likelihood  
+Maximum Likelihood (LM) maximizes model parameters (treated as constants) accross different replicates (or bootstraps) to find a higher likelihood.  
   
 ![Step4.2](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.2_ML.png)  
   
