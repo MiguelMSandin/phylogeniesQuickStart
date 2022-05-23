@@ -55,7 +55,7 @@ Closely related sequences will allow you accessing the phylogenetic relationship
   
 The root of the tree represents the last common ancestor of all *species* in the tree. It tells you what are the earliest diverging nodes and therefore the "direction" of the evolution.  
   
-In the example below, the tree on the left is unrooted and on the right is the same tree but rooted. In this example the root is given by the clade gathering "a" and "b", being the first diverging clade.  
+In the example below, you have the exact same tree rooted (right) and unrooted (left). In this example the root is splitting the first diverging clade (gathering "a" and "b") and the rest of the taxa.  
   
  ![Unrooted and rooted tree](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_root.png)   
   
