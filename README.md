@@ -1,6 +1,8 @@
 # A brief hands-on introduction on Phylogenetic Inference  
 Here you will find a brief introduction on how to get started with phylogenetic analyses. All examples are given for nucleotide sequences, yet once you have gone through every step, you will feel more confortable to try different models and datasets.  
   
+Bear in mind that this is a quick guide for phylogenetic inference. I tried to explain only important or crucial concepts for a non-expert audience, so these lines are far from exhaustive and very simplified.  
+  
 ## Dependencies and softwares used for:  
 - **Sequence visualization**: [AliView](https://ormbunkar.se/aliview/) or a much simpler and faster option [SeaView](http://doua.prabi.fr/software/seaview)  
 - **Sequence alignments**: [MAFFT](https://mafft.cbrc.jp/alignment/software/)  
@@ -41,9 +43,9 @@ The most important steps of phylogenetic inference are the ***species* selection
   
 As for any other project or analysis, the most important aspect is your **scientific question**. Why do you want to infer a phylogeny? What is the importance of the phylogeny for your study? How other studies will benefit from your phylogeny?  
   
-If you have recently sequenced some organisms and you simply want to have a rough idea of what taxonomic identity these sequences have, maybe a [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) or a pair-wise comparison to reference databases (such as [PR2](https://pr2-database.org/) or [SILVA](https://www.arb-silva.de/)) is more suited to your question.  
+If you have recently sequenced some organisms and you simply want to have a rough idea of what taxonomic identity these sequences belong to, maybe a [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) or a pair-wise comparison to reference databases (such as [PR2](https://pr2-database.org/) or [SILVA](https://www.arb-silva.de/)) is more suited to your question.  
   
-Anyways, **retrieving closely related sequences or proteins** from public databases might be the first step towards the selection of the *species* to build a phylogenetic tree. Here you are interested in integrating your group of interest in a broader evolutioanry context, either within other biological entities or to explore the relationships within your group of interest. And to do so, you need a good representation of all known diversity.  
+Anyways, **retrieving closely related sequences or proteins** from public databases might be the first step towards the selection of the *species* to build a phylogenetic tree. Here you are interested in integrating your group of interest in a broader evolutioanry context, either within other groups or to explore the relationships within your group of interest. And to do so, you need a good representation of all known diversity.  
   
 Unfortunately, accessing all known diversity is not a straight forward task. **Artifacts**, such as [chimeric](https://en.wikipedia.org/wiki/Chimera_(molecular_biology)) sequences produced during amplification or errors during sequencing, might affect the quality and reliability of the molecular diversity. Therefore, and once again, depending on your scientific question you might tackle this step differently.  
 
