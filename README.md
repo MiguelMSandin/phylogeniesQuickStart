@@ -117,7 +117,7 @@ A pairwise comparison between group of *species* gives a first quick look of the
   
 In this sense, some columns of the alignment will be prone to be more conservative and others to be more variable. Therefore the same nucleotide change may imply different weight depending on their position in the alignment. Different **models of evolution** assume different parameters resulting in different rates of evolution among the same sequences, and allows comparing not only *species* but also different columns of the alignment.  
   
-Models of evolution rely on many assumptions and parameters that need to be estimated, adjusted and improved in order to better fit the given dataset. And to do so, several approaches have been proposed:  
+Models of evolution rely on many assumptions and parameters that need to be estimated, adjusted and improved in order to better fit the given dataset Such fit is normally measssured by the **likelihood** (or more precissely the logarithmic of the likelihood) and in essence it tells you the probability to observe your data given the model. In the case of phylogenetic inference, we can translate this definition as how well your tree explains your sequence alignment. And to find the highest possible likelihood (or the best model parameters), several approaches have been proposed:  
   
 ### Using a Maximum Likelihood approach  
   
