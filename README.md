@@ -169,7 +169,7 @@ Here you have an example of a script to be run using **MrBayes**, let's save it 
 ```sump```  
 ```sumt```  
 ```quit```  
->#The previous command assumes a burnin of 25%: ```relburnin=yes``` and ```burninfrac=0.25```  
+>#The mcmc command assumes a burnin of 25%: ```relburnin=yes``` and ```burninfrac=0.25```  
   
 That can be run as follows:  
 ```mb < phylo_mrBayes.sh > ${OUTPUT}_mrBayesgamma.log &```  
