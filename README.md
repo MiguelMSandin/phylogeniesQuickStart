@@ -119,11 +119,11 @@ In this sense, some columns of the alignment will be prone to be more conservati
   
 Models of evolution rely on many assumptions and parameters that need to be estimated, adjusted and improved in order to better fit the given dataset. Such fit is normally measssured by the **likelihood** (or more precissely the logarithmic of the likelihood) and in essence it tells you the probability to observe your data given the model. In the case of phylogenetic inference, we can translate this definition as how well your tree (or model and its parameters) explains your sequence alignment (or data). And to find the highest possible likelihood, several approaches have been proposed:  
   
-### Using a Maximum Likelihood approach  
+### Using a Maximum Likelihood (ML) approach  
   
 Maximum Likelihood ([Felsenstein, 1981](https://link.springer.com/article/10.1007/BF01734359)) maximizes model parameters (treated as constants) accross different [bootstraps](https://en.wikipedia.org/wiki/Bootstrapping_(statistics)) (or "replicates") to find a higher likelihood.  
   
-At the end, all the different replicates can be summarized into a **consensus** tree **or** simply take the **best likelihood scoring** tree. Either way, nodes can be annotated on the basis of how many times this given node have appeared accross the different bootstraps, or in other words, with a **bootstrap support**.  
+At the end, all the different replicates can be summarized into a **consensus** tree **or** simply take the **best likelihood scoring** tree. Either way, nodes can be annotated on the basis of how many times this given node have appeared accross the different bootstraps, or in other words, with a **bootstrap support** (from 1 to 100).  
   
 ![Step4.2](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.2_ML.png)  
   
@@ -151,41 +151,51 @@ And if you know the model of evolution to be used you can add it to the command.
   
 Once again, different options will address better different questions...  
   
-### Using a Bayesian approach  
+### Using a Bayesian Inference (BI) approach  
   
-Model parameters are randomly estimated accross a statistical distribution resulting in different trees with different likelihood  
+Bayesian Inference ([Rannala and Yang, 1996](https://link.springer.com/article/10.1007/BF02338839); [Yang and Rannala, 1997](https://academic.oup.com/mbe/article/14/7/717/1119795)) randomly estimates the model parameters accross a statistical distribution resulting in different trees. The likelihood of the trees are computed *a posteriori* (actually they are approximated by [Markov Chain Monte Carlo](https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo) -MCMC- methods) resulting in **posterior probabilities**, which can be understood as the probability of a tree being right given the randomly selected model parameters.  
   
-Posterior Probabilities  
+[Bayesian Inference](https://en.wikipedia.org/wiki/Bayesian_inference) collectes information along the way to update and improve the model parameters. In this context, a single inference will most likely yield a rather poor tree. Yet in the following iterations or **cycles**, model parameters are going to be adjusted resulting in trees with higher and higher likelihood. Because of the long sampling, when you choose a Bayesian approach it is very important to check the likelihood over the different cycles and remove the "learning slope", normally referred to as **burn-in**.  
   
 ![Step4.3](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.3_BI.png)  
   
-Bayesian analysis are a bit special, since they need most of the time to be run in different blocks, and therefore needing many different parameters to be set that will influence your analysis. Here you have an example of a script, let's save it as "**phylo_mrBayes.sh**":  
+Again, for inferring phylogenies by bayesian approaches we have different softwares. Yet, they need most of the times to be run in different blocks, and therefore many different parameters need to be set that will influence your analysis.  
+  
+Here you have an example of a script to be run using **MrBayes**, let's save it as "**phylo_mrBayes.sh**":  
 ```set autoclose=yes nowarnings=yes```  
 ```execute FILE.nexus```  
 ```lset nst=6 rates=gamma```  
-```mcmc ngen=10000000 Nruns=3 savebrlens=yes file=OUTPUT_mrBayesgamma```  
+```mcmc ngen=10000000 Nruns=3 savebrlens=yes file=OUTPUT_mrBayesgamma```  # This assumes a burnin of 25%: ```relburnin=yes``` and ```burninfrac=0.25```  
 ```sump```  
 ```sumt```  
 ```quit```  
-That can be run as follows (considering the previous script is called "phylo_mrBayes.sh"):  
+That can be run as follows:  
 ```mb < phylo_mrBayes.sh > ${OUTPUT}_mrBayesgamma.log &```  
+  
 Something to bear in mind is that MrBayes uses "nexus" format and not "fasta". This can be easily exported/transformed in AliView.  
+  
 Alternatively, you can type each one of the lines from the script that we called *phylo_mrBayes.sh* directly in the MrBayes prompt (except for the first line, which sets the autoclosing).  
   
 ### Using a parsimony approach
   
-The parsimony approach assumes that two sequences are related to one another if .  
+The parsimony approach assumes that the minimum number of changes best explains phylogenetic relatedness. Due to the big simplification of the incredibly complex process that is evolution, this approach has been heavily critized and almost abandon. However I believe it is still very usefull to understand and know since it yields very good results when used as starting tree for both ML and BI approaches. Indeed, raxml-ng implements in its pipeline the use of parsimony to estimate the initial tree.  
+  
+Besides, as you might have figure out by now, your scientific question is one of the most important steps. In this context, ML and BI yields very good results for complex DNA or protein sequences. But when it comes to ancestral state reconstruction of non-neutral traits, such as habitat or specific morphological traits, the simplification of parsimonious approaches seems to yield better results.  
+  
+```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-parsimony-GTRgamma -s $FILE -y -m GTRGAMMA -p```    
   
 ## Interpreting the tree (step 6)  
   
 This might be the most complicated step, and it is only getting easier with experience and after failing many times. Briefly, from a methodological point of view, you want a tree:  
-(1) highly supported,  
-(2) with no polytomies or near-0 internal bracnh lengths,  
+(1) with highly supported nodes,  
+(2) with no polytomies or near-0 internal branch lengths,  
 (3) with no *very long* branches and  
 (4) different from your outgroup(s) but not *too* different.  
 Understanding that each concept is relative and may vary among different trees.  
   
 ![Tree structure unresolved](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure_unresolved.png)  
+  
+**Long Branch Attraction** artifacts.  
   
 ![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/different_pictures_of_the_same_reality.png)  
   
