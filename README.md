@@ -121,7 +121,9 @@ Models of evolution rely on many assumptions and parameters that need to be esti
   
 ### Using a Maximum Likelihood approach  
   
-Maximum Likelihood (LM) maximizes model parameters (treated as constants) accross different replicates (or bootstraps) to find a higher likelihood.  
+Maximum Likelihood ([Felsenstein, 1981](https://link.springer.com/article/10.1007/BF01734359)) maximizes model parameters (treated as constants) accross different [bootstraps](https://en.wikipedia.org/wiki/Bootstrapping_(statistics)) (or "replicates") to find a higher likelihood.  
+  
+At the end, all the different replicates can be summarized into a **consensus** tree **or** simply take the **best likelihood scoring** tree. Either way, nodes can be annotated on the basis of how many times this given node have appeared accross the different bootstraps, or in other words, with a **bootstrap support**.  
   
 ![Step4.2](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.2_ML.png)  
   
@@ -130,7 +132,9 @@ We need now new variables:
 ```THREADS=2``` # Normally 1 thread for every 500-1000bp alignment positions works fine.  
 ```BS=100```  # The number of Bootstrap  
   
-Here you have different softwares. The first example with **RAxML**:  
+Here you have different softwares:  
+  
+The first example with **RAxML**:  
 ```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRgamma -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T $THREADS```  
   
 or faster and very similar output:  
@@ -138,13 +142,14 @@ or faster and very similar output:
   
 With **RAxML-ng** you could use the Graphical User Interface option throught their server: [RAxML-NG](https://raxml-ng.vital-it.ch/#/), or have a look at [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.2_RAxML-ng.sh) for further details through the comand line.  
   
-With **IQtree** you can run **modelTest** (you can also do it in [**R**](https://www.r-project.org/), with the packages [*ape*](https://cran.r-project.org/web/packages/ape/index.html) and [*phangorn*](https://cran.r-project.org/web/packages/phangorn/index.html), see [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.5_PhyML_in_R.R) for further details), which is used to select the best model fitting your data:  
+With **IQtree** you can run **modelTest** (you can also do it in [**R**](https://www.r-project.org/), with the packages [*ape*](https://cran.r-project.org/web/packages/ape/index.html) and [*phangorn*](https://cran.r-project.org/web/packages/phangorn/index.html), see [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.5_PhyML_in_R.R) for further details), which is used to select the best substitution model fitting your data:  
   
 ```MEM=2GB```  
 ```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
   
-And if you know the model of evolution to be used you can add it to the command for example with GTR+G+I (which is normally the best choice): ```-m GTR+I+G```  
-But again, different options will address better different questions...  
+And if you know the model of evolution to be used you can add it to the command. Most of the times, the best model is the Generalised Time Reversible with a Gamma distribution and proportion of Invariant sites for rate hetereogenity (GTR+G+I, but is also the most complex model): ```-m GTR+I+G```  
+  
+Once again, different options will address better different questions...  
   
 ### Using a Bayesian approach  
   
