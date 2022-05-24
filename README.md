@@ -166,7 +166,7 @@ Here you have an example of a script to be run using **MrBayes**, let's save it 
 ```execute FILE.nexus```  
 ```lset nst=6 rates=gamma```  
 ```mcmc ngen=10000000 Nruns=3 savebrlens=yes file=OUTPUT_mrBayesgamma```  
-> #The previous command assumes a burnin of 25%: ```relburnin=yes``` and ```burninfrac=0.25```  
+># The previous command assumes a burnin of 25%: ```relburnin=yes``` and ```burninfrac=0.25```  
 ```sump```  
 ```sumt```  
 ```quit```  
