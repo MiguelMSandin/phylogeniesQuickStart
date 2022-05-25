@@ -182,9 +182,9 @@ Alternatively, you can type each one of the lines from the script that we called
   
 The parsimony approach assumes that the minimum number of changes best explains phylogenetic relatedness. Due to the big simplification of the incredibly complex process that is evolution, this approach has been heavily critized and almost abandon. However I believe it is still very usefull to understand and know since it yields very good results when used as starting tree for both ML and BI approaches. Indeed, raxml-ng implements in its pipeline the use of parsimony to estimate the initial tree.  
   
-Besides, as you might have figure out by now, your scientific question is one of the most important steps. In this context, ML and BI yields very good results for complex DNA or protein sequences. But when it comes to ancestral state reconstruction of non-neutral traits, such as habitat or specific morphological traits, the simplification of parsimonious approaches seems to yield better results.  
-  
 ```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-parsimony-GTRgamma -s $FILE -y -m GTRGAMMA -p```    
+  
+Besides, as you might have figured out by now, your scientific question is one of the most important steps. In this context, ML and BI yields very good results for complex DNA or protein sequences. But when it comes to ancestral state reconstruction of non-neutral traits, such as habitat or specific morphological traits, the simplification of parsimonious approaches seems to yield better results. In this context, other softwares (such as [Mesquite](https://www.mesquiteproject.org/) or [TNT](http://gensoft.pasteur.fr/docs/TNT/1.5/)) and approches (such as [Maximum Parsimony](https://en.wikipedia.org/wiki/Maximum_parsimony_(phylogenetics))) have been developed, yet my experience with this qpproqch is very limited and I do not feel confortable explaining them.  
   
 ## Interpreting the tree (step 6)  
   
