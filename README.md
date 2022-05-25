@@ -184,11 +184,17 @@ The parsimony approach assumes that the minimum number of changes best explains 
   
 ```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-parsimony-GTRgamma -s $FILE -y -m GTRGAMMA -p```    
   
-Besides, as you might have figured out by now, your scientific question is one of the most important steps. In this context, ML and BI yields very good results for complex DNA or protein sequences. But when it comes to ancestral state reconstruction of non-neutral traits, such as habitat or specific morphological traits, the simplification of parsimonious approaches seems to yield better results. In this context, other softwares (such as [Mesquite](https://www.mesquiteproject.org/) or [TNT](http://gensoft.pasteur.fr/docs/TNT/1.5/)) and approches (such as [Maximum Parsimony](https://en.wikipedia.org/wiki/Maximum_parsimony_(phylogenetics))) have been developed, yet my experience with this qpproqch is very limited and I do not feel confortable explaining them.  
+Besides, as you might have figured out by now, your scientific question is one of the most important steps. In this context, ML and BI yields very good results for complex DNA or protein sequences. But when it comes to **ancestral state reconstruction** of non-neutral traits, such as habitat or specific morphological traits, the simplification of parsimonious approaches seems to yield better results ([Holland et al. 2020](https://www.nature.com/articles/s41598-020-64647-4)). It is important to understand that most of the times such analyses are performed over an already inferred phylogenetic tree, and therefore the analyses is no longer about phylogenetic inferring (but about ancestral state reconstruction). In this context, other softwares (such as [Mesquite](https://www.mesquiteproject.org/) or [TNT](http://gensoft.pasteur.fr/docs/TNT/1.5/)) and approches (such as [Maximum Parsimony](https://en.wikipedia.org/wiki/Maximum_parsimony_(phylogenetics))) have been developed. My experience in this area is very limited and I do not feel confortable explaining them. Besides, as pointed out by [Holland et al. (2020)](https://www.nature.com/articles/s41598-020-64647-4), ancestral state reconstruction analyses should be considered and evaluated carefully. Therefore my take-home message of parsimony approaches is simply that you are aware they exist and that you might be interested in exploring them further according to your question.  
   
 ## Interpreting the tree (step 6)  
   
-This might be the most complicated step, and it is only getting easier with experience and after failing many times. Briefly, from a methodological point of view, you want a tree:  
+This might be the most complicated step, and it is only getting easier with experience and after failing many times. We have to remember that the phylogentic tree that we have just inferred is **a hypothesis** of the data (and model) we used, and we should always be critical to our initial hypothesis.  
+  
+Briefly, you are inferring a phylogenetic tree because it is **the mean to answer your scientific question**. In this sense, you have several interconnected layers to pay attention to. Firstly you want to check if you have correctly built the tree in a pure methodological point of view. Then you want to understand how the tree explains your data within your study, or in other words the results of the tree. And lastly you are interested in discussing the tree in a broader evolutionary context.  
+  
+### Interpreting the tree from a methodological point of view
+   
+At this stage you are looking for artifacts, you want a tree:  
 (1) with highly supported nodes,  
 (2) with no polytomies or near-0 internal branch lengths,  
 (3) with no *very long* branches and  
@@ -197,7 +203,12 @@ Understanding that each concept is relative and may vary among different trees.
   
 ![Tree structure unresolved](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure_unresolved.png)  
   
+### Interpreting the tree from a biological point of view
+  
 **Long Branch Attraction** artifacts.  
+   
+### Integrating the tree in a broader evolutionary context
+  
   
 ![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/different_pictures_of_the_same_reality.png)  
   
@@ -232,8 +243,9 @@ and/or using a **Bayesian Inference** approach with MrBayes (you can find an exa
 ```mb < phylo_mrBayes.sh > ${OUTPUT]_mrBayesgamma.log```  
   
 **Step 5**. **Interpret your phylogenetic tree**.  
-First from a methodological point of view: Are all nodes highly supported? Are there no polytomic nodes? Are there no long branches?  
-Then we add the biological thinking: Are the outgroups clearly defined and independent from the ingroup? Are the patterns among clades as previously reported/suggested/expected? Can you explain the tree topology according to the *species* you used (e.g.; rRNA genes, plastids, proteins)? Can you explain the tree in a biological integrative context? For example if using genes/proteins, can you explain it from a morphological or ecological point of view?  
+First from a **methodological point of view**: Are all nodes highly supported? Are there no polytomic nodes? Are there no long branches?  
+Then we add the **biological thinking**: Are the outgroups clearly defined and independent from the ingroup? Are the patterns among clades as previously reported/suggested/expected? Can you explain the tree topology according to the *species* you used (e.g.; rRNA genes, plastids, proteins)?  
+Lastly we add a **broader context**: can you explain the tree in a biological integrative context? For example if using genes/proteins, can you explain it from a morphological or ecological point of view?  
 If not, then you should come back to **Step 1**, and think again on the chosen *species* and/or try to use different trimming options according to your scientific question.   
   
 ## Further reading  
