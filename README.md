@@ -192,11 +192,11 @@ Something to bear in mind is that MrBayes uses "nexus" format and not "fasta". T
   
 Alternatively, you can type each one of the lines from the script that we called *phylo_mrBayes.sh* directly in the MrBayes prompt (except for the first line, which sets the autoclosing).  
   
-And in this script you can find an example of a **BEAST** xml file:  
-TO DO  
-TO DO  
-TO DO  
-TO DO  
+And in this script ([phylo_BEAST.xml](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/scripts/3.4.3_phylo_BEAST.xml)) you can find an example of a **BEAST** xml file (don't panic! such xml file can be created through the graphical user interface package [BEAUti](https://beast.community/beauti)), that can be run as follows:  
+```beast -seed $RANDOM -beagle_SSE phylo_BEAST.xml```  
+And now we have to summarise the chain with [treeannotator](https://beast.community/treeannotator):  
+```treeannotator -burnin 1000000 -heights median OUTPUT.trees OUTPUT_mcmc.tre```   
+The main problem (or advantage, depends on your question) is that BEAST assumes a clock model. But this is getting out of scope and I would like to create another repository on the use and the calibration of the [molecular clock](https://en.wikipedia.org/wiki/Molecular_clock).  
   
 ### Using a parsimony approach
   
