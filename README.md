@@ -217,16 +217,16 @@ Briefly, you are inferring a phylogenetic tree because it is **the mean to answe
 ### Interpreting the tree from a methodological point of view
    
 At this stage you are looking for artifacts, sequences badly aligned (or even in the reverse order), an appropriate trimming threshold that fits to your sequences, enough number of bootstraps/generations, ... Briefly, your tree should have:  
-(1) highly supported nodes,  
-(2) no polytomies or no near-0 internal branch lengths,  
-(3) no *very long* branches and  
-(4) the ingroup different from your outgroup(s), but not *too* different.  
+- highly supported nodes,  
+- no polytomies or no near-0 internal branch lengths,  
+- no *very long* branches and  
+- the ingroup different from your outgroup(s), but not *too* different.  
 Understanding that each concept is relative and may vary among different trees.  
   
 Simplifying long explanations:
 - Low support in the nodes or near-0 branch lengths could be because the *species* are too similar to each other and the model fails to converge. It could also be that such similarity might have been created because of too strict trimming thresholds of the alignment.  
 - Very long branches could reflect the opposite problem, in which we have simply selected very distinct *species*, the quality of the *species* is bad (with many errors or insertions), the alignment failed or even that the trimming was too gentle.  
-- If the ingroup appears.  
+- If the outgroup appears in a long branch, then you might have selected the wrong outgroup.  
   
 ![Tree structure unresolved](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure_unresolved.png)  
   
@@ -234,7 +234,7 @@ In a similar way that you have to check for convergence in bayesian approaches, 
   
 ### Interpreting the tree from a biological point of view
   
-As we have seen in the methodological check, very short branches or poorly supported nodes might be a problem. However if you find highly supported clades and only few unressolved internal nodes with long branches, the problem might be intrinsic to the *species* and simply phylogenetic patterns can't be ressolved with the given data. We normally interpret such events in terms of evolution when the diversification happened very fast.  
+As we have seen in the methodological check, very short branches or poorly supported nodes might be a problem. However if you find highly supported clades and only few unressolved internal nodes with long branches, the problem might be intrinsic to the *species* and simply phylogenetic patterns can't be ressolved with the given data. We normally interpret such events in terms of evolution as that the diversification happened very fast.  
   
 **Long Branch Attraction** artifacts.  
    
