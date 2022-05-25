@@ -29,6 +29,8 @@ The node gathering all *species* is called the **root** of the tree, and is norm
 In terms of writing and formating, the simplest tree format is called [newick](https://en.wikipedia.org/wiki/Newick_format), and it is simply a nested grouping of trees, where tips are separated by commas, and groups are grouped by parentheses. The example above would look like as follows (without branch lengths, which are given after the given tip or node separated by a semicolon ":"):  
 ((a,b),((c,d),(e,f)));
   
+---
+  
 ## Main steps for phylogenetic reconstruction
 [1.](https://github.com/MiguelMSandin/phylogeniesQuickStart#species-selection-step-1) Select your *species*.  (<-- the most important step!)  
 [2.](https://github.com/MiguelMSandin/phylogeniesQuickStart#align-step-2) Align sequences.  
@@ -38,6 +40,8 @@ In terms of writing and formating, the simplest tree format is called [newick](h
 6. Come back to step 1, if needed.  
   
 The most important steps of phylogenetic inference are the ***species* selection** and the **interpretation of your resulting tree**. Yet, to be able to fully understand a phylogenetic tree, you need to understand how to build it. Here we will quickly go through every step. Yet keep in mind that **each tree is a hypothesis** of your given data, and therefore the selection of your *species*, the phylogenetic inference and the interpretation of the tree will highly rely on your **scientific question**.  
+  
+---
   
 ## *Species* selection (step 1)
   
@@ -67,6 +71,8 @@ And if you are unsure of the quality or nature of your sequences, chosing more t
   
 Chosing a correct outgroup(s), is yet again one of the most important steps when it comes to phylogenetic inference. However many times it is simply not possible to choose, because of (for example) lack of ressolved phylogenetic patterns, so you will have to take a decission among different options.  
   
+---
+  
 ## Basic pipeline  
   
 Let's assume we have already selected our ingroup and outgroup(s), let's build now a phylogenetic tree.  
@@ -78,6 +84,8 @@ Let's name our input and output files as follows:
 ```ALIGNED=${INPUT/.fasta/_align.fasta}```  # The aligned fasta file  
 ```FILE=${ALIGNED/.fasta/_trimed.fasta}```  # The aligned and trimmed fasta file ready for phylogenetic inference  
 ```OUTPUT="test1"```  # The basic tree name  
+  
+---
   
 ## Align (step 2)  
   
@@ -92,6 +100,8 @@ For a small dataset (<200 sequences of similarish length ~2000bp) of specific gr
   
 It is important to manually check the alignment in AliView (or SeaView) if you are working with recently sequenced sequences. There might be some misalignment or weird stuff easy to spot due to bad quality or errors sequencing.  
   
+---
+  
 ## Trim alignment of redundant or low informative positions/columns (step 3)  
   
 ![Step3 trim alignment](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step3_trim.png)  
@@ -102,6 +112,8 @@ We can automatically do that with trimal as follows:
   
 Being X the coverage threshold at a given position. I normally use 30% for a quick analysis and 5% for a more resolutive analysis. Again, depending on your scope you will have to play with different options. Other useful options are "```-st```", "```-nogaps```" and "```-noallgaps```".  
 Besides, you can also trim the alignment based on the entropy of the columns, based on expected errors, etc.  
+  
+---
   
 ## Phylogenetic analyses (step 4)  
   
@@ -194,7 +206,9 @@ The parsimony approach assumes that the minimum number of changes best explains 
   
 Besides, as you might have figured out by now, your scientific question is one of the most important steps. In this context, ML and BI yields very good results for complex DNA or protein sequences. But when it comes to **ancestral state reconstruction** of non-neutral traits, such as habitat or specific morphological traits, the simplification of parsimonious approaches seems to yield better results ([Holland et al. 2020](https://www.nature.com/articles/s41598-020-64647-4)). It is important to understand that most of the times such analyses are performed over an already inferred phylogenetic tree, and therefore the analyses is no longer about phylogenetic inferring (but about ancestral state reconstruction). In this context, other softwares (such as [Mesquite](https://www.mesquiteproject.org/) or [TNT](http://gensoft.pasteur.fr/docs/TNT/1.5/)) and approches (such as [Maximum Parsimony](https://en.wikipedia.org/wiki/Maximum_parsimony_(phylogenetics))) have been developed. My experience in this area is very limited and I do not feel confortable explaining them. Besides, as pointed out by [Holland et al. (2020)](https://www.nature.com/articles/s41598-020-64647-4), ancestral state reconstruction analyses should be considered and evaluated carefully. Therefore my take-home message of parsimony approaches is simply that you are aware they exist and that you might be interested in exploring them further according to your question.  
   
-## Interpreting the tree (step 6)  
+---
+  
+## Interpreting the tree (step 5)  
   
 This might be the most complicated step, and it is only getting easier with experience and after failing many times. We have to remember that the phylogentic tree that we have just inferred is **a hypothesis** of the data (and model) we used, and we should always be critical to our initial hypothesis.  
   
@@ -219,6 +233,8 @@ Understanding that each concept is relative and may vary among different trees.
   
   
 ![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/different_pictures_of_the_same_reality.png)  
+  
+---
   
 ## Summary
 Something like this will give you a solid phylogeny to start exploring patterns:  
@@ -255,6 +271,8 @@ First from a **methodological point of view**: Are all nodes highly supported? A
 Then we add the **biological thinking**: Are the outgroups clearly defined and independent from the ingroup? Are the patterns among clades as previously reported/suggested/expected? Can you explain the tree topology according to the *species* you used (e.g.; rRNA genes, plastids, proteins)?  
 Lastly we add a **broader context**: can you explain the tree in a biological integrative context? For example if using genes/proteins, can you explain it from a morphological or ecological point of view?  
 If not, then you should come back to **Step 1**, and think again on the chosen *species* and/or try to use different trimming options according to your scientific question.   
+  
+---
   
 ## Further reading  
   
