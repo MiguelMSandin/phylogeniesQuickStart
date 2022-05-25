@@ -155,11 +155,13 @@ Once again, different options will address better different questions...
   
 Bayesian Inference ([Rannala and Yang, 1996](https://link.springer.com/article/10.1007/BF02338839); [Yang and Rannala, 1997](https://academic.oup.com/mbe/article/14/7/717/1119795)) randomly estimates the model parameters accross a statistical distribution resulting in different trees. The likelihood of the trees are computed *a posteriori* (actually they are approximated by [Markov Chain Monte Carlo](https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo) -MCMC- methods) resulting in **posterior probabilities**, which can be understood as the probability of a tree being right given the randomly selected model parameters.  
   
-[Bayesian Inference](https://en.wikipedia.org/wiki/Bayesian_inference) collectes information along the way to update and improve the model parameters. In this context, a single inference will most likely yield a rather poor tree. Yet in the following iterations or **cycles**, model parameters are going to be adjusted resulting in trees with higher and higher likelihood. Because of the long sampling, when you choose a Bayesian approach it is very important to check the likelihood over the different cycles and remove the "learning slope", normally referred to as **burn-in**.  
+[Bayesian Inference](https://en.wikipedia.org/wiki/Bayesian_inference) collectes information along the way to update and improve the model parameters. A single inference will most likely yield a rather poor tree. Yet in the following **cycles** (sometimes also called iterations, generations or even chains) model parameters are going to be adjusted based on previously collected information resulting in trees with higher and higher likelihood. In this sense, the number of generations will affect the random sampling, and therefore your results.  
+It is recommended to monitor the likelihood per cycle to be sure that your model optimization is arriving to a **convergence**. Normally, a safe option is to opt for a very long chain, but an excessively long chain might result in a waste of computational resources. If you are interested in a trade-off between ensuring convergence and not spending several days, weeks or months in a redundant analysis you can explore the [Effective Sample Size](https://beast.community/ess_tutorial) of the MCMC run in the software [Tracer](https://beast.community/tracer).  
+Because of the long sampling, when you choose a Bayesian approach it is very important to check the likelihood over the different cycles and remove the "learning slope", normally referred to as **burn-in**.  
   
 ![Step4.3](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.3_BI.png)  
   
-Again, for inferring phylogenies by bayesian approaches we have different softwares. Yet, they need most of the times to be run in different blocks, and therefore many different parameters need to be set that will influence your analysis.  
+Again, for inferring phylogenies by bayesian approaches we have different softwares. Such as [MrBayes](https://nbisweden.github.io/MrBayes/), [BEAST](https://beast.community/), [BEAST2](https://www.beast2.org/) or [PhyloBayes](http://www.atgc-montpellier.fr/phylobayes/). Yet, they need most of the times to be run in different blocks, and therefore many different parameters need to be set that will influence your analysis. instead of running them from a single command, as we did for ML approaches, here we save all our options in a simple text (or xml) file and we run the file within the BI software.  
   
 Here you have an example of a script to be run using **MrBayes**, let's save it as "**phylo_mrBayes.sh**":  
 ```set autoclose=yes nowarnings=yes```  
@@ -178,6 +180,12 @@ Something to bear in mind is that MrBayes uses "nexus" format and not "fasta". T
   
 Alternatively, you can type each one of the lines from the script that we called *phylo_mrBayes.sh* directly in the MrBayes prompt (except for the first line, which sets the autoclosing).  
   
+And in this script you can find an example of a **BEAST** xml file:  
+TO DO  
+TO DO  
+TO DO  
+TO DO  
+  
 ### Using a parsimony approach
   
 The parsimony approach assumes that the minimum number of changes best explains phylogenetic relatedness. Due to the big simplification of the incredibly complex process that is evolution, this approach has been heavily critized and almost abandon. However I believe it is still very usefull to understand and know since it yields very good results when used as starting tree for both ML and BI approaches. Indeed, raxml-ng implements in its pipeline the use of parsimony to estimate the initial tree.  
@@ -194,11 +202,11 @@ Briefly, you are inferring a phylogenetic tree because it is **the mean to answe
   
 ### Interpreting the tree from a methodological point of view
    
-At this stage you are looking for artifacts, you want a tree:  
-(1) with highly supported nodes,  
-(2) with no polytomies or near-0 internal branch lengths,  
-(3) with no *very long* branches and  
-(4) different from your outgroup(s) but not *too* different.  
+At this stage you are looking for artifacts, sequences badly aligned (or even in the reverse order), an appropriate trimming threshold that fits to your sequences, enough.In summary your tree should have:  
+(1) highly supported nodes,  
+(2) no polytomies or no near-0 internal branch lengths,  
+(3) no *very long* branches and  
+(4) the ingroup different from your outgroup(s), but not *too* different.  
 Understanding that each concept is relative and may vary among different trees.  
   
 ![Tree structure unresolved](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure_unresolved.png)  
