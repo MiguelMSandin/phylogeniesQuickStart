@@ -226,15 +226,20 @@ Understanding that each concept is relative and may vary among different trees.
 Simplifying long explanations:
 - Low support in the nodes or near-0 branch lengths could be because the *species* are too similar to each other and the model fails to converge. It could also be that such similarity might have been created because of too strict trimming thresholds of the alignment.  
 - Very long branches could reflect the opposite problem, in which we have simply selected very distinct *species*, the quality of the *species* is bad (with many errors or insertions), the alignment failed or even that the trimming was too gentle.  
-- If the outgroup appears in a long branch, then you might have selected the wrong outgroup.  
+- If the outgroup appears in a long branch, then you might have selected the wrong outgroup. Check the literature and try to select a more related group as an outgroup.  
+- It could also happen that the different outgroups are appear not according to the literature and some clades of the ingroup within or between the different outgroups. Then most likely chimeric sequences might be present.  
+- Chimeric sequences also tend to appear alone at early diverging positions and at relatively long branches. These are very problematic since it is very hard to identify, and most of the softwares that allow chimeric identification rely on the refenrece database of choice.  
   
 ![Tree structure unresolved](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure_unresolved.png)  
+  
+The different topological possibilities of a tree are very big, and therefore any list of possible methodological problems will be far from complete. I hope with the few examples I gave earlier you get the rational to identify methodological issues.  
   
 In a similar way that you have to check for convergence in bayesian approaches, it is also important to check the **log** file in ML approaches. Here you check the likelihood of the tree over the different bootstraps, the model parameters optimization or the proportion of invariant sites in the alignment.  
   
 ### Interpreting the tree from a biological point of view
   
-As we have seen in the methodological check, very short branches or poorly supported nodes might be a problem. However if you find highly supported clades and only few unressolved internal nodes with long branches, the problem might be intrinsic to the *species* and simply phylogenetic patterns can't be ressolved with the given data. We normally interpret such events in terms of evolution as that the diversification happened very fast.  
+A pure methodological critic of a tree is very important to identify problematic steps on how you build your phylogenetic tree. However a biological interpretation of your tree goes tightly connected, helping to resolve potential issues identified in a methodological point of view. For example:  
+-As we have seen in the methodological check, very short branches or poorly supported nodes might be a problem. However if you find highly supported clades and only few unressolved internal nodes with long branches, the problem might be intrinsic to the *species* and simply phylogenetic patterns can't be ressolved with the given data. We normally interpret such events in terms of evolution as that "the diversification happened very fast".  
   
 **Long Branch Attraction** artifacts.  
    
