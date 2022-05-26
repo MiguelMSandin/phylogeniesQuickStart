@@ -13,7 +13,10 @@ Bear in mind that this is a quick guide for phylogenetic inference. I tried to e
 ## Before starting, why phylogenetic inference?  
 (If you are only interested on the 'how', you can directly go to the [summary](https://github.com/MiguelMSandin/phylogeniesQuickStart#summary) section).  
   
-Phylogenetic inference allows the exploration of **evolutionary relationships** among taxa beyond a pure pair-wise comparison. Evolutionary relationships are normally inferred from observed intrinsic properties of a group of organisms such as DNA sequences, protein sequences or morphological traits. When reconstructing evolutionary patterns, we assume common ancestry and a bifurcating history in the diversification of the studied organisms. And the best (or most accepted) way to represent such patterns is the so called **phylogenetic tree**.  
+Phylogenetic inference allows the exploration of **evolutionary relationships** among taxa beyond a pure pair-wise comparison. 
+Evolutionary relationships are normally inferred from observed intrinsic properties of a group of organisms such as DNA sequences, protein sequences or morphological traits. 
+The first phylogenetic analysis performed by Carl Woese and George Fox defined the primary domains of life through 16S rRNA characterization ([Woese and Fox, 1977](https://www.pnas.org/doi/full/10.1073/pnas.74.11.5088)). They provided a simple matrix of pairwise comparisons among DNA sequences, yet opened the doors for a much complex field of molecular evolution.  
+When reconstructing evolutionary patterns, we assume common ancestry and a bifurcating history in the diversification of the studied organisms. And the best (or most accepted) way to represent such patterns is the so called **phylogenetic tree**.  
   
 ## What is a phylogenetic tree?  
 The simplest answer is **a hypothesis** on the evolutionary relationships among the studied set of taxa or *phylogenetic species*, understanding *species* as genes, proteins or sepcific morphological traits.  
@@ -242,7 +245,7 @@ The different topological possibilities of a tree are very big, and therefore an
   
 ### Interpreting the tree from a biological point of view
   
-A pure methodological critic of a tree is very important to help you identify problematic steps on the pipeline. However a biological interpretation of your tree goes tightly connected, helping to resolve or neglect potential issues identified from a pure methodological point of view and eventually contributing to decide on whether keep or remove certain sequences. For example:  
+A pure methodological critic of a tree is very important to help you identify problematic steps on the pipeline. However a biological interpretation of your tree goes tightly connected, helping to resolve or neglect potential issues identified from a pure methodological point of view and eventually contributing to decide on whether keep or remove certain *species*. For example:  
 - As we have seen in the methodological check, near-0 internal branchelengths or poorly supported nodes might be a problem. But if you find highly supported clades and only few unressolved internal nodes with very short branches, the problem might be intrinsic to the *species* and simply phylogenetic patterns can't be ressolved with the given data. We normally interpret such events in terms of evolution as that "the diversification happened very fast". (Example 1).  
    
 ### Integrating the tree in a broader evolutionary context
@@ -292,7 +295,7 @@ If not, then you should come back to **Step 1**, and think again on the chosen *
   
 ## Further reading  
   
-The first phylogenetic analysis performed by Carl Woese and George Fox defined the primary domains of life through 16S rRNA characterization ([Woese and Fox, 1977](https://www.pnas.org/doi/full/10.1073/pnas.74.11.5088)). And ever since, **phylogenetic thinking** continued developing. The number of references about phylogenetic analysis and understanding is overwhelming, and therefore providing an exhaustive list is imposible. As a brief example, you can simply check one of the latest and the references therein ([Evans et al., 2021](https://royalsocietypublishing.org/doi/10.1098/rstb.2020.0056)).  
+**phylogenetic thinking**: The number of references about phylogenetic analysis and understanding is overwhelming, and therefore providing an exhaustive list is imposible. As a brief example, you can simply check one of the latest and the references therein ([Evans et al., 2021](https://royalsocietypublishing.org/doi/10.1098/rstb.2020.0056)).  
   
 Regarding the methodological aspect of phylogenetic reconstruction, you will also find many different options. Yet again, I refer to one of the latest I am aware of and point to the references therein ([Irisarri 2021](https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470015902.a0029211)). Most of the times, open source softwares are very well documented. I highly encourage you to extend your possiblities and go fancy in phylogenetic inference by looking and epxloring different options through the help command (i.e.; ```iqtree -h```, ```raxml-ng -h```), or through their online manuals and hands-on tutorials:
 - RAxML (not maintained any more): https://github.com/stamatak/standard-RAxML/blob/master/manual/NewManual.pdf  
