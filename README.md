@@ -51,7 +51,7 @@ If you have recently sequenced some organisms and you simply want to have a roug
   
 Anyways, **retrieving closely related sequences or proteins** from public databases might be the first step towards the selection of the *species* that will be included in the phylogenetic tree. Here you are interested in integrating your group of interest in a broader evolutioanry context, either within other groups or to explore the relationships within your group of interest. And to do so, you need a good representation of all known diversity.  
   
-Unfortunately, accessing all known diversity is not a straight forward task. **Artifacts**, such as [chimeric](https://en.wikipedia.org/wiki/Chimera_(molecular_biology)) sequences produced during amplification or errors during sequencing, might affect the quality and reliability of the molecular diversity. Therefore, and once again, depending on your scientific question you might tackle this step differently.  
+Unfortunately, accessing all known diversity is not a straight forward task. **Artifacts**, such as [chimeric sequences](https://en.wikipedia.org/wiki/Chimera_(molecular_biology)) produced during amplification or errors during sequencing, might affect the quality and reliability of the molecular diversity. Therefore, and once again, depending on your scientific question you might tackle this step differently.  
 
 Let's supposed that you have sequenced one organism that have never been sequenced and you want to know its phylogenetic patterns. A quick BLAST will let you know what broad group you are dealing with. Now comes the **literature research**: check previous phylogenetic analysis of the group of interest and try to retrieve similar sequences that have been previoulsy used in other studies. I normally prefer to start from well established sequences and then remove and add more sequences step by step, depending on the given results and my question.  
   
@@ -163,6 +163,8 @@ And if you know the model of evolution to be used you can add it to the command.
   
 Once again, different options will address better different questions...  
   
+It is important to check the **log** file reporting the different analytical steps. Here you check the likelihood of the tree over the different bootstraps, the model parameters optimization or the proportion of invariant sites in the alignment. Basically, you check that there is indeed an improvement or that the alignment is actually informative.  
+  
 ### Using a Bayesian Inference (BI) approach  
   
 Bayesian Inference ([Rannala and Yang, 1996](https://link.springer.com/article/10.1007/BF02338839); [Yang and Rannala, 1997](https://academic.oup.com/mbe/article/14/7/717/1119795)) randomly estimates the model parameters accross a statistical distribution resulting in different trees. The likelihood of the trees are computed *a posteriori* (actually they are approximated by [Markov Chain Monte Carlo](https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo) -MCMC- methods) resulting in **posterior probabilities**, which can be understood as the probability of a tree being right given the randomly selected model parameters.  
@@ -192,10 +194,12 @@ Something to bear in mind is that MrBayes uses "nexus" format and not "fasta". T
   
 Alternatively, you can type each one of the lines from the script that we called *phylo_mrBayes.sh* directly in the MrBayes prompt (except for the first line, which sets the autoclosing).  
   
-And in this script ([phylo_BEAST.xml](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/scripts/3.4.3_phylo_BEAST.xml)) you can find an example of a **BEAST** xml file (don't panic! such xml file can be created through the graphical user interface package [BEAUti](https://beast.community/beauti)), that can be run as follows:  
+And in this script ([phylo_BEAST.xml](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/scripts/3.4.3_phylo_BEAST.xml)) you can find an example of a **BEAST** xml file in its most simple way (don't panic! such xml file can be created through the graphical user interface package [BEAUti](https://beast.community/beauti)), that can be run as follows:  
+  
 ```beast -seed $RANDOM -beagle_SSE phylo_BEAST.xml```  
 And now we have to summarise the chain with [treeannotator](https://beast.community/treeannotator):  
 ```treeannotator -burnin 1000000 -heights median OUTPUT.trees OUTPUT_mcmc.tre```   
+  
 The main problem (or advantage, depends on your question) is that BEAST assumes a clock model. But this is getting out of scope and I would like to create another repository on the use and the calibration of the [molecular clock](https://en.wikipedia.org/wiki/Molecular_clock).  
   
 ### Using a parsimony approach
@@ -215,7 +219,7 @@ This might be the most complicated step, and it is only getting easier with expe
 Briefly, you are inferring a phylogenetic tree because it is **the mean to answer your scientific question**. In this sense, you have several interconnected layers to pay attention to. Firstly you want to check if you have correctly built the tree in a pure methodological point of view. Then you want to understand how the tree explains your data within your study, or in other words the results of the tree. And lastly you are interested in discussing the tree in a broader evolutionary context.  
   
 ### Interpreting the tree from a methodological point of view
-   
+  
 At this stage you are looking for artifacts, sequences badly aligned (or even in the reverse order), an appropriate trimming threshold that fits to your sequences, enough number of bootstraps/generations, ... Briefly, your tree should have:  
 - highly supported nodes,  
 - no polytomies or no near-0 internal branch lengths,  
@@ -223,25 +227,23 @@ At this stage you are looking for artifacts, sequences badly aligned (or even in
 - the ingroup different from your outgroup(s), but not *too* different.  
 Understanding that each concept is relative and may vary among different trees.  
   
+![Tree structure unresolved](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure_unresolved.png) 
+  
 Simplifying long explanations:
 - Low support in the nodes or near-0 branch lengths could be because the *species* are too similar to each other and the model fails to converge. It could also be that such similarity might have been created because of too strict trimming thresholds of the alignment.  
 - Very long branches could reflect the opposite problem, in which we have simply selected very distinct *species*, the quality of the *species* is bad (with many errors or insertions), the alignment failed or even that the trimming was too gentle.  
 - If the outgroup appears in a long branch, then you might have selected the wrong outgroup. Check the literature and try to select a more related group as an outgroup.  
-- It could also happen that the different outgroups are appear not according to the literature and some clades of the ingroup within or between the different outgroups. Then most likely chimeric sequences might be present.  
-- Chimeric sequences also tend to appear alone at early diverging positions and at relatively long branches. These are very problematic since it is very hard to identify, and most of the softwares that allow chimeric identification rely on the refenrece database of choice.  
+- It could also happen that the different outgroups appear not according to the literature and some clades of the ingroup within or between the different outgroups. Then most likely [chimeric sequences](https://en.wikipedia.org/wiki/Chimera_(molecular_biology)) might be present.  
+- Chimeric sequences also tend to appear alone at early diverging positions and sometimes at relatively long branches. If these chimeric sequences come from very different parent sequences, it might be easy to spot, since all the topology of the tree might be affected. Specially when using several outgroups. In other cases, when the chimera is form from closely related groups might be problematic to identify, and most of the softwares that allow chimeric identification (such as [mothur](https://mothur.org/) or [vsearch](https://github.com/torognes/vsearch)) rely on the reference database of choice.   
   
-![Tree structure unresolved](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure_unresolved.png)  
+**Long Branch Attraction** artifacts.  
   
 The different topological possibilities of a tree are very big, and therefore any list of possible methodological problems will be far from complete. I hope with the few examples I gave earlier you get the rational to identify methodological issues.  
   
-In a similar way that you have to check for convergence in bayesian approaches, it is also important to check the **log** file in ML approaches. Here you check the likelihood of the tree over the different bootstraps, the model parameters optimization or the proportion of invariant sites in the alignment.  
-  
 ### Interpreting the tree from a biological point of view
   
-A pure methodological critic of a tree is very important to identify problematic steps on how you build your phylogenetic tree. However a biological interpretation of your tree goes tightly connected, helping to resolve potential issues identified in a methodological point of view. For example:  
--As we have seen in the methodological check, very short branches or poorly supported nodes might be a problem. However if you find highly supported clades and only few unressolved internal nodes with long branches, the problem might be intrinsic to the *species* and simply phylogenetic patterns can't be ressolved with the given data. We normally interpret such events in terms of evolution as that "the diversification happened very fast".  
-  
-**Long Branch Attraction** artifacts.  
+A pure methodological critic of a tree is very important to help you identify problematic steps on the pipeline. However a biological interpretation of your tree goes tightly connected, helping to resolve or neglect potential issues identified from a pure methodological point of view and eventually contributing to decide on whether keep or remove certain sequences. For example:  
+- As we have seen in the methodological check, near-0 internal branchelengths or poorly supported nodes might be a problem. But if you find highly supported clades and only few unressolved internal nodes with very short branches, the problem might be intrinsic to the *species* and simply phylogenetic patterns can't be ressolved with the given data. We normally interpret such events in terms of evolution as that "the diversification happened very fast". (Example 1).  
    
 ### Integrating the tree in a broader evolutionary context
   
