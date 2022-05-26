@@ -203,7 +203,7 @@ And in this script ([phylo_BEAST.xml](https://github.com/MiguelMSandin/phylogeni
 And now we have to summarise the chain with [treeannotator](https://beast.community/treeannotator):  
 ```treeannotator -burnin 1000000 -heights median OUTPUT.trees OUTPUT_mcmc.tre```   
   
-The main problem (or advantage, depends on your question) is that BEAST assumes a clock model. But this is getting out of scope and I would like to create another repository on the use and the calibration of the [molecular clock](https://en.wikipedia.org/wiki/Molecular_clock).  
+The main problem (or advantage, depends on your question) is that BEAST assumes a clock model. But this is getting out of scope and I would like to create another repository on the use and the calibration of the [molecular clock](https://en.wikipedia.org/wiki/Molecular_clock). If you are still very interested, please have a look at this excellent practical guide to molecular dating published by [Hervé Sauquet (2013)](https://www.sciencedirect.com/science/article/pii/S1631068313001097)).  
   
 ### Using a parsimony approach
   
@@ -235,17 +235,17 @@ Understanding that each concept is relative and may vary among different trees.
 Simplifying long explanations:
 - Low support in the nodes or near-0 branch lengths could be because the *species* are too similar to each other and the model fails to converge. It could also be that such similarity might have been created because of too strict trimming thresholds of the alignment.  
 - Very long branches could reflect the opposite problem, in which we have simply selected very distinct *species*, the quality of the *species* is bad (with many errors or insertions), the alignment failed or even that the trimming was too gentle.  
-- If the outgroup appears in a long branch, then you might have selected the wrong outgroup. Check the literature and try to select a more related group as an outgroup.  
+- If the outgroup and the ingroup appear very distant from one another you might have selected the wrong outgroup. Check the literature again and try to select a more related group as an outgroup or try [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) to retrieve closely related sequences (if aplicable).  
 - It could also happen that the different outgroups appear not according to the literature and some clades of the ingroup within or between the different outgroups. Then most likely [chimeric sequences](https://en.wikipedia.org/wiki/Chimera_(molecular_biology)) might be present.  
 - Chimeric sequences also tend to appear alone at early diverging positions and sometimes at relatively long branches. If these chimeric sequences come from very different parent sequences, it might be easy to spot, since all the topology of the tree might be affected. Specially when using several outgroups. In other cases, when the chimera is form from closely related groups might be problematic to identify, and most of the softwares that allow chimeric identification (such as [mothur](https://mothur.org/) or [vsearch](https://github.com/torognes/vsearch)) rely on the reference database of choice.   
   
-**Long Branch Attraction** artifacts.  
+Long branches deserve a special mention when (for example) you have several clades present in independent long branches and are *a priori* phylogenetically related (sister groups). This effect could be due to the so called **Long Branch Attraction** artifact, and the tree shows two groups closely related but simply because they are very different from all the rest and not necessarily because they are similar (or related) to one another.  
   
 The different topological possibilities of a tree are very big, and therefore any list of possible methodological problems will be far from complete. I hope with the few examples I gave earlier you get the rational to identify methodological issues.  
   
 ### Interpreting the tree from a biological point of view
   
-A pure methodological critic of a tree is very important to help you identify problematic steps on the pipeline. However a biological interpretation of your tree goes tightly connected, helping to resolve or neglect potential issues identified from a pure methodological point of view and eventually contributing to decide on whether keep or remove certain *species*. For example:  
+A pure methodological examination of a tree is very important to help you identify problematic steps on the pipeline. However a biological interpretation of your tree goes tightly connected, helping to resolve or neglect potential issues identified from a pure methodological point of view and eventually contributing to decide on whether keep or remove certain *species*. For example:  
 - As we have seen in the methodological check, near-0 internal branchelengths or poorly supported nodes might be a problem. But if you find highly supported clades and only few unressolved internal nodes with very short branches, the problem might be intrinsic to the *species* and simply phylogenetic patterns can't be ressolved with the given data. We normally interpret such events in terms of evolution as that "the diversification happened very fast". (Example 1).  
    
 ### Integrating the tree in a broader evolutionary context
