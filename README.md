@@ -98,10 +98,16 @@ Depending on the sequences you are aligning you may want to play with the differ
   
 For large dataset I normally use the default options:  
 ```mafft $FASTA > $ALIGNED```  
-For a small dataset (<200 sequences of similarish length ~2000bp) of specific groups, I normally use  
+For a small dataset (<200 sequences of similarish length ~2000bp) of different groups, I normally use:  
 ```mafft --maxiterate 1000 --localpair $FASTA > $ALIGNED```  
+And for a small dataset (<200 sequences of similarish length ~2000bp) of relatively related groups, I normally use:  
+```mafft --maxiterate 1000 --globalpair $FASTA > $ALIGNED```  
   
-It is important to manually check the alignment in AliView (or SeaView) if you are working with recently sequenced sequences. There might be some misalignment or weird stuff easy to spot due to bad quality or errors sequencing.  
+It is important to manually check the alignment in AliView (or SeaView) if you are working with recently sequenced sequences or of doubted origin. There might be some misalignment or weird stuff easy to spot due to bad quality or errors sequencing.  
+  
+Other softwares (such as [muscle](http://www.drive5.com/muscle/), [clustal](http://www.clustal.org/omega/) or [T-Coffee](https://www.tcoffee.org/Projects/tcoffee/index.html)) offer other possibilities.  
+  
+It is also possible (yet requires experience and is time consuming) to align the sequences based on complementary regions of the hypothetical 2D structure of the given coding gene or rDNA (if known).  
   
 ---
   
@@ -114,6 +120,7 @@ We can automatically do that with trimal as follows:
 ```trimal -in $FASTA -out $FILE -gt X```  
   
 Being X the coverage threshold at a given position. I normally use 30% for a quick analysis and 5% for a more resolutive analysis. Again, depending on your scope you will have to play with different options. Other useful options are "```-st```", "```-nogaps```" and "```-noallgaps```".  
+  
 Besides, you can also trim the alignment based on the entropy of the columns, based on expected errors, etc.  
   
 ---
