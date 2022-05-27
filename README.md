@@ -298,12 +298,13 @@ If not, then you should come back to **Step 1**, and think again on the chosen *
   
 ## Further reading  
   
-**phylogenetic thinking**: The number of references about phylogenetic analysis and understanding is overwhelming, and therefore providing an exhaustive list is imposible. As a brief example, you can simply check one of the latest and the references therein ([Evans et al., 2021](https://royalsocietypublishing.org/doi/10.1098/rstb.2020.0056)).  
+**Phylogenetic thinking**: The number of references about phylogenetic analysis and understanding is overwhelming, and therefore providing an exhaustive list is imposible. As a brief example, I point you to the latest reference that I am aware of and the references therein ([Evans et al., 2021](https://royalsocietypublishing.org/doi/10.1098/rstb.2020.0056)).  
   
-Regarding the methodological aspect of phylogenetic reconstruction, you will also find many different options. Yet again, I refer to one of the latest I am aware of and point to the references therein ([Irisarri 2021](https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470015902.a0029211)). Most of the times, open source softwares are very well documented. I highly encourage you to extend your possiblities and go fancy in phylogenetic inference by looking and epxloring different options through the help command (i.e.; ```iqtree -h```, ```raxml-ng -h```), or through their online manuals and hands-on tutorials:
+Regarding the methodological aspect of phylogenetic reconstruction, models and parameters you can directly check in the (most of the times) very well documented hands-on tutorials of the open source softwares I introduced here. Besides, I highly encourage you to extend your possiblities and go fancy in phylogenetic inference by looking and epxloring different options through the help command (i.e.; ```iqtree -h```, ```raxml-ng -h```), or through their online manuals and hands-on tutorials:
 - RAxML (not maintained any more): https://github.com/stamatak/standard-RAxML/blob/master/manual/NewManual.pdf  
 - RAxML-NG: https://github.com/amkozlov/raxml-ng/wiki/Tutorial  
 - IQtree: http://www.iqtree.org/doc/Quickstart  
 - MrBayes: https://github.com/NBISweden/MrBayes/blob/develop/doc/manual/Manual_MrBayes_v3.2.pdf  
 - R: ape and phangorn: https://cran.r-project.org/web/packages/phangorn/vignettes/Trees.html  
-  
+- BEAST: https://beast.community/first_tutorial. 
+- BEAST2: https://www.beast2.org/tutorials/  
