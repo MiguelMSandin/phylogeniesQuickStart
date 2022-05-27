@@ -98,9 +98,9 @@ Depending on the sequences you are aligning you may want to play with the differ
   
 For large dataset I normally use the default options:  
 ```mafft $FASTA > $ALIGNED```  
-For a small dataset (<200 sequences of similarish length ~2000bp) of different groups, I normally use:  
+For a small dataset (<200 sequences) of different groups, I normally use:  
 ```mafft --maxiterate 1000 --localpair $FASTA > $ALIGNED```  
-And for a small dataset (<200 sequences of similarish length ~2000bp) of relatively related groups, I normally use:  
+And for a small dataset (<200 sequences of similarish length) of closely related group, I normally use:  
 ```mafft --maxiterate 1000 --globalpair $FASTA > $ALIGNED```  
   
 It is important to manually check the alignment in AliView (or SeaView) if you are working with recently sequenced sequences or of doubted origin. There might be some misalignment or weird stuff easy to spot due to bad quality or errors sequencing.  
@@ -263,7 +263,9 @@ A pure methodological examination of a tree is very important to help you identi
   
 ### Integrating the tree in a broader evolutionary context
   
-We have performed a technical check of the tree, and seems OK. We have interpreted few technical discrepancies from a biological point of view, and they are easily explainable. Now is the time to integrate the meaning of your tree in the current state of the art. What is your tree bringing to increase the knowledge of your field?  
+We have performed a technical check of the tree, and seems OK. We have interpreted few technical discrepancies from a biological point of view, and they are easily explained with the given dataset. Now we can pay attention at the identifiers from the tree leafs and build a whole evolutionary hypothesis for our tree.  
+
+Lastly, it is important to integrate the meaning of your tree in the current state of the art. What is your tree bringing to increase the knowledge of your field?  
   
 ![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/different_pictures_of_the_same_reality.png)  
   
