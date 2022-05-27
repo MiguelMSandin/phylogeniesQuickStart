@@ -252,6 +252,8 @@ A pure methodological examination of a tree is very important to help you identi
 - Another very common source of conflict is the presence of contaminations. The true information for phylogenetic analysis is the actual gene or protein sequence. Yet the name of such sequence (either taxonomical or environmental information) is an identifier for human readability. Therefore the identifier should we treated with coution and interpreted according to your scope and analyses regardless of its origin. (Example 4).
 - ...   
   
+![Examples](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/examples.png)  
+  
 ### Integrating the tree in a broader evolutionary context
   
 We have performed a technical check of the tree, and seems OK. We have interpreted few technical discrepancies from a biological point of view, and they are easily explainable. Now is the time to integrate the meaning of your tree in the current state of the art. What is your tree bringing to increase the knowledge of your field?  
