@@ -263,7 +263,8 @@ A pure methodological examination of a tree is very important to help you identi
   
 ### Integrating the tree in a broader evolutionary context
   
-We have performed a technical check of the tree, and seems OK. We have interpreted few technical discrepancies from a biological point of view, and they are easily explained with the given dataset. Now we can pay attention at the identifiers from the tree leafs and build a whole evolutionary hypothesis for our tree.  
+We have performed a technical check of the tree, and seems OK. We have interpreted few technical discrepancies from a biological point of view, and they are easily explained with the given dataset. 
+Now we can pay attention to the identifiers from the tree leafs and build a whole evolutionary hypothesis for our tree.  
 
 Lastly, it is important to integrate the meaning of your tree in the current state of the art. What is your tree bringing to increase the knowledge of your field?  
   
@@ -304,7 +305,7 @@ and/or using a **Bayesian Inference** approach with MrBayes (you can find an exa
 **Step 5**. **Interpret your phylogenetic tree**.  
 First from a **methodological point of view**: Are all nodes highly supported? Are there no polytomic nodes? Are there no long branches?  
 Then we add the **biological thinking**: Are the outgroups clearly defined and independent from the ingroup? Are the patterns among clades as previously reported/suggested/expected? Can you explain the tree topology according to the *species* you used (e.g.; rRNA genes, plastids, proteins)?  
-Lastly we add a **broader context**: can you explain the tree in a biological integrative context? For example if using genes/proteins, can you explain it from a morphological or ecological point of view?  
+Lastly we add a **broader context**: can you explain the tree in a biological integrative context? For example if using genes/proteins, can you explain it from a morphological or ecological point of view? What is contributing to the state of the art of your research?  
 If not, then you should come back to **Step 1**, and think again on the chosen *species* and/or try to use different trimming options according to your scientific question.   
   
 ---
