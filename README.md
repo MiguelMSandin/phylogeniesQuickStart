@@ -238,50 +238,56 @@ At this stage you are looking for artifacts, sequences badly aligned (or even in
 Understanding that each concept is relative and may vary among different trees.  
   
 Simplifying long explanations:
-- Low support in the nodes or near-0 branch lengths could be because the *species* are too similar to each other and the model fails to converge. It could also be that such similarity might have been created because of too strict trimming thresholds of the alignment. (Example 1)  
-- Very long branches could reflect the opposite problem, in which we have simply selected very distinct *species*, the quality of the *species* is bad (with many errors or insertions), the alignment failed or even that the trimming was too gentle. (Example 2)  
-- If the outgroup and the ingroup appear very distant from one another you might have selected the wrong outgroup. Check the literature again and try to select a more related group as an outgroup or try [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) to retrieve closely related sequences (if aplicable). (Example 3)  
-- It could also happen that the different outgroups appear not according to the literature and some clades of the ingroup within or between the different outgroups. Then, most likely [chimeric sequences](https://en.wikipedia.org/wiki/Chimera_(molecular_biology)) might be present. Chimeric sequences also tend to appear alone at early diverging positions and sometimes at relatively long branches. If these chimeric sequences come from very different parent sequences, it might be easy to spot, since all the topology of the tree might be affected. Specially when using several outgroups. In other cases, when the chimera is form from closely related groups might be problematic to identify, and most of the softwares that allow chimeric identification (such as [mothur](https://mothur.org/) or [vsearch](https://github.com/torognes/vsearch)) rely on the reference database of choice. (Example 4)  
+- Low support in the nodes or near-0 branch lengths (or even **polytomies**) could be because the *species* are too similar to each other and the model fails to converge. It could also be that such similarity might have been created because of too strict trimming thresholds of the alignment. (**Example 1**)  
+- Very **long branches** could reflect the opposite problem, in which we have simply selected very distinct *species*, the quality of the *species* is bad (with many errors or insertions), the alignment failed or even that the trimming was too gentle. (**Example 2**)  
+- If the outgroup and the ingroup appear very distant from one another you might have selected the wrong outgroup. Check the literature again and try to select a more related group as an outgroup or try [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) to retrieve closely related sequences (if aplicable). (**Example 3**)  
+- It could also happen that the different outgroups appear not according to the literature and some clades of the ingroup within or between the different outgroups. Then, most likely **[chimeric sequences](https://en.wikipedia.org/wiki/Chimera_(molecular_biology))** might be present. Chimeric sequences also tend to appear alone at early diverging positions and sometimes at relatively long branches. (**Example 4**)  
 
 ![examples_1-4](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure8_examples_1-4.png)  
   
 Long branches deserve a special mention when (for example) you have several clades present in independent long branches and are *a priori* phylogenetically related (sister groups). This effect could be due to the so called **Long Branch Attraction** artifact, and the tree shows two groups closely related but simply because they are very different from all the rest and not necessarily because they are similar (or related) to one another.  
   
-The different topological possibilities of a tree are very big, and therefore any list of possible methodological problems will be far from complete. I hope with the few examples I gave earlier you get the rational to identify methodological issues.  
+When chimeric sequences come from very different parent sequences, it might be easy to spot, since all the topology of the tree might be affected. Specially when using several outgroups. But when the chimera is form from closely related groups might be problematic to identify, and most of the softwares that perform chimeric detection (such as [mothur](https://mothur.org/) or [vsearch](https://github.com/torognes/vsearch)) rely on the reference database of choice.  
+  
+When the phylogenetic inference is the core of your study, it is highly recommended to **replicate the phylogenetic tree with different approaches**. This is most commonly achieved by combining the support from different trees obtained by maximum likelihood and bayesian approaches. Although not always it is possible to apply the same approach to the same dataset, for example for very large datasets a bayesian approach will fail to converge; and on the contrary, when estimating molecular ages a bayesian approach is much better suited since allows uncertainty. In such cases it is possible to use different softwares, apply different models of evolution, or even to replicate the alignment by (for example) reversing the sequences before aligning.  
+  
+The different topological possibilities of a tree are very big, and therefore any list of possible methodological problems will be far from complete. I hope with the few examples I am providing, you get the rational to identify methodological issues.  
   
 ### Interpreting the tree from a biological point of view
   
 A pure methodological examination of a tree is very important to help you identify problematic steps on the pipeline. However a biological interpretation of your tree goes tightly connected, helping to resolve or neglect potential issues identified from a pure methodological point of view and eventually contributing to decide on whether keep or remove certain *species*. For example:  
-- As we have seen in the methodological check, near-0 internal branchelengths or poorly supported nodes might be a problem. But if you find highly supported clades and only few unressolved internal nodes with very short branches, the problem might be intrinsic to the *species* and simply phylogenetic patterns can't be ressolved with the given data. We normally interpret such events in terms of evolution as that "the diversification happened very fast". (Example 5).  
-- Similarly, long branches can have a biological meaning despite a correct methodological approach. The **rate of evolution** among eukaryotes varies widely from clade to clade. In this sense one specific clade with a very diverging trait can appear in a long branch, highly supported within it, but very poorly resolved regarding its position in the tree. In this case, resolving it's phylogenetic relationship among other groups is not possible with the given data. The best option would be to choose a different trait (if possible) and discuss the different approaches. (Example 6).  
-- A very common source of conflict is the presence of contaminations or mislabeled sequences. The true information for phylogenetic analysis is the actual gene or protein sequence. Yet the name of such sequence (either taxonomical or environmental information) is an identifier for human readability. Therefore the identifier should we treated with coution and interpreted according to your scope and analyses regardless of its origin. (Example 7).  
-- When combining different genes or proteins it might happen that they show different phylogenetic patterns. In this case it is important to understand the nature of those genes or proteins and discuss the results accordingly. They might have different evolutionary rates, different selection pressure, different phylogenetic information or even different lengths regarding the rest of the sequences in the alignment. (Example 8).  
+- As we have seen in the methodological check, near-0 internal branchelengths or poorly supported nodes might be a problem. But if you find highly supported clades and only few unressolved internal nodes with very short branches, the problem might be intrinsic to the *species* and simply phylogenetic patterns can't be ressolved with the given data. We normally interpret such events in terms of evolution as that "the diversification happened very fast". (**Example 5**).  
+- Similarly, long branches can have a biological meaning despite a correct methodological approach. The **rate of evolution** among eukaryotes varies widely from clade to clade. In this sense one specific clade with a very diverging trait can appear in a long branch, highly supported within it, but very poorly resolved regarding its position in the tree. In this case, resolving it's phylogenetic relationship among other groups is not possible with the given data. The best option would be to choose a different trait (if possible) and discuss the different approaches. (**Example 6**).  
+- A very common source of conflict is the presence of contaminations or mislabeled sequences. The true information for phylogenetic analysis is the actual gene or protein sequence. Yet the name of such sequence (either taxonomical or environmental information) is an identifier for human readability. Therefore the identifier should we treated with coution and interpreted according to your scope and analyses regardless of its origin. (**Example 7**).  
+- When combining different genes or proteins it might happen that they show different phylogenetic patterns. In this case it is important to understand the nature of those genes or proteins and discuss the results accordingly. They might have different evolutionary rates, different selection pressure, different phylogenetic information or even different lengths regarding the rest of the sequences in the alignment. (**Example 8**).  
 - ...   
   
 ![examples_5-8](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure9_examples_5-8.png)  
   
 ### Integrating the tree in a broader evolutionary context
   
-We have performed a technical check of the tree, and seems OK. We have interpreted few technical discrepancies from a biological point of view, and they are easily explained with the given dataset. 
-Now we can pay attention to the identifiers from the tree leafs and build a whole evolutionary hypothesis for our tree. It is time to integrate the previous interpretations with the rest of the information aside the phylogenetic tree.  
-If your scope was ecological, do you find any ecological pattern? If you performed a morphological and molecular characterization, do you find any morphological pattern? How is it comparing with your initial hypothesis?  
+We have performed a technical check of the tree, and seems OK with the exceptions of few technical discrepancies. We have interpreted those discrepancies from a biological point of view, and they are easily explained with the given dataset.  
+Now we can pay attention to the identifiers from the tree tips and build an evolutionary hypothesis for our tree. It is time to integrate the previous interpretations with the rest of the information we had before inferring the phylogenetic tree.  
+If your scope was ecological, do you find any ecological pattern? If you performed a morphological and molecular characterization, do you find any morphological pattern? How is it comparing with your initial hypothesis? Your work now will be to find those patterns, they might or they might not agree with the previous knowledge.  
   
 ![Integrating knowledge](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure10_examples_9.png)   
 
-Lastly, it is important to integrate the meaning of your tree in the current state of the art. What is your tree bringing to the current state of the art of your field?  
+Lastly, it is important to integrate the meaning of your tree in the current state of the art. What is your tree bringing to the current state of the art of your field? How is it comparing to the previous existing knowledge?  
   
 ---  
   
 ## Conclusion
   
-.  
+Phylogenetic trees are hypotheses for the given data and obtained from specific methods. Therefore it is of paramount importance to adjust as far as possible your dataset and your methods to the scope of your study. Even the same question, if tackled from different methods and datasets, might result in different or even contradicting hypotheses. And yet, such both hypotheses might be correct, they will just represent **different pictures of the same reality**.  
+Let's imagine going somewhere further than the tropics and take the a picture in the exact same location through the different season. Or going within the tropics but changing the zoom throughout different pictures. In the first example we only changed the time, whereas in the second the method.  
+  
+Phylogenetic patterns are constantly changing with new tools being developed that allow accessing in different approaches the biological diversity or its exploration and analysis. In this sense, our job as scientists is to integrate all the different knowledge into a comprehensive story.  
   
 ![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure11_different_pictures_of_the_same_reality.png)    
   
 ---
   
 ## Summary
-Something like this will give you a solid phylogeny to start exploring patterns:  
   
 **Step 1**. **Select your *species* carefully**, both the ingroup and the outgroup, depending on your **scientifc question**.
   
@@ -301,13 +307,13 @@ Set the variables:
 ```trimal -in $ALIGNED -out $FILE -gt 05```  
   
 **Step 4**. Run a phylogeny using a **Maximum Likelihood** approach:  
-with RAxML:  
+with **RAxML**:  
 ```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRgamma -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T 2```  
-and/or RAxML-ng:  
+and/or **RAxML-ng**:  
 ```raxml-ng --all --msa $FILE --model GTR+G --tree pars{10} --prefix ${OUTPUT}_raxml-ng-GTRgamma --seed $RANDOM --threads $THREADS --bs-trees $BS```  
-and/or IQtree:  
+and/or **IQtree**:  
 ```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree-mt -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
-and/or using a **Bayesian Inference** approach with MrBayes (you can find an example script here: [phylo_mrBayes.sh](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/scripts/3.4.1_MrBayes_set.sh)):  
+and/or using a **Bayesian Inference** approach with **MrBayes** (you can find an example script here: [phylo_mrBayes.sh](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/scripts/3.4.1_MrBayes_set.sh)):  
 ```mb < phylo_mrBayes.sh > ${OUTPUT]_mrBayesgamma.log```  
   
 **Step 5**. **Interpret your phylogenetic tree**.  
