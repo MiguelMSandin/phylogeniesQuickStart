@@ -263,11 +263,18 @@ A pure methodological examination of a tree is very important to help you identi
 ### Integrating the tree in a broader evolutionary context
   
 We have performed a technical check of the tree, and seems OK. We have interpreted few technical discrepancies from a biological point of view, and they are easily explained with the given dataset. 
-Now we can pay attention to the identifiers from the tree leafs and build a whole evolutionary hypothesis for our tree.  
+Now we can pay attention to the identifiers from the tree leafs and build a whole evolutionary hypothesis for our tree. It is time to integrate the previous interpretations with the rest of the information aside the phylogenetic tree.  
+If your scope was ecological, do you find any ecological pattern? If you performed a morphological and molecular characterization, do you find any morphological pattern? How is it comparing with your initial hypothesis?  
 
-Lastly, it is important to integrate the meaning of your tree in the current state of the art. What is your tree bringing to increase the knowledge of your field?  
+Lastly, it is important to integrate the meaning of your tree in the current state of the art. What is your tree bringing to the current state of the art of your field?  
   
-![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/different_pictures_of_the_same_reality.png)  
+---  
+  
+## Conclusion
+  
+.  
+  
+![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/different_pictures_of_the_same_reality.png)    
   
 ---
   
