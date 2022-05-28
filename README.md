@@ -1,4 +1,4 @@
-# A brief hands-on introduction on Phylogenetic Inference  
+# A brief hands-on introduction on phylogenetic studies  
 Here you will find a brief introduction on how to get started with phylogenetic analyses. All examples are given for nucleotide sequences, yet once you have gone through every step, you will feel more confortable to try different models and datasets.  
   
 Bear in mind that this is a quick guide for phylogenetic inference. I tried to explain only important or crucial concepts for a non-expert audience, so these lines are far from exhaustive and very simplified.  
