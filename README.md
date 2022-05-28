@@ -27,7 +27,7 @@ Briefly, the structure of a tree is rather simple. A phylogenetic tree assumes a
   
 The node gathering all *species* is called the **root** of the tree, and is normally used to give a biological and evolutionary interpretation of the tree beyond a pure relative comparison among the *species*. This node, when present, normally separates the outgroup (or outgroups) and the ingroup (please, see [Step 1](https://github.com/MiguelMSandin/phylogeniesQuickStart#species-selection-step-1) for further details on the root and the outgroups and ingroup concepts).  
   
-![Tree structure](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_structure.png)  
+![Tree structure](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure1_tree_structure.png)  
   
 In terms of writing and formating, the simplest tree format is called [newick](https://en.wikipedia.org/wiki/Newick_format), and it is simply a nested grouping of trees, where tips are separated by commas, and groups are grouped by parentheses. The example above would look like as follows (without branch lengths, which are given after the given tip or node separated by a semicolon ":"):  
 ((a,b),((c,d),(e,f)));
@@ -66,7 +66,7 @@ The root of the tree represents the last common ancestor of all *species* in the
   
 In the example below, you have the exact same tree rooted (right) and unrooted (left). In this example the root is splitting the first diverging clade (gathering "a" and "b") and the rest of the taxa.  
   
- ![Unrooted and rooted tree](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step0_tree_root.png)   
+ ![Unrooted and rooted tree](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure2_tree_root.png)   
   
 When it comes to real data, you might be interested in the closest relatives of your group of interest (or **outgroup**) that are not your group of interest (or **ingroup**). For example if your group of interest are birds, then you might want to choose an outgroup with reptiles.  
   
@@ -92,7 +92,7 @@ Let's name our input and output files as follows:
   
 ## Align (step 2)  
   
-![Step2 align sequences](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step2_align.png)  
+![Step2 align sequences](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure3_step2_align.png)  
   
 Depending on the sequences you are aligning you may want to play with the different options that MAFFT offer. I recommend playing with them and with different datasets (highly similar and highly divergent sequences) to fully understand them.  
   
@@ -113,7 +113,7 @@ It is also possible (yet requires experience and is time consuming) to align the
   
 ## Trim alignment of redundant or low informative positions/columns (step 3)  
   
-![Step3 trim alignment](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step3_trim.png)  
+![Step3 trim alignment](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure4_step3_trim.png)  
   
 We can automatically do that with trimal as follows:  
   
@@ -133,7 +133,7 @@ The simplest tree is a Neighbor Joining tree, representing the direct distance b
    
 ```rapidnj $FILE > ${OUTPUT}_NJ.tre```  
   
-![Step4.1](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.1_model_of_evolution.png)  
+![Step4.1](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure5_step4.1_model_of_evolution.png)  
   
 A pairwise comparison between group of *species* gives a first quick look of the alignment and the *species* themselves. However the phylogenetic relatedness is not directly link to the similarity or dissimilarity of the *species*, since not every region of the sequence evolve at the same rate. 
   
@@ -147,7 +147,7 @@ Maximum Likelihood ([Felsenstein, 1981](https://link.springer.com/article/10.100
   
 At the end, all the different replicates can be summarized into a **consensus** tree **or** simply take the **best likelihood scoring** tree. Either way, nodes can be annotated on the basis of how many times this given node have appeared accross the different bootstraps, or in other words, with a **bootstrap support** (from 1 to 100).  
   
-![Step4.2](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.2_ML.png)  
+![Step4.2](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure6_step4.2_ML.png)  
   
 We need now new variables:  
   
@@ -183,7 +183,7 @@ Bayesian Inference ([Rannala and Yang, 1996](https://link.springer.com/article/1
 It is recommended to monitor the likelihood per cycle to be sure that your model optimization is arriving to a **convergence**. Normally, a safe option is to opt for a very long chain, but an excessively long chain might result in a waste of computational resources. If you are interested in a trade-off between ensuring convergence and not spending several days, weeks or months in a redundant analysis you can explore the [Effective Sample Size](https://beast.community/ess_tutorial) of the MCMC run in the software [Tracer](https://beast.community/tracer).  
 Because of the long sampling, when you choose a Bayesian approach it is very important to check the likelihood over the different cycles and remove the "learning slope", normally referred to as **burn-in**.  
   
-![Step4.3](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/step4.3_BI.png)  
+![Step4.3](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure7_step4.3_BI.png)  
   
 Again, for inferring phylogenies by bayesian approaches we have different softwares. Such as [MrBayes](https://nbisweden.github.io/MrBayes/), [BEAST](https://beast.community/), [BEAST2](https://www.beast2.org/) or [PhyloBayes](http://www.atgc-montpellier.fr/phylobayes/). Yet, they need most of the times to be run in different blocks, and therefore many different parameters need to be set that will influence your analysis. instead of running them from a single command, as we did for ML approaches, here we save all our options in a simple text (or xml) file and we run the file within the BI software.  
   
@@ -243,7 +243,7 @@ Simplifying long explanations:
 - If the outgroup and the ingroup appear very distant from one another you might have selected the wrong outgroup. Check the literature again and try to select a more related group as an outgroup or try [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) to retrieve closely related sequences (if aplicable). (Example 3)  
 - It could also happen that the different outgroups appear not according to the literature and some clades of the ingroup within or between the different outgroups. Then, most likely [chimeric sequences](https://en.wikipedia.org/wiki/Chimera_(molecular_biology)) might be present. Chimeric sequences also tend to appear alone at early diverging positions and sometimes at relatively long branches. If these chimeric sequences come from very different parent sequences, it might be easy to spot, since all the topology of the tree might be affected. Specially when using several outgroups. In other cases, when the chimera is form from closely related groups might be problematic to identify, and most of the softwares that allow chimeric identification (such as [mothur](https://mothur.org/) or [vsearch](https://github.com/torognes/vsearch)) rely on the reference database of choice. (Example 4)  
 
-![examples_1-4](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/examples_1-4.png)  
+![examples_1-4](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure8_examples_1-4.png)  
   
 Long branches deserve a special mention when (for example) you have several clades present in independent long branches and are *a priori* phylogenetically related (sister groups). This effect could be due to the so called **Long Branch Attraction** artifact, and the tree shows two groups closely related but simply because they are very different from all the rest and not necessarily because they are similar (or related) to one another.  
   
@@ -258,13 +258,15 @@ A pure methodological examination of a tree is very important to help you identi
 - When combining different genes or proteins it might happen that they show different phylogenetic patterns. In this case it is important to understand the nature of those genes or proteins and discuss the results accordingly. They might have different evolutionary rates, different selection pressure, different phylogenetic information or even different lengths regarding the rest of the sequences in the alignment. (Example 8).  
 - ...   
   
-![examples_5-8](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/examples_5-8.png)  
+![examples_5-8](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure9_examples_5-8.png)  
   
 ### Integrating the tree in a broader evolutionary context
   
 We have performed a technical check of the tree, and seems OK. We have interpreted few technical discrepancies from a biological point of view, and they are easily explained with the given dataset. 
 Now we can pay attention to the identifiers from the tree leafs and build a whole evolutionary hypothesis for our tree. It is time to integrate the previous interpretations with the rest of the information aside the phylogenetic tree.  
 If your scope was ecological, do you find any ecological pattern? If you performed a morphological and molecular characterization, do you find any morphological pattern? How is it comparing with your initial hypothesis?  
+  
+![Integrating knowledge](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure10_examples_9.png)   
 
 Lastly, it is important to integrate the meaning of your tree in the current state of the art. What is your tree bringing to the current state of the art of your field?  
   
@@ -274,7 +276,7 @@ Lastly, it is important to integrate the meaning of your tree in the current sta
   
 .  
   
-![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/different_pictures_of_the_same_reality.png)    
+![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure11_different_pictures_of_the_same_reality.png)    
   
 ---
   
