@@ -210,7 +210,7 @@ And in this script ([phylo_BEAST.xml](https://github.com/MiguelMSandin/phylogeni
 And now we have to summarise the chain with [treeannotator](https://beast.community/treeannotator):  
 ```treeannotator -burnin 1000000 -heights median OUTPUT.trees OUTPUT_mcmc.tre```   
   
-The main problem (or advantage, depends on your question) is that BEAST assumes a clock model. But this is getting out of scope and I would like to create another repository on the use and the calibration of the [molecular clock](https://en.wikipedia.org/wiki/Molecular_clock). If you are still very interested, please have a look at this excellent practical guide to molecular dating published by [Hervé Sauquet (2013)](https://www.sciencedirect.com/science/article/pii/S1631068313001097).  
+The main problem (or advantage, depends on your question) is that BEAST assumes a clock model. But the [molecular clock](https://en.wikipedia.org/wiki/Molecular_clock) concept is getting out of scope. If you are very interested, please have a look at this excellent practical guide to molecular dating published by [Hervé Sauquet (2013)](https://www.sciencedirect.com/science/article/pii/S1631068313001097), and if you already have a solid tree, you can have a look at [MCMCTree](http://abacus.gene.ucl.ac.uk/software/MCMCtree.Tutorials.pdf) from the [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) package.  
   
 ### Using a parsimony approach
   
