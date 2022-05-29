@@ -272,8 +272,13 @@ If your scope was ecological, do you find any ecological pattern? If you perform
   
 ![Integrating knowledge](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure10_examples_9.png)   
 
-Lastly, it is important to integrate the meaning of your tree in the current state of the art. What is your tree bringing to the current state of the art of your field? How is it comparing to the previous existing knowledge?  
+Nearly at the end, it is important to integrate the meaning of your tree in the current state of the art. What is your tree bringing to the current state of the art of your field? How is it comparing to the previous existing knowledge?  
   
+And lastly, we have to understand that evolution (or diversification) is a complex process that we tend to simplify with schematic trees .  
+TO COMPLETE!!  
+TO COMPLETE!!  
+TO COMPLETE!!  
+
 ---  
   
 ## Conclusion
@@ -326,7 +331,7 @@ If not, then you should come back to **Step 1**, and think again on the chosen *
   
 ## Further reading  
   
-**Phylogenetic tree thinking**: .  
+**Phylogenetic tree thinking**: Interpreting ([Meisel 1999](https://evolution-outreach.biomedcentral.com/articles/10.1007/s12052-010-0254-9)) ([Doolitle and Bapteste, 2007](https://www.pnas.org/doi/full/10.1073/pnas.0610699104)).  
   
 Regarding the methodological aspect of phylogenetic reconstruction, models and parameters you can directly check in the (most of the times) very well documented hands-on tutorials of the open source softwares I introduced here. Besides, I highly encourage you to extend your possiblities and go fancy in phylogenetic inference by looking and epxloring different options through the help command (i.e.; ```iqtree -h```, ```raxml-ng -h```), or through their online manuals and hands-on tutorials:
 - RAxML (not maintained any more): https://github.com/stamatak/standard-RAxML/blob/master/manual/NewManual.pdf  
