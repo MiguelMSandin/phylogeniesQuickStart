@@ -1,7 +1,7 @@
-# A brief hands-on introduction on phylogenetic studies  
+# A brief hands-on introduction on molecular phylogenetic studies  
 Here you will find a brief introduction on how to get started with phylogenetic analyses. All examples are given for nucleotide sequences, yet once you have gone through every step, you will feel more confortable to try different models and datasets.  
   
-Bear in mind that this is a quick guide for phylogenetic inference. I tried to explain only important or crucial concepts for a non-expert audience, so these lines are far from exhaustive and very simplified.  
+Bear in mind that this is a quick practical guide for phylogenetic inference. I tried to explain only important or crucial concepts for a non-expert audience, so these lines are far from exhaustive and very simplified.  
   
 ## Dependencies and softwares used for:  
 - **Sequence visualization**: [AliView](https://ormbunkar.se/aliview/) or a much simpler and faster option [SeaView](http://doua.prabi.fr/software/seaview)  
@@ -15,7 +15,7 @@ Bear in mind that this is a quick guide for phylogenetic inference. I tried to e
   
 Phylogenetic inference allows the exploration of **evolutionary relationships** among taxa beyond a pure pair-wise comparison.  
 Evolutionary relationships are normally inferred from observed intrinsic properties of a group of organisms such as DNA sequences, protein sequences or morphological traits.  
-The first phylogenetic analysis performed by Carl Woese and George Fox defined the primary domains of life through 16S rRNA characterization ([Woese and Fox, 1977](https://www.pnas.org/doi/full/10.1073/pnas.74.11.5088)). They provided a simple matrix of pairwise comparisons among DNA sequences, yet opened the doors for a much complex field of molecular evolution.  
+The first molecular phylogenetic analysis was performed by Carl Woese and George Fox ([Woese and Fox, 1977](https://www.pnas.org/doi/full/10.1073/pnas.74.11.5088)), they defined the primary domains of life through 16S rRNA characterization. They provided a simple matrix of pairwise comparisons among DNA sequences, yet opened the doors for a much complex field of molecular evolution.  
 Now a days, when reconstructing evolutionary patterns, we assume common ancestry and a bifurcating history in the diversification of the studied organisms. And the best (or most accepted) way to represent such patterns is the so called **phylogenetic tree**.  
   
 ## What is a phylogenetic tree?  
@@ -326,7 +326,7 @@ If not, then you should come back to **Step 1**, and think again on the chosen *
   
 ## Further reading  
   
-**Phylogenetic thinking**: The number of references about phylogenetic analysis and understanding is overwhelming, and therefore providing an exhaustive list is imposible. As a brief example, I point you to the latest reference that I am aware of and the references therein ([Evans et al., 2021](https://royalsocietypublishing.org/doi/10.1098/rstb.2020.0056)).  
+**Phylogenetic tree thinking**: .  
   
 Regarding the methodological aspect of phylogenetic reconstruction, models and parameters you can directly check in the (most of the times) very well documented hands-on tutorials of the open source softwares I introduced here. Besides, I highly encourage you to extend your possiblities and go fancy in phylogenetic inference by looking and epxloring different options through the help command (i.e.; ```iqtree -h```, ```raxml-ng -h```), or through their online manuals and hands-on tutorials:
 - RAxML (not maintained any more): https://github.com/stamatak/standard-RAxML/blob/master/manual/NewManual.pdf  
@@ -336,3 +336,4 @@ Regarding the methodological aspect of phylogenetic reconstruction, models and p
 - R: ape and phangorn: https://cran.r-project.org/web/packages/phangorn/vignettes/Trees.html  
 - BEAST: https://beast.community/first_tutorial. 
 - BEAST2: https://www.beast2.org/tutorials/  
+    
