@@ -220,6 +220,12 @@ The parsimony approach assumes that the minimum number of changes best explains 
   
 Besides, as you might have figured out by now, your scientific question is one of the most important steps. In this context, ML and BI yields very good results for complex DNA or protein sequences. But when it comes to **ancestral state reconstruction** of non-neutral traits, such as habitat or specific morphological traits, the simplification of parsimonious approaches seems to yield better results ([Holland et al. 2020](https://www.nature.com/articles/s41598-020-64647-4)). It is important to understand that most of the times such analyses are performed over an already inferred phylogenetic tree, and therefore the analyses is no longer about phylogenetic inferring (but about ancestral state reconstruction). In this context, other softwares (such as [Mesquite](https://www.mesquiteproject.org/) or [TNT](http://gensoft.pasteur.fr/docs/TNT/1.5/)) and approches (such as [Maximum Parsimony](https://en.wikipedia.org/wiki/Maximum_parsimony_(phylogenetics))) have been developed. My experience in this area is very limited and I do not feel confortable explaining them. Besides, as pointed out by [Holland et al. (2020)](https://www.nature.com/articles/s41598-020-64647-4), ancestral state reconstruction analyses should be considered and evaluated carefully. Therefore my take-home message of parsimony approaches is simply that you are aware they exist and that you might be interested in exploring them further according to your question.  
   
+### Combining different approaches. 
+  
+When the phylogenetic inference is the core of your study, it is highly recommended to **replicate the phylogenetic tree with different approaches**. This is most commonly achieved by combining the support from different trees obtained by independent runs of maximum likelihood and bayesian approaches.  
+Although not always it is possible to apply different approaches to the same dataset, for example for very large datasets a bayesian inference will fail to converge; and on the contrary, when estimating molecular ages a bayesian approach is much better suited since allows uncertainty.  
+Other option is to use different softwares (RAxML-ng vs. IQTree), apply different models of evolution (GTR vs. CAT), or even to replicate the alignment by (for example) reversing the sequences before aligning.  
+
 ---
   
 ## Interpreting the tree (step 5)  
@@ -247,10 +253,8 @@ Simplifying long explanations:
   
 Long branches deserve a special mention when (for example) you have several clades present in independent long branches and are *a priori* phylogenetically related (sister groups). This effect could be due to the so called **Long Branch Attraction** artifact, and the tree shows two groups closely related but simply because they are very different from all the rest and not necessarily because they are similar (or related) to one another.  
   
-When chimeric sequences come from very different parent sequences, it might be easy to spot, since all the topology of the tree might be affected. Specially when using several outgroups. But when the chimera is form from closely related groups might be problematic to identify, and most of the softwares that perform chimeric detection (such as [mothur](https://mothur.org/) or [vsearch](https://github.com/torognes/vsearch)) rely on the reference database of choice.  
-  
-When the phylogenetic inference is the core of your study, it is highly recommended to **replicate the phylogenetic tree with different approaches**. This is most commonly achieved by combining the support from different trees obtained by maximum likelihood and bayesian approaches. Although not always it is possible to apply the same approach to the same dataset, for example for very large datasets a bayesian approach will fail to converge; and on the contrary, when estimating molecular ages a bayesian approach is much better suited since allows uncertainty. In such cases it is possible to use different softwares, apply different models of evolution, or even to replicate the alignment by (for example) reversing the sequences before aligning.  
-  
+When chimeric sequences come from very different parent sequences, it might be easy to spot, since all the topology of the tree might be affected. Specially when using several outgroups. But when the chimera is form closely related groups might be problematic to identify, and most of the softwares that perform chimeric detection (such as [mothur](https://mothur.org/) or [vsearch](https://github.com/torognes/vsearch)) rely on the reference database of choice.  
+    
 The different topological possibilities of a tree are very big, and therefore any list of possible methodological problems will be far from complete. I hope with the few examples I am providing, you get the rational to identify methodological issues.  
   
 ### Interpreting the tree from a biological point of view
