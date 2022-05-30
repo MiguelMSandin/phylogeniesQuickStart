@@ -275,14 +275,9 @@ Now we can pay attention to the identifiers from the tree tips and build an evol
 If your scope was ecological, do you find any ecological pattern? If you performed a morphological and molecular characterization, do you find any morphological pattern? How is it comparing with your initial hypothesis? Your work now will be to find those patterns, they might or they might not agree with the previous knowledge.  
   
 ![Integrating knowledge](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure10_examples_9.png)   
-
-Nearly at the end, it is important to integrate the meaning of your tree in the current state of the art. What is your tree bringing to the current state of the art of your field? How is it comparing to the previous existing knowledge?  
   
-And lastly, we have to understand that evolution (or diversification) is a complex process that we tend to simplify with schematic trees .  
-TO COMPLETE!!  
-TO COMPLETE!!  
-TO COMPLETE!!  
-
+Lastly, it is important to integrate the meaning of your tree in the current state of the art. What is your tree bringing to the current state of the art of your field? How is it comparing to the previous existing knowledge?  
+  
 ---  
   
 ## Conclusion
@@ -290,7 +285,11 @@ TO COMPLETE!!
 Phylogenetic trees are hypotheses for the given data and obtained from specific methods. Therefore it is of paramount importance to adjust as far as possible your dataset and your methods to the scope of your study. Even the same question, if tackled from different methods and datasets, might result in different or even contradicting hypotheses. And yet, such both hypotheses might be correct, they will just represent **different pictures of the same reality**.  
 Let's imagine going somewhere further than the tropics and take the a picture in the exact same location through the different season. Or going within the tropics but changing the zoom throughout different pictures. In the first example we only changed the time, whereas in the second the method.  
   
-Phylogenetic patterns are constantly changing with new tools being developed that allow accessing in different approaches the biological diversity or its exploration and analysis. In this sense, our job as scientists is to integrate all the different knowledge into a comprehensive story.  
+Evolution and diversification are complex processes that we tend to simplify with trees, networks or even more elaborated stories. Yet such representations only tell one part of the story, since it is basically impossible to cover all different aspects of evolution. Selection occurs at many different levels from genes to ecosystems, going through traits, organisms, holobionts, populations and communities. Such diversity levels also interact within and between them.  
+  
+A simple example are the three domains of life, Bacteria, Archae and Eukarya.  
+  
+Phylogenetic patterns are constantly changing with new tools being developed that allow accessing nw aspects of the biological diversity, its exploration and analysis. In this sense, our job as scientists is to integrate all the different knowledge into a comprehensive story, being critical about the data we are using and aware of the limitations on the methods we are applying.  
   
 ![Different pictures of the same reality](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure11_different_pictures_of_the_same_reality.png)    
   
@@ -335,7 +334,7 @@ If not, then you should come back to **Step 1**, and think again on the chosen *
   
 ## Further reading  
   
-**Phylogenetic tree thinking**: Interpreting ([Meisel 1999](https://evolution-outreach.biomedcentral.com/articles/10.1007/s12052-010-0254-9)) ([Doolitle and Bapteste, 2007](https://www.pnas.org/doi/full/10.1073/pnas.0610699104)).  
+**Phylogenetic tree thinking**: Interpreting ([Meisel 2010](https://evolution-outreach.biomedcentral.com/articles/10.1007/s12052-010-0254-9)) ([Doolitle and Bapteste, 2007](https://www.pnas.org/doi/full/10.1073/pnas.0610699104)).  
   
 Regarding the methodological aspect of phylogenetic reconstruction, models and parameters you can directly check in the (most of the times) very well documented hands-on tutorials of the open source softwares I introduced here. Besides, I highly encourage you to extend your possiblities and go fancy in phylogenetic inference by looking and epxloring different options through the help command (i.e.; ```iqtree -h```, ```raxml-ng -h```), or through their online manuals and hands-on tutorials:
 - RAxML (not maintained any more): https://github.com/stamatak/standard-RAxML/blob/master/manual/NewManual.pdf  
