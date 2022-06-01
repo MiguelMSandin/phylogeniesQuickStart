@@ -1,7 +1,7 @@
 # A brief hands-on introduction on molecular phylogenetic studies  
 Here you will find a brief introduction on how to get started with phylogenetic analyses. All examples are given for nucleotide sequences, yet once you have gone through every step, you will feel more confortable to try different models and datasets.  
   
-Bear in mind that this is a quick practical guide for phylogenetic inference. I tried to explain only important or crucial concepts for a non-expert audience, so these lines are far from exhaustive and very simplified.  
+Bear in mind that this is a quick practical guide for phylogenetic inferenceo of nucleotide sequences. I tried to explain only important or crucial concepts for a non-expert audience, so these lines are far from exhaustive and very simplified.  
   
 ## Dependencies and softwares used for:  
 - **Sequence visualization**: [AliView](https://ormbunkar.se/aliview/) or a much simpler and faster option [SeaView](http://doua.prabi.fr/software/seaview)  
@@ -13,24 +13,29 @@ Bear in mind that this is a quick practical guide for phylogenetic inference. I 
 ## Before starting, why phylogenetic inference?  
 (If you are only interested on the 'how', you can directly go to the [summary](https://github.com/MiguelMSandin/phylogeniesQuickStart#summary) section).  
   
-Phylogenetic inference allows the exploration of **evolutionary relationships** among taxa beyond a pure pair-wise comparison.  
+Phylogenetic inference allows the exploration of **evolutionary relationships** among taxa beyond a pure pair-wise comparison of their differences.  
 Evolutionary relationships are normally inferred from observed intrinsic properties of a group of organisms such as DNA sequences, protein sequences or morphological traits.  
-The first molecular phylogenetic analysis was performed by Carl Woese and George Fox ([Woese and Fox, 1977](https://www.pnas.org/doi/full/10.1073/pnas.74.11.5088)), they defined the primary domains of life through 16S rRNA characterization. They provided a simple matrix of pairwise comparisons among DNA sequences, yet opened the doors for a much complex field of molecular evolution.  
-Now a days, when reconstructing evolutionary patterns, we assume common ancestry and a bifurcating history in the diversification of the studied organisms. And the best (or most accepted) way to represent such patterns is the so called **phylogenetic tree**.  
+The first molecular phylogenetic analysis was performed by Carl Woese and George Fox ([Woese and Fox, 1977](https://www.pnas.org/doi/full/10.1073/pnas.74.11.5088)). They defined the primary domains of life through 16S rRNA characterization. They provided a simple matrix of pairwise comparisons among DNA sequences, yet opened the doors for a much complex field of molecular evolution.  
+Now a days, when reconstructing evolutionary patterns, we assume common ancestry and a dichotomic diversification of the studied organisms. And the best (or most accepted) way to represent such patterns is the so called **phylogenetic tree**.  
   
 ## What is a phylogenetic tree?  
-The simplest answer is **a hypothesis** on the evolutionary relationships among the studied set of taxa or *phylogenetic species*, understanding *species* as genes, proteins or sepcific morphological traits.  
+The simplest answer is **a hypothesis** on the evolutionary relationships among the studied set of taxa or *phylogenetic species*, understanding such *species* as genes, proteins or specific morphological traits.  
   
 A phylogenetic tree represents a comparative analysis that meassures the **accumulated change** between pairs of *species*, normally meassured in rate of nucleotide substitution and interpreted as evolutionary change. In this sense, the **phylogenetic distance** between two given species is the accumulated horizontal length betweem them, independently of their vertical position in the tree.  
   
 Briefly, the structure of a tree is rather simple. A phylogenetic tree assumes a **bifurcating diversification** in which a given **branch** splits into two branches in one given **node**. Each node and all its descendent taxa correspond to a (monophyletic) **clade**. A node with no further descendents is a terminal node and is frequently called **tip or leaf** of the tree, representing the *phylogenetic species*.  
   
-The node gathering all *species* is called the **root** of the tree, and is normally used to give a biological and evolutionary interpretation of the tree beyond a pure relative comparison among the *species*. This node, when present, normally separates the outgroup (or outgroups) and the ingroup (please, see [Step 1](https://github.com/MiguelMSandin/phylogeniesQuickStart#species-selection-step-1) for further details on the root and the outgroups and ingroup concepts).  
+The node gathering all *species* is called the **root** of the tree, and is normally used to give a biological and evolutionary interpretation of the tree beyond a pure relative comparison among the *species*. This node, when present, corresponds to the last common ancestor of all *species* considered in the tree.  
   
 ![Tree structure](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure1_tree_structure.png)  
   
-In terms of writing and formating, the simplest tree format is called [newick](https://en.wikipedia.org/wiki/Newick_format), and it is simply a nested grouping of trees, where tips are separated by commas, and nodes are grouped by parentheses. The example above would look like as follows (without branch lengths, which are given after the given tip or node separated by a semicolon ":"):  
+In terms of formating, the simplest tree format is called [newick](https://en.wikipedia.org/wiki/Newick_format), and it is simply a nested grouping of trees, where tips are separated by commas, and nodes are grouped by parentheses. The example above would look like as follows:  
 ((a,b),((c,d),(e,f)));  
+Note the semicolon (";") terminating the tree.  
+Branch lengths (or the accumulated change) are provided after the given tip or node separated by a colon (":"), as follows:  
+((a:1,b:1),((c:1,d:1),(e:1,f:1)));  
+And finally, it is possible to add names to the nodes by simply including such names after the given node, as follows:
+((a:1,b:1),((c:1,d:1),(e:1,f:1)sub-clade)clade);  
   
 ---
   
@@ -52,38 +57,40 @@ As for any other project or analysis, the most important aspect is your **scient
   
 If you have recently sequenced some organisms and you simply want to have a rough idea of what taxonomic identity these sequences belong to, maybe a [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) or a pair-wise comparison to reference databases (such as [PR2](https://pr2-database.org/) or [SILVA](https://www.arb-silva.de/)) is more suited to your question.  
   
-Anyways, **retrieving closely related sequences or proteins** from public databases might be the first step towards the selection of the *species* that will be included in the phylogenetic tree. Here you are interested in integrating your group of interest in a broader evolutioanry context, either within other groups or to explore the relationships within your group of interest. And to do so, you need a good representation of all known diversity.  
+Anyways, **retrieving closely related sequences or proteins** from public databases might be the first step towards the selection of the *species* that will be included in the phylogenetic tree. Here you are interested in integrating your group of interest in a broader evolutionary context, either within other groups or to explore the relationships within your group of interest. And to do so, you need a good representation of all known diversity.  
   
-Unfortunately, accessing all known diversity is not a straight forward task. **Artifacts**, such as [chimeric sequences](https://en.wikipedia.org/wiki/Chimera_(molecular_biology)) produced during amplification or errors during sequencing, might affect the quality and reliability of the molecular diversity. Therefore, and once again, depending on your scientific question you might tackle this step differently.  
+Unfortunately, accessing all known diversity is not a straight forward task. **Artefacts**, such as [chimeric sequences](https://en.wikipedia.org/wiki/Chimera_(molecular_biology)) produced during amplification or errors during amplification or sequencing, might affect the quality and reliability of the molecular diversity. Therefore, and once again, depending on your scientific question you might tackle this step differently.  
 
-Let's suppose that you have sequenced one organism that have never been sequenced and you want to know its phylogenetic patterns. A quick BLAST will let you know what broad group you are dealing with. Now comes the **literature research**: check previous phylogenetic analysis of the group of interest and try to retrieve similar sequences that have been previoulsy used in other studies. I normally prefer to start from well established sequences and then remove and add more sequences step by step, depending on the given results and my question.  
+Let's suppose that you have sequenced one organism that have never been sequenced and you want to know its phylogenetic patterns. A quick BLAST will let you know what broad group you are dealing with. Now comes the **literature research**: check previous phylogenetic analysis of the group of interest and try to retrieve similar sequences that have been previoulsy used in other studies and complement with newly available sequences.  
+I normally prefer to start from few and well established sequences of my group of interest and then remove and add more sequences in consecutive phylogenetic runs, depending on the given results and my question.  
   
 Closely related sequences will allow you accessing the phylogenetic relationships of your group of interest. Yet, to infer an evolutionary history and get a broader context of your group of interest it is needed to "order" the tree in an evolutionary sense: we need to **root the tree**.  
   
 ### What is the root of the tree?  
   
-The root of the tree represents the last common ancestor of all *species* in the tree. It tells you what are the earliest diverging nodes and therefore the "direction" of the evolution.  
+The root of the tree represents the **last common ancestor** of all *species* in the tree. It tells you what are the earliest diverging nodes and therefore the "direction" of the evolution.  
   
 In the example below, you have the exact same tree rooted (right) and unrooted (left). In this example the root is splitting the first diverging clade (gathering "a" and "b") and the rest of the taxa.  
   
  ![Unrooted and rooted tree](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure2_tree_root.png)   
   
-When it comes to real data, you might be interested in the closest relatives of your group of interest (or **outgroup**) that are not your group of interest (or **ingroup**). For example if your group of interest are birds, then you might want to choose an outgroup with reptiles.  
+When it comes to real data, you might be interested in the closest relatives of your group of interest (or **outgroup**) that are not your group of interest (or **ingroup**). For example if your group of interest are birds, then you might want to choose an outgroup within reptiles.  
   
-And if you are unsure of the quality or nature of your sequences, chosing more than one outgroup is very important to quickly spot artifacts or alignment problems.  
+And if you are unsure of the quality or nature of your sequences, chosing more than one outgroup is very important to quickly spot artefacts or alignment problems.  
   
-Chosing a correct outgroup(s), is yet again one of the most important steps when it comes to phylogenetic inference. However many times it is simply not possible to choose, because of (for example) lack of ressolved phylogenetic patterns, so you will have to take a decission among different options.  
+Chosing a correct outgroup(s) is as important as chosing the correct *species* for your ingroup. However, many times it is simply not possible to choose, because of (for example) lack of ressolved phylogenetic patterns, so you will have to take a decission among different options.  
   
 ---
   
 ## Basic pipeline  
   
-Let's assume we have already selected our ingroup and outgroup(s), let's build now a phylogenetic tree.  
+> Please, bear in mind that there are many different ways to infer phylogenetic patterns among genes, proteins or even morphological characters (or other traits). Here I will just guide you through a basic step-by-step pipeline that I normally use for quick and exploratory analyses of DNA sequences.  
   
-Please, bear in mind that there are many different ways to infer phylogenetic patterns among genes, proteins or even morphological characters (or other traits). Here I will just guide you through a basic step-by-step pipeline that I normally use for quick and exploratory analyses of DNA sequences.  
+We have already selected our *species* (both ingroup and outgroup or outgroups), let's build now a phylogenetic tree.  
   
-Let's name our input and output files as follows:  
+First we set the variable name of our input fasta file as follows:  
 ```FASTA="file.fasta"```  # The raw fasta file  
+And we call the output files as follows:  
 ```ALIGNED=${INPUT/.fasta/_align.fasta}```  # The aligned fasta file  
 ```FILE=${ALIGNED/.fasta/_trimed.fasta}```  # The aligned and trimmed fasta file ready for phylogenetic inference  
 ```OUTPUT="test1"```  # The basic tree name  
@@ -92,22 +99,24 @@ Let's name our input and output files as follows:
   
 ## Align (step 2)  
   
+Different genes evolve at different rates, and so does different regions of the gene. Therefore, before comparing different sequences, we have to make them comparable to one another. And to do so, we have to **align** the sequences.  
+  
 ![Step2 align sequences](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure3_step2_align.png)  
   
-Depending on the sequences you are aligning you may want to play with the different options that MAFFT offer. I recommend playing with them and with different datasets (highly similar and highly divergent sequences) to fully understand them.  
-  
-For large dataset I normally use the default options:  
+For example using **MAFFT**, for large dataset I normally use the default options:  
 ```mafft $FASTA > $ALIGNED```  
 For a small dataset (<200 sequences) of different groups, I normally use:  
 ```mafft --maxiterate 1000 --localpair $FASTA > $ALIGNED```  
 And for a small dataset (<200 sequences of similarish length) of closely related group, I normally use:  
 ```mafft --maxiterate 1000 --globalpair $FASTA > $ALIGNED```  
   
+Depending on the sequences you are aligning you may want to play with the different options that MAFFT offer. I recommend playing with them and with different datasets (highly similar and highly divergent sequences) to fully understand them.  
+  
 It is important to manually check the alignment in AliView (or SeaView) if you are working with recently sequenced sequences or of doubted origin. There might be some misalignment or weird stuff easy to spot due to bad quality or errors sequencing.  
   
 Other softwares (such as [muscle](http://www.drive5.com/muscle/), [clustal](http://www.clustal.org/omega/) or [T-Coffee](https://www.tcoffee.org/Projects/tcoffee/index.html)) offer other possibilities.  
   
-It is also possible (yet requires experience and is time consuming) to align the sequences based on complementary regions of the hypothetical 2D structure of the given coding gene or rDNA (if known).  
+It is also possible (yet requires experience) to align the sequences based on complementary regions of the hypothetical 2D structure of the given coding gene or rDNA (if known).  
   
 ---
   
