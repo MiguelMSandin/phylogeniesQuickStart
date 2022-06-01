@@ -10,7 +10,7 @@ BS=""
 THREADS=""
 
 # Using the GTR+gamma model of evolution
-raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N $BS -n $FILE -s ${FILE/.fasta/_RAxML-GTRgamma}
+raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -n $FILE -s ${FILE/.fasta/_RAxML-GTRgamma}
 
 # Using the CAT model of evolution
-raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -d -f a -N $BS -n $FILE -s ${FILE/.fasta/_RAxML-CAT}
+raxmlHPC-PTHREADS-SSE3 -T $THREADS -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -f a -N $BS -n $FILE -s ${FILE/.fasta/_RAxML-CAT}
