@@ -7,7 +7,7 @@ Bear in mind that this is a quick practical guide for phylogenetic inference. I 
 - **Sequence visualization**: [AliView](https://ormbunkar.se/aliview/) or a much simpler and faster option [SeaView](http://doua.prabi.fr/software/seaview)  
 - **Sequence alignments**: [MAFFT](https://mafft.cbrc.jp/alignment/software/)  
 - **Trimming alignment**: [trimAl](http://trimal.cgenomics.org/downloads)  
-- **Phylogenetic reconstruction**:[rapidNJ](https://birc.au.dk/software/rapidnj/), [RAxML](https://github.com/stamatak/standard-RAxML), [RAxML-ng](https://github.com/amkozlov/raxml-ng), [IQtree](http://www.iqtree.org/), [MrBayes](https://nbisweden.github.io/MrBayes/)  
+- **Phylogenetic reconstruction**:[rapidNJ](https://birc.au.dk/software/rapidnj/), [RAxML](https://github.com/stamatak/standard-RAxML), [RAxML-ng](https://github.com/amkozlov/raxml-ng), [IQ-TREE](http://www.iqtree.org/), [MrBayes](https://nbisweden.github.io/MrBayes/)  
 - **Tree visualization**: [figTree](http://tree.bio.ed.ac.uk/software/figtree/)  
   
 ## Before starting, why phylogenetic inference?  
@@ -164,7 +164,7 @@ or faster and very similar output:
   
 With **RAxML-ng** you could use the Graphical User Interface option throught their server: [RAxML-NG](https://raxml-ng.vital-it.ch/#/), or have a look at [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.2_RAxML-ng.sh) for further details through the comand line.  
   
-With **IQtree** you can run **modelTest** (you can also do it in [**R**](https://www.r-project.org/), with the packages [*ape*](https://cran.r-project.org/web/packages/ape/index.html) and [*phangorn*](https://cran.r-project.org/web/packages/phangorn/index.html), see [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.5_PhyML_in_R.R) for further details), which is used to select the best substitution model fitting your data:  
+With **IQ-TREE** you can run **modelTest** (you can also do it in [**R**](https://www.r-project.org/), with the packages [*ape*](https://cran.r-project.org/web/packages/ape/index.html) and [*phangorn*](https://cran.r-project.org/web/packages/phangorn/index.html), see [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.5_PhyML_in_R.R) for further details), which is used to select the best substitution model fitting your data:  
   
 ```MEM=2GB```  
 ```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
@@ -223,8 +223,8 @@ Besides, as you might have figured out by now, your scientific question is one o
 ### Combining different approaches. 
   
 When the phylogenetic inference is the core of your study, it is highly recommended to **replicate the phylogenetic tree with different approaches**. This is most commonly achieved by combining the support from different trees obtained by independent runs of maximum likelihood and bayesian approaches.  
-Although not always it is possible to apply different approaches to the same dataset, for example for very large datasets a bayesian inference will fail to converge; and on the contrary, when estimating molecular ages a bayesian approach is much better suited since allows uncertainty.  
-Other option is to use different softwares (RAxML-ng vs. IQTree), apply different models of evolution (GTR vs. CAT), or even to replicate the alignment by (for example) reversing the sequences before aligning.  
+Although not always it is possible to apply different approaches to the same dataset, for example for very large datasets a bayesian inference might fail to converge; or when estimating molecular ages a bayesian approach is much better suited since allows uncertainty.  
+Other option is to use different softwares (RAxML-ng vs. IQ-TREE), apply different models of evolution (GTR vs. CAT), or even to replicate the alignment by (for example) reversing the sequences before aligning.  
 
 ---
   
@@ -318,7 +318,7 @@ with **RAxML**:
 ```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRgamma -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T 2```  
 and/or **RAxML-ng**:  
 ```raxml-ng --all --msa $FILE --model GTR+G --tree pars{10} --prefix ${OUTPUT}_raxml-ng-GTRgamma --seed $RANDOM --threads $THREADS --bs-trees $BS```  
-and/or **IQtree**:  
+and/or **IQ-TREE**:  
 ```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree-mt -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
 and/or using a **Bayesian Inference** approach with **MrBayes** (you can find an example script here: [phylo_mrBayes.sh](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/scripts/3.4.1_MrBayes_set.sh)):  
 ```mb < phylo_mrBayes.sh > ${OUTPUT]_mrBayesgamma.log```  
@@ -327,13 +327,13 @@ and/or using a **Bayesian Inference** approach with **MrBayes** (you can find an
 First from a **methodological point of view**: Are all nodes highly supported? Are there no polytomic nodes? Are there no long branches?  
 Then we add the **biological thinking**: Are the outgroups clearly defined and independent from the ingroup? Are the patterns among clades as previously reported/suggested/expected? Can you explain the tree topology according to the *species* you used (e.g.; rRNA genes, plastids, proteins)?  
 Lastly we add a **broader context**: can you explain the tree in a biological integrative context? For example if using genes/proteins, can you explain it from a morphological or ecological point of view? What is contributing to the state of the art of your research?  
-If not, then you should come back to **Step 1**, and think again on the chosen *species* and/or try to use different trimming options according to your scientific question.   
+If not, then you should come back to **Step 1**, think again on the chosen *species*, try different alignment options and/or try to use different trimming options more suited to your scientific question.   
   
 ---
   
 ## Further reading  
   
-**Phylogenetic tree thinking**: Interpreting phylogenetic trees seems *a priori* a simple task, since it is indeed a simple representation of a dichotomic diversification. Yet as we have seen throughout this crash course, a phylogenetic tree might lead to m ([Meisel 2010](https://evolution-outreach.biomedcentral.com/articles/10.1007/s12052-010-0254-9)) ([Doolitle and Bapteste, 2007](https://www.pnas.org/doi/full/10.1073/pnas.0610699104)).  
+**Phylogenetic tree thinking**: Interpreting phylogenetic trees seems *a priori* a simple task, since it is indeed a simple representation of a dichotomic diversification. Yet as we have seen throughout this crash course, a phylogenetic tree might lead to misinterpretation when not interpreted from an integrative methodological and biological perspective ([Meisel 2010](https://evolution-outreach.biomedcentral.com/articles/10.1007/s12052-010-0254-9)). In this context, a single tree provides one version of a very complex process that requires a criticial thinking and interpretion from many different points of view ([Doolitle and Bapteste, 2007](https://www.pnas.org/doi/full/10.1073/pnas.0610699104)).  
   
 Regarding the methodological aspect of phylogenetic reconstruction, models and parameters you can directly check in the (most of the times) very well documented hands-on tutorials of the open source softwares I introduced here. Besides, I highly encourage you to extend your possiblities and go fancy in phylogenetic inference by looking and epxloring different options through the help command (i.e.; ```iqtree -h```, ```raxml-ng -h```), or through their online manuals and hands-on tutorials:
 - RAxML (not maintained any more): https://github.com/stamatak/standard-RAxML/blob/master/manual/NewManual.pdf  
@@ -343,4 +343,4 @@ Regarding the methodological aspect of phylogenetic reconstruction, models and p
 - R: ape and phangorn: https://cran.r-project.org/web/packages/phangorn/vignettes/Trees.html  
 - BEAST: https://beast.community/first_tutorial. 
 - BEAST2: https://www.beast2.org/tutorials/  
-    
+  
