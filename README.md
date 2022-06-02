@@ -189,13 +189,13 @@ It is important to check the **log** file reporting the different analytical ste
   
 Bayesian Inference ([Rannala and Yang, 1996](https://link.springer.com/article/10.1007/BF02338839); [Yang and Rannala, 1997](https://academic.oup.com/mbe/article/14/7/717/1119795)) randomly estimates the model parameters accross a statistical distribution resulting in different trees. The likelihood of the trees are computed *a posteriori* (actually they are approximated by [Markov Chain Monte Carlo](https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo) -MCMC- methods) resulting in **posterior probabilities**, which can be understood as the probability of a tree being right given the randomly selected model parameters.  
   
-[Bayesian Inference](https://en.wikipedia.org/wiki/Bayesian_inference) collectes information along the way to update and improve the model parameters. A single inference will most likely yield a rather poor tree. Yet in the following **cycles** (sometimes also called iterations, generations or even chains) model parameters are going to be adjusted based on previously collected information resulting in trees with higher and higher likelihood. In this sense, the number of generations will affect the random sampling, and therefore your results.  
+[Bayesian Inference](https://en.wikipedia.org/wiki/Bayesian_inference) collectes information along the way to update and improve the model parameters. A single inference will most likely yield a rather poor tree, since the search for model parameters is predefined or random (to an extent). Yet in the following **cycles** (sometimes also called iterations, generations or even chains) model parameters are going to be adjusted based on previously collected information resulting in trees with higher and higher likelihood. In this sense, the number of generations will affect the random sampling, and therefore your results.  
 It is recommended to monitor the likelihood per cycle to be sure that your model optimization is arriving to a **convergence**. Normally, a safe option is to opt for a very long chain, but an excessively long chain might result in a waste of computational resources. If you are interested in a trade-off between ensuring convergence and not spending several days, weeks or months in a redundant analysis you can explore the [Effective Sample Size](https://beast.community/ess_tutorial) of the MCMC run in the software [Tracer](https://beast.community/tracer).  
 Because of the long sampling, when you choose a Bayesian approach it is very important to check the likelihood over the different cycles and remove the "learning slope", normally referred to as **burn-in**.  
   
 ![Step4.3](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure7_step4.3_BI.png)  
   
-Again, for inferring phylogenies by bayesian approaches we have different softwares. Such as [MrBayes](https://nbisweden.github.io/MrBayes/), [BEAST](https://beast.community/), [BEAST2](https://www.beast2.org/) or [PhyloBayes](http://www.atgc-montpellier.fr/phylobayes/). Yet, they need most of the times to be run in different blocks, and therefore many different parameters need to be set that will influence your analysis. instead of running them from a single command, as we did for ML approaches, here we save all our options in a simple text (or xml) file and we run the file within the BI software.  
+Bayesian approaches are available inmany different softwares. Such as [MrBayes](https://nbisweden.github.io/MrBayes/), [BEAST](https://beast.community/), [BEAST2](https://www.beast2.org/) or [PhyloBayes](http://www.atgc-montpellier.fr/phylobayes/). Yet, they need most of the times to be run in different blocks, where different parameters need to be set that will influence your analysis. Instead of running them from a single command, as we did for ML approaches, here we save all our options in a simple text (or xml) file and we run the file within the BI software.  
   
 Here you have an example of a script to be run using **MrBayes**, let's save it as "**phylo_mrBayes.sh**":  
 ```set autoclose=yes nowarnings=yes```  
@@ -210,11 +210,11 @@ Here you have an example of a script to be run using **MrBayes**, let's save it 
 That can be run as follows:  
 ```mb < phylo_mrBayes.sh > ${OUTPUT}_mrBayesgamma.log &```  
   
-Something to bear in mind is that MrBayes uses "nexus" format and not "fasta". This can be easily exported/transformed in AliView.  
+> Something to bear in mind is that MrBayes uses "nexus" format and not "fasta". This can be easily exported/transformed in AliView.  
   
 Alternatively, you can type each one of the lines from the script that we called *phylo_mrBayes.sh* directly in the MrBayes prompt (except for the first line, which sets the autoclosing).  
   
-And in this script ([phylo_BEAST.xml](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/scripts/3.4.3_phylo_BEAST.xml)) you can find an example of a **BEAST** xml file in its most simple way (don't panic! such xml file can be created through the graphical user interface package [BEAUti](https://beast.community/beauti)), that can be run as follows:  
+And in this script ([phylo_BEAST.xml](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/scripts/3.4.3_phylo_BEAST.xml)) you can find an example of a **BEAST** xml file in its most simple format (don't panic! such xml file can be created through the graphical user interface package [BEAUti](https://beast.community/beauti)), that can be run as follows:  
   
 ```beast -seed $RANDOM -beagle_SSE phylo_BEAST.xml```  
 And now we have to summarise the chain with [treeannotator](https://beast.community/treeannotator):  
@@ -224,29 +224,32 @@ The main problem (or advantage, depends on your question) is that BEAST assumes 
   
 ### Using a parsimony approach
   
-The parsimony approach assumes that the minimum number of changes best explains phylogenetic relatedness. Due to the big simplification of the incredibly complex process that is evolution, this approach has been heavily critized and almost abandon. However I believe it is still very usefull to understand and know since it yields very good results when used as starting tree for both ML and BI approaches. Indeed, raxml-ng implements in its pipeline the use of parsimony to estimate the initial tree.  
+The parsimony approach assumes that the minimum number of changes best explains phylogenetic relatedness. Due to the big simplification of the incredibly complex process that is evolution, this approach has been heavily critized and almost abandon. However I believe it is still very usefull to understand and know it exists since parsimony yields very good results when used as starting tree for both ML and BI approaches. Indeed, raxml-ng implements in its pipeline the use of parsimony to estimate the initial tree.  
+We can quickly have a look at a parsimonious tree as follows with **RAxML**:  
   
 ```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-parsimony-GTRgamma -s $FILE -y -m GTRGAMMA -p```    
   
-Besides, as you might have figured out by now, your scientific question is one of the most important steps. In this context, ML and BI yields very good results for complex DNA or protein sequences. But when it comes to **ancestral state reconstruction** of non-neutral traits, such as habitat or specific morphological traits, the simplification of parsimonious approaches seems to yield better results ([Holland et al. 2020](https://www.nature.com/articles/s41598-020-64647-4)). It is important to understand that most of the times such analyses are performed over an already inferred phylogenetic tree, and therefore the analyses is no longer about phylogenetic inferring (but about ancestral state reconstruction). In this context, other softwares (such as [Mesquite](https://www.mesquiteproject.org/) or [TNT](http://gensoft.pasteur.fr/docs/TNT/1.5/)) and approches (such as [Maximum Parsimony](https://en.wikipedia.org/wiki/Maximum_parsimony_(phylogenetics))) have been developed. My experience in this area is very limited and I do not feel confortable explaining them. Besides, as pointed out by [Holland et al. (2020)](https://www.nature.com/articles/s41598-020-64647-4), ancestral state reconstruction analyses should be considered and evaluated carefully. Therefore my take-home message of parsimony approaches is simply that you are aware they exist and that you might be interested in exploring them further according to your question.  
+Besides, as you might have figured out by now, your scientific question is the most important part when it comes to take decission on the methdological approach. In this context, ML and BI yields very good results for complex DNA or protein sequences. But when it comes to **ancestral state reconstruction** of non-neutral traits, such as habitat or specific morphological traits, the simplification of parsimonious approaches seems to result in more plausible hypothesis ([Holland et al. 2020](https://www.nature.com/articles/s41598-020-64647-4)). It is important to understand that most of the times such analyses are performed over an already inferred phylogenetic tree, and therefore the analyses is no longer about phylogenetic inferring (but about ancestral state reconstruction). In this context, other softwares (such as [Mesquite](https://www.mesquiteproject.org/) or [TNT](http://gensoft.pasteur.fr/docs/TNT/1.5/)) and approches (such as [Maximum Parsimony](https://en.wikipedia.org/wiki/Maximum_parsimony_(phylogenetics))) have been developed. My experience in this area is very limited and I do not feel confortable explaining them. Besides, as pointed out by [Holland et al. (2020)](https://www.nature.com/articles/s41598-020-64647-4), ancestral state reconstruction analyses should be considered and evaluated carefully.  
+
+My take-home message of parsimony approaches is simply that you are aware they exist and that you might be interested in exploring them further according to your question.  
   
 ### Combining different approaches. 
   
-When the phylogenetic inference is the core of your study, it is highly recommended to **replicate the phylogenetic tree with different approaches**. This is most commonly achieved by combining the support from different trees obtained by independent runs of maximum likelihood and bayesian approaches.  
-Although not always it is possible to apply different approaches to the same dataset, for example for very large datasets a bayesian inference might fail to converge; or when estimating molecular ages a bayesian approach is much better suited since allows uncertainty.  
-Other option is to use different softwares (RAxML-ng vs. IQ-TREE), apply different models of evolution (GTR vs. CAT), or even to replicate the alignment by (for example) reversing the sequences before aligning.  
-
+When the phylogenetic inference is the core of your study, it is highly recommended to **replicate the phylogenetic tree with different approaches**. This is most commonly achieved by combining the support from different trees obtained by independent runs of maximum likelihood **and** bayesian approaches.  
+Although not always it is possible to apply different approaches to the same dataset, for example for very large datasets a bayesian inference might fail to converge; or when estimating molecular ages a bayesian approach is much better suited since allows uncertainty in the priors.  
+Other options could be to: (i) use different softwares (RAxML-ng vs. IQ-TREE), (ii) apply different models of evolution (GTR vs. CAT), (iii) or even to replicate the alignment with different softwares, options or reversing the sequences before aligning.  
+  
 ---
   
 ## Interpreting the tree (step 5)  
   
-This might be the most complicated step, and it is only getting easier with experience and after failing many times. We have to remember that the phylogentic tree that we have just inferred is **a hypothesis** of the data (and model) we used, and we should always be critical to our initial hypothesis.  
+This might be the most complicated step, and it is only getting easier with experience and after failing many times. We have to remember that the phylogentic tree that we have just inferred in the previous step is **a hypothesis** of the data (and model) we used, and we should always be critical to our initial hypothesis and our methods.  
   
-Briefly, you are inferring a phylogenetic tree because it is **the mean to answer your scientific question**. In this sense, you have several interconnected layers to pay attention to. Firstly you want to check if you have correctly built the tree in a pure methodological point of view. Then you want to understand how the tree explains your data within your study, or in other words the results of the tree. And lastly you are interested in discussing the tree in a broader evolutionary context.  
+Briefly, you are inferring a phylogenetic tree because it is **a mean to answer your scientific question**. In this sense, you have several interconnected layers to pay attention to. Firstly you want to check if you have correctly built the tree in a pure methodological point of view. Then you want to understand how the tree explains your data within your study, or in other words the results of the tree. And lastly you are interested in discussing the tree in a broader evolutionary context.  
   
 ### Interpreting the tree from a methodological point of view
   
-At this stage you are looking for artifacts, sequences badly aligned (or even in the reverse order), an appropriate trimming threshold that fits to your sequences, enough number of bootstraps/generations, ... Briefly, your tree should have:  
+At this stage you are looking for artefacts, sequences badly aligned (or even in the reverse order), an appropriate trimming threshold that fits to your sequences, enough number of bootstraps/generations, ... Briefly, your tree should have:  
 - highly supported nodes,  
 - no polytomies or no near-0 internal branch lengths,  
 - no *very long* branches and  
@@ -261,9 +264,9 @@ Simplifying long explanations:
 
 ![examples_1-4](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure8_examples_1-4.png)  
   
-Long branches deserve a special mention when (for example) you have several clades present in independent long branches and are *a priori* phylogenetically related (sister groups). This effect could be due to the so called **Long Branch Attraction** artifact, and the tree shows two groups closely related but simply because they are very different from all the rest and not necessarily because they are similar (or related) to one another.  
+Long branches deserve a special mention when (for example) you have several clades present in independent long branches and are *a priori* phylogenetically related (sister groups). This effect could be due to the so called **Long Branch Attraction** artefact, and the tree shows two groups closely related but simply because they are very different from all the rest and not necessarily because they are similar (or related) to one another.  
   
-When chimeric sequences come from very different parent sequences, it might be easy to spot, since all the topology of the tree might be affected. Specially when using several outgroups. But when the chimera is form closely related groups might be problematic to identify, and most of the softwares that perform chimeric detection (such as [mothur](https://mothur.org/) or [vsearch](https://github.com/torognes/vsearch)) rely on the reference database of choice.  
+When chimeric sequences come from very different parent sequences, it might be easy to spot, since all the topology of the tree might be affected. Specially when using several outgroups. But when the chimera is form from closely related groups might be problematic to identify. Most of the softwares that perform chimeric detection (such as [mothur](https://mothur.org/) or [vsearch](https://github.com/torognes/vsearch)) rely on the reference database of choice, so you have to be careful when selecting the input sequences.  
     
 The different topological possibilities of a tree are very big, and therefore any list of possible methodological problems will be far from complete. I hope with the few examples I am providing, you get the rational to identify methodological issues.  
   
