@@ -99,7 +99,7 @@ And we call the output files as follows:
   
 ## Align (step 2)  
   
-Different genes evolve at different rates, and so does different regions of the gene. Therefore, before comparing different sequences, we have to make them comparable to one another. And to do so, we have to **align** the sequences.  
+Different genes evolve at different rates, and so does different regions of the gene. Therefore, we have to make the sequences comparable to one another so we can actually estimate divergence from different regions of different sequences that share a functional or structural role. And to do so, we have to **align** the sequences.  
   
 ![Step2 align sequences](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure3_step2_align.png)  
   
@@ -114,7 +114,7 @@ Depending on the sequences you are aligning you may want to play with the differ
   
 It is important to manually check the alignment in AliView (or SeaView) if you are working with recently sequenced sequences or of doubted origin. There might be some misalignment or weird stuff easy to spot due to bad quality or errors sequencing.  
   
-Other softwares (such as [muscle](http://www.drive5.com/muscle/), [clustal](http://www.clustal.org/omega/) or [T-Coffee](https://www.tcoffee.org/Projects/tcoffee/index.html)) offer other possibilities.  
+Other softwares offer other possibilities, for example [muscle](http://www.drive5.com/muscle/) (very useful for proteins) stores ambiguities or alignment errors for downstream analysis, and [clustal](http://www.clustal.org/omega/) uses a [HMM profile](https://www.ebi.ac.uk/training/online/courses/pfam-creating-protein-families/what-are-profile-hidden-markov-models-hmms) to generate the alignment. Further posibilities can be found at the [EMBL-EBI](https://www.ebi.ac.uk/Tools/msa/).  
   
 It is also possible (yet requires experience) to align the sequences based on complementary regions of the hypothetical 2D structure of the given coding gene or rDNA (if known).  
   
@@ -138,19 +138,16 @@ Other sofwares highly used are [Gblocks](http://molevol.cmima.csic.es/castresana
   
 ## Phylogenetic analyses (step 4)  
   
-The alignment provides now a basis to meassure differences/similarities among sequences. Although not every difference of nucleotide has the same evolutionary consequence.  
+The alignment provides now a basis to meassure differences/similarities among sequences. A pairwise comparison between group of *species* gives a first quick look of the alignment and the *species* themselves.  
+Yet, the phylogenetic relatedness is not directly link to the similarity or dissimilarity of the *species*, since not every difference of nucleotide has the same evolutionary consequence. Besides, some columns of the alignment will be prone to be more conservative and others to be more variable. Therefore the same nucleotide change may imply different weight depending on their position in the alignment. Different [**models of evolution**](https://en.wikipedia.org/wiki/Models_of_DNA_evolution) assume different parameters resulting in different rates of evolution among the same sequences, and allows comparing not only *species* but also different columns of the alignment.  
   
-The simplest tree is a Neighbor Joining tree, representing the direct distance between the *species*. In this approach, *species* are grouped together based on similarity, until there is no more *species* left.  
+The simplest tree is a **Neighbor Joining** tree, where *species* are grouped together based on similarity, until there is no more *species* left. And the simplest model of evolution is the so-called **Jukes-Cantor** model ([Jukes and Cantor, 1969](https://doi.org/10.1016/B978-1-4832-3211-9.50009-7)) assuming equal base frequencies and equal mutation rates. In a slightly more complex model, **Motoo Kimura** included two more parmeters for the different implications of [transitions](https://en.wikipedia.org/wiki/Transition_(genetics)) and [transverions](https://en.wikipedia.org/wiki/Transversion) in the evolutionary rate ([Kimura, 1980](https://link.springer.com/article/10.1007/BF01731581)).  
    
 ```rapidnj $FILE > ${OUTPUT}_NJ.tre```  
   
 ![Step4.1](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure5_step4.1_model_of_evolution.png)  
   
-A pairwise comparison between group of *species* gives a first quick look of the alignment and the *species* themselves. However the phylogenetic relatedness is not directly link to the similarity or dissimilarity of the *species*, since not every region of the sequence evolve at the same rate. 
-  
-In this sense, some columns of the alignment will be prone to be more conservative and others to be more variable. Therefore the same nucleotide change may imply different weight depending on their position in the alignment. Different **models of evolution** assume different parameters resulting in different rates of evolution among the same sequences, and allows comparing not only *species* but also different columns of the alignment.  
-  
-Models of evolution rely on many assumptions and parameters that need to be estimated, adjusted and improved in order to better fit the given dataset. Such fit is normally measssured by the **likelihood** (or more precissely the logarithmic of the likelihood) and in essence it tells you the probability to observe your data given the model. In the case of phylogenetic inference, we can translate this definition as how well your tree (or model and its parameters) explains your sequence alignment (or data). And to find the highest possible likelihood, several approaches have been proposed:  
+More complex models of evolution rely on many assumptions and parameters that need to be estimated, adjusted and improved in order to better fit the given dataset. Such fit is normally measssured by the **likelihood** (or more precissely the logarithmic of the likelihood) and in essence it tells you the probability to observe your data given the model. In the case of phylogenetic inference, we can translate this definition as how well your tree (or model and its parameters) explains your sequence alignment (or data). And to find the highest possible likelihood, several approaches have been proposed:  
   
 ### Using a Maximum Likelihood (ML) approach  
   
