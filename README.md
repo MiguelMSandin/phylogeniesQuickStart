@@ -128,7 +128,7 @@ In this step we want to remove position that might be irrelevant, add noise, wit
   
 We can automatically do that with **trimAl** as follows:  
   
-```trimal -in $FASTA -out $FILE -gt X```  
+```trimal -in $ALIGNED -out $FILE -gt X```  
   
 Being X the coverage threshold at a given position. I normally use 30% for a quick analysis and 5% for a more resolutive analysis. Again, depending on your scope you will have to play with different options. Other useful options are "```-st```" (removing positions above certain dissimilarity threshold), "```-nogaps```" (removing all positions with gaps) and "```-noallgaps```" (removing only positions composed only by gaps).  
   
