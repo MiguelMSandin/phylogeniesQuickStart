@@ -282,6 +282,16 @@ For example:
   
 ![examples_5-8](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure9_examples_5-8.png)  
   
+#### What is a "well-supported" clade?  
+  
+Identifying well defined clades is a difficult task and there are no universal thresholds to define such a thing.  
+For example: when using only one or two genes, if a clade has >90% bootstrap or >0.9 posterior probabilities you can be very confident of the support of that clade. On the contrary, if a clade has <60% BS or <0.6%, that specific clade might be close to random selection. When using multiple concatenation of genes, these threshold could increase considerably, and not relying on a clade that has 85% BS or 0.85 PP.  
+Besides, the tree topology might influence on the decision of calling a clade "well-supported". Therefore and once again, this might depend on the scope of your analysis and the data used.  
+  
+#### Identifying equivalent lineages  
+  
+Similarly to the previous subsection, identifying equivalent lineages will depend on the data used, the tree topology and the support of the clades. However, if two independent clades have similar branch lengths and their distance to the root is somehow similar, we cn argue that their hierarchical classification might be similar (i.e.; class, order, family).  
+  
 ### Integrating the tree in a broader evolutionary context
   
 We have performed a technical check of the tree, and seems OK with the exceptions of few minor technical discrepancies. We have interpreted those discrepancies from a biological point of view, and they are easily explained with the given dataset.  
