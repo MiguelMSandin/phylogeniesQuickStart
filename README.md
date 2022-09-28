@@ -290,7 +290,7 @@ Besides, the tree topology might influence on the decision of calling a clade "w
   
 #### Identifying equivalent lineages  
   
-Similarly to the previous subsection, identifying equivalent lineages will depend on the data used, the tree topology and the support of the clades. However, if two independent clades have similar branch lengths and their distance to the root is somehow similar, we cn argue that their hierarchical classification might be similar (i.e.; class, order, family).  
+Similarly to the previous subsection, identifying equivalent lineages will depend on the data used, the tree topology and the support of the clades. However, if two independent clades have relatively similar branch lengths and their distance to the root is somehow similar, we can argue that their hierarchical classification might be similar (i.e.; class, order, family).  
   
 ### Integrating the tree in a broader evolutionary context
   
