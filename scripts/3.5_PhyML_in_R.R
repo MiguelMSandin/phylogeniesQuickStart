@@ -2,7 +2,7 @@
 library(ape)
 library(phangorn)
 
-setwd("/home/mmsandin/Desktop/Collaborations/Natalia/phylogenies/")
+setwd("")
 
 file <- ""
 bootstraps <- ""
