@@ -112,7 +112,7 @@ And for a small dataset (<200 sequences of similarish length) of closely related
   
 Depending on the sequences you are aligning you may want to play with the different options that MAFFT offer. I recommend playing with them and with different datasets (highly similar and highly divergent sequences) to fully understand them.  
   
-It is important to manually check the alignment in AliView (or SeaView) if you are working with recently sequenced sequences or of doubted origin. There might be some misalignment or weird stuff easy to spot due to bad quality or errors sequencing.  
+It is important to manually check the alignment in AliView (or SeaView) if you are working with recently sequenced sequences or of doubted origin. There might be some misalignment or weird stuff easy to spot due to bad quality or sequencing errors.  
   
 Other softwares offer other possibilities, for example [muscle](http://www.drive5.com/muscle/) (very useful for proteins) stores ambiguities or alignment errors for downstream analysis, and [clustal](http://www.clustal.org/omega/) uses a [HMM profile](https://www.ebi.ac.uk/training/online/courses/pfam-creating-protein-families/what-are-profile-hidden-markov-models-hmms) to generate the alignment. Further posibilities can be found at the [EMBL-EBI](https://www.ebi.ac.uk/Tools/msa/).  
   
@@ -170,7 +170,7 @@ The first example with **RAxML**:
 or faster model and most of the times very similar output:  
 ```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRcat -s $FILE -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -f a -N $BS -T $THREADS```  
   
-With **RAxML-ng** you could use the Graphical User Interface option throught their server: [RAxML-NG](https://raxml-ng.vital-it.ch/#/), or have a look at [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.2_RAxML-ng.sh) for further details through the comand line.  
+With **RAxML-ng** you could use the Graphical User Interface option through their server: [RAxML-NG](https://raxml-ng.vital-it.ch/#/), or have a look at [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.2_RAxML-ng.sh) for further details through the comand line.  
   
 With **IQ-TREE** you can run **modelTest**, which is used to select the best substitution model fitting your data:  
   
@@ -178,6 +178,7 @@ With **IQ-TREE** you can run **modelTest**, which is used to select the best sub
 ```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
   
 And if you know the model of evolution to be used you can add it to the command. Most of the times, the best model is the Generalised Time Reversible model (Tabaré, 1986; *Lectures Math. Life Sci* 17:2,57-86) with a Gamma distribution and proportion of Invariant sites for rate hetereogenity (GTR+G+I, but it also is the most complex model): ```-m GTR+I+G```  
+IQ-Tree can also be used interactively in [this server](http://iqtree.cibiv.univie.ac.at/).  
   
 ModelTest can also be run in [**R**](https://www.r-project.org/), with the packages [*ape*](https://cran.r-project.org/web/packages/ape/index.html) and [*phangorn*](https://cran.r-project.org/web/packages/phangorn/index.html) (see [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.5_PhyML_in_R.R) for further details).  
   
