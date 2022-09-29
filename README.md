@@ -184,7 +184,7 @@ ModelTest can also be run in [**R**](https://www.r-project.org/), with the packa
   
 Once again, different options will address better different questions...  
   
-It is important to check the **log** file reporting the different analytical steps. Here you check the likelihood of the tree over the different bootstraps, the model parameters optimization or the proportion of invariant sites in the alignment. Basically, you check that there is indeed an improvement and that the alignment is actually informative.  
+It is important to check the **log** file reporting the different analytical steps. Here you check the likelihood of the tree over the different bootstraps, the model parameters optimization or the proportion of invariant sites in the alignment, etc. Basically, you check that there is indeed an improvement and that the alignment is actually informative.  
   
 ### Using a Bayesian Inference (BI) approach  
   
