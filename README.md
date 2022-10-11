@@ -53,7 +53,7 @@ The most important steps of phylogenetic inference are the ***species* selection
   
 ## *Species* selection (step 1)
   
-As for any other project or analysis, the most important aspect is your **scientific question**. Why do you want to infer a phylogeny? What is the importance of the phylogeny for your study? How other studies will benefit from your phylogeny?  
+As for any other project or analysis, the most important aspect is your **scientific question**. Why do you want to infer a phylogeny? What is the importance of the phylogeny to your study? How other studies will benefit from your phylogeny?  
   
 If you have recently sequenced some organisms and you simply want to have a rough idea of what taxonomic identity these sequences belong to, maybe a [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) or a pair-wise comparison to reference databases (such as [PR2](https://pr2-database.org/) or [SILVA](https://www.arb-silva.de/)) is more suited to your question.  
   
