@@ -15,8 +15,8 @@ Bear in mind that this is a quick practical guide for phylogenetic inference of 
   
 Phylogenetic inference allows the exploration of **evolutionary relationships** among taxa beyond a pure pair-wise comparison of their differences.  
 Evolutionary relationships are normally inferred from observed intrinsic properties of a group of organisms such as DNA sequences, protein sequences or morphological traits.  
-The first molecular phylogenetic analysis was performed by Carl Woese and George Fox ([Woese and Fox, 1977](https://www.pnas.org/doi/full/10.1073/pnas.74.11.5088)). They defined the primary domains of life through 16S rRNA characterization. They provided a simple matrix of pairwise comparisons among DNA sequences, yet opened the doors for a much complex field of molecular evolution.  
-Now a days, when reconstructing evolutionary patterns, we assume common ancestry and a dichotomic diversification of the studied organisms. And the best (or most accepted) way to represent such patterns is the so called **phylogenetic tree**.  
+The first molecular phylogenetic analysis was performed by Carl Woese and George Fox ([Woese and Fox, 1977](https://www.pnas.org/doi/full/10.1073/pnas.74.11.5088)). They defined the primary domains of life through 16S rRNA characterization. They provided a simple matrix of pairwise comparisons among DNA sequences, yet opened the doors for a much more complex field of molecular evolution.  
+Nowadays, when reconstructing evolutionary patterns, we assume common ancestry and a dichotomic diversification of the studied organisms. And the best (or most accepted) way to represent such patterns is the so called **phylogenetic tree**.  
   
 ## What is a phylogenetic tree?  
 The simplest answer is **a hypothesis** on the evolutionary relationships among the studied set of taxa or *phylogenetic species*, understanding such *species* as genes, proteins or specific morphological traits.  
