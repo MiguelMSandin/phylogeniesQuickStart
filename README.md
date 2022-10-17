@@ -153,7 +153,7 @@ More complex models of evolution rely on many assumptions and parameters that ne
   
 Maximum Likelihood ([Felsenstein, 1981](https://link.springer.com/article/10.1007/BF01734359)) maximises model parameters (treated as constants) across different [bootstraps](https://en.wikipedia.org/wiki/Bootstrapping_(statistics)) (or "replicates") to find a higher likelihood.  
   
-At the end, all the different replicates can be summarised into a **consensus** tree **or** simply take the **best likelihood scoring** tree. Either way, nodes can be annotated on the basis of how many times this given node have appeared across the different bootstraps, which is refer to as the **bootstrap support** (from 1 to 100).  
+At the end, all the different replicates can be summarised into a **consensus** tree **or** simply take the **best likelihood scoring** tree. Either way, nodes can be annotated on the basis of how many times a given node has appeared across the different bootstraps, which is referred to as the **bootstrap support** (from 1 to 100).  
   
 ![Step4.2](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure6_step4.2_ML.png)  
   
