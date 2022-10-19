@@ -30,12 +30,12 @@ The node gathering all *species* is called the **root** of the tree, and is norm
 ![Tree structure](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure1_tree_structure.png)  
   
 In terms of formating, the simplest tree format is called [newick](https://en.wikipedia.org/wiki/Newick_format), and it is simply a nested grouping of trees, where tips are separated by commas, and nodes are grouped by parentheses. The example above would look like as follows:  
-((a,b),((c,d),(e,f)));  
+```((a,b),((c,d),(e,f)));```  
 Note the semicolon (";") terminating the tree.  
 Branch lengths (or the accumulated change) are provided after the given tip or node separated by a colon (":"), as follows:  
-((a:1,b:1),((c:1,d:1),(e:1,f:1)));  
+```((a:1,b:1),((c:1,d:1),(e:1,f:1)));```  
 And finally, it is possible to add names to the nodes by simply including such names after the given node, as follows:
-((a:1,b:1),((c:1,d:1),(e:1,f:1)sub-clade)clade);  
+```((a:1,b:1),((c:1,d:1),(e:1,f:1)sub-clade)clade);```  
   
 ---
   
@@ -89,11 +89,14 @@ Choosing a correct outgroup(s) is as important as choosing the correct *species*
 We have already selected our *species* (both ingroup and outgroup or outgroups), let's build now a phylogenetic tree.  
   
 First we set the variable name of our input fasta file as follows:  
-```FASTA="file.fasta"```  # The raw fasta file  
+```
+bash  
+FASTA="file.fasta"  # The raw fasta file  
 And we call the output files as follows:  
-```ALIGNED=${INPUT/.fasta/_align.fasta}```  # The aligned fasta file  
-```FILE=${ALIGNED/.fasta/_trimed.fasta}```  # The aligned and trimmed fasta file ready for phylogenetic inference  
-```OUTPUT="test1"```  # The basic tree name  
+ALIGNED=${FASTA/.fasta/_align.fasta}  # The aligned fasta file  
+FILE=${ALIGNED/.fasta/_trimed.fasta}  # The aligned and trimmed fasta file ready for phylogenetic inference  
+OUTPUT="test1"  # The tree name prefix  
+```  
   
 ---
   
@@ -104,7 +107,10 @@ Different genes evolve at different rates, and so do different regions of the ge
 ![Step2 align sequences](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure3_step2_align.png)  
   
 For example using **MAFFT**, for large dataset I normally use the default options:  
-```mafft $FASTA > $ALIGNED```  
+```
+bash
+mafft $FASTA > $ALIGNED
+```  
 For a small dataset (<200 sequences) of different groups, I normally use:  
 ```mafft --maxiterate 1000 --localpair $FASTA > $ALIGNED```  
 And for a small dataset (<200 sequences of similarish length) of closely related group, I normally use:  
