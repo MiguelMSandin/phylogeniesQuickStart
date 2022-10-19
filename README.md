@@ -89,8 +89,7 @@ Choosing a correct outgroup(s) is as important as choosing the correct *species*
 We have already selected our *species* (both ingroup and outgroup or outgroups), let's build now a phylogenetic tree.  
   
 First we set the variable name of our input fasta file as follows:  
-```
-bash  
+```bash  
 FASTA="file.fasta"  # The raw fasta file  
 And we call the output files as follows:  
 ALIGNED=${FASTA/.fasta/_align.fasta}  # The aligned fasta file  
