@@ -91,7 +91,8 @@ We have already selected our *species* (both ingroup and outgroup or outgroups),
 First we set the variable name of our input fasta file as follows:  
 ```bash  
 FASTA="file.fasta"  # The raw fasta file  
-And we call the output files as follows:  
+  
+# And we call the output files as follows:  
 ALIGNED=${FASTA/.fasta/_align.fasta}  # The aligned fasta file  
 FILE=${ALIGNED/.fasta/_trimed.fasta}  # The aligned and trimmed fasta file ready for phylogenetic inference  
 OUTPUT="test1"  # The tree name prefix  
@@ -106,14 +107,17 @@ Different genes evolve at different rates, and so do different regions of the ge
 ![Step2 align sequences](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure3_step2_align.png)  
   
 For example using **MAFFT**, for large dataset I normally use the default options:  
-```
-bash
+```bash  
 mafft $FASTA > $ALIGNED
 ```  
 For a small dataset (<200 sequences) of different groups, I normally use:  
-```mafft --maxiterate 1000 --localpair $FASTA > $ALIGNED```  
+```bash  
+mafft --maxiterate 1000 --localpair $FASTA > $ALIGNED
+```  
 And for a small dataset (<200 sequences of similarish length) of closely related group, I normally use:  
-```mafft --maxiterate 1000 --globalpair $FASTA > $ALIGNED```  
+```bash
+mafft --maxiterate 1000 --globalpair $FASTA > $ALIGNED
+```  
   
 Depending on the sequences you are aligning you may want to play with the different options that MAFFT offer. I recommend playing with them and with different datasets (highly similar and highly divergent sequences) to fully understand them.  
   
@@ -133,9 +137,11 @@ In this step we want to remove positions that might be irrelevant, add noise, wi
   
 We can automatically do that with **trimAl** as follows:  
   
-```trimal -in $ALIGNED -out $FILE -gt X```  
+```bash  
+trimal -in $ALIGNED -out $FILE -gt X
+```  
   
-Being X the coverage threshold at a given position. I normally use 30% for a quick analysis and 5% for a more resolutive analysis. Again, depending on your scope you will have to play with different options. Other useful options are "```-st```" (removing positions above certain dissimilarity threshold), "```-nogaps```" (removing all positions with gaps) and "```-noallgaps```" (removing only positions composed only by gaps).  
+Being X the coverage threshold at a given position. I normally use 30% for a quick analysis and 5% for a more resolutive analysis. Again, depending on your scope you will have to play with different options. Other useful options are "`-st`" (removing positions above certain dissimilarity threshold), "`-nogaps`" (removing all positions with gaps) and "`-noallgaps`" (removing only positions composed only by gaps).  
   
 Other softwares highly used are [Gblocks](http://molevol.cmima.csic.es/castresana/Gblocks.html), [ClipKIT](https://github.com/JLSteenwyk/ClipKIT) (which also estimates and keeps parsimonious sites), [Noisy](http://www.bioinf.uni-leipzig.de/Software/noisy/) (able to predict and remove homoplastic sites) or [BMGE](http://gensoft.pasteur.fr/docs/BMGE/1.12/BMGE_doc.pdf) (removing sites that are highly variable/entropic).  
   
@@ -148,7 +154,9 @@ Yet, the phylogenetic relatedness is not directly link to the similarity or diss
   
 The simplest tree is a **Neighbour Joining** tree, where *species* are grouped together based on similarity, until there is no more *species* left. And the simplest model of evolution is the so-called **Jukes-Cantor** model ([Jukes and Cantor, 1969](https://doi.org/10.1016/B978-1-4832-3211-9.50009-7)) assuming equal base frequencies and equal mutation rates. In a slightly more complex model, **Motoo Kimura** included two more parameters for the different implications of [transitions](https://en.wikipedia.org/wiki/Transition_(genetics)) and [transverions](https://en.wikipedia.org/wiki/Transversion) in the evolutionary rate ([Kimura, 1980](https://link.springer.com/article/10.1007/BF01731581)).  
    
-```rapidnj $FILE > ${OUTPUT}_NJ.tre```  
+```bash  
+rapidnj $FILE > ${OUTPUT}_NJ.tre
+```  
   
 ![Step4.1](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure5_step4.1_model_of_evolution.png)  
   
@@ -164,25 +172,33 @@ At the end, all the different replicates can be summarised into a **consensus** 
   
 We need now new variables:  
   
-```THREADS=2``` # Normally 1 thread for every 500-1000bp alignment positions works fine.  
-```BS=100```  # The number of Bootstraps  
+```bash  
+THREADS=2 # Normally 1 thread for every 500-1000bp alignment positions works fine.  
+BS=100  # The number of Bootstraps  
+```  
   
 Here you have different softwares:  
   
 The first example with **RAxML**:  
-```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRgamma -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T $THREADS```  
+```bash  
+raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRgamma -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T $THREADS
+```  
   
 or faster model and most of the times very similar output:  
-```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRcat -s $FILE -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -f a -N $BS -T $THREADS```  
+```bash  
+raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRcat -s $FILE -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -f a -N $BS -T $THREADS
+```  
   
 With **RAxML-ng** you could use the Graphical User Interface option through their server: [RAxML-NG](https://raxml-ng.vital-it.ch/#/), or have a look at [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.2_RAxML-ng.sh) for further details through the command line.  
   
 With **IQ-TREE** you can run **modelTest**, which is used to select the best substitution model fitting your data:  
   
-```MEM=2GB```  
-```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
+```bash  
+MEM=2GB  
+iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl
+```  
   
-And if you know the model of evolution to be used you can add it to the command. Most of the times, the best model is the Generalised Time Reversible model (Tabaré, 1986; *Lectures Math. Life Sci* 17:2,57-86) with a Gamma distribution and proportion of Invariant sites for rate heterogeneity (GTR+G+I, but it also is the most complex model): ```-m GTR+I+G```  
+And if you know the model of evolution to be used you can add it to the command. Most of the times, the best model is the Generalised Time Reversible model (Tabaré, 1986; *Lectures Math. Life Sci* 17:2,57-86) with a Gamma distribution and proportion of Invariant sites for rate heterogeneity (GTR+G+I, but it also is the most complex model): `-m GTR+I+G`  
 IQ-Tree can also be used interactively in [this server](http://iqtree.cibiv.univie.ac.at/).  
   
 ModelTest can also be run in [**R**](https://www.r-project.org/), with the packages [*ape*](https://cran.r-project.org/web/packages/ape/index.html) and [*phangorn*](https://cran.r-project.org/web/packages/phangorn/index.html) (see [this script](https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.5_PhyML_in_R.R) for further details).  
@@ -204,17 +220,21 @@ Because of the long sampling, when you choose a Bayesian approach it is very imp
 Bayesian approaches are available in many different softwares. Such as [MrBayes](https://nbisweden.github.io/MrBayes/), [BEAST](https://beast.community/), [BEAST2](https://www.beast2.org/) or [PhyloBayes](http://www.atgc-montpellier.fr/phylobayes/). Yet, they need most of the times to be run in different blocks, where different parameters need to be set that will influence your analysis. Instead of running them from a single command, as we did for ML approaches, here we save all our options in a simple text (or xml) file and we run the file within the BI software.  
   
 Here you have an example of a script to be run using **MrBayes**, let's save it as "**phylo_mrBayes.sh**":  
-```set autoclose=yes nowarnings=yes```  
-```execute FILE.nexus```  
-```lset nst=6 rates=gamma```  
-```mcmc ngen=10000000 Nruns=3 savebrlens=yes file=OUTPUT_mrBayesgamma```  
-```sump```  
-```sumt```  
-```quit```  
->#The mcmc command assumes a burnin of 25%: ```relburnin=yes``` and ```burninfrac=0.25```  
+```
+set autoclose=yes nowarnings=yes  
+execute FILE.nexus  
+lset nst=6 rates=gamma  
+mcmc ngen=10000000 Nruns=3 savebrlens=yes file=OUTPUT_mrBayesgamma  
+sump  
+sumt  
+quit  
+```  
+>#The mcmc command assumes a burnin of 25%: `relburnin=yes` and `burninfrac=0.25`  
   
 That can be run as follows:  
-```mb < phylo_mrBayes.sh > ${OUTPUT}_mrBayesgamma.log &```  
+```bash  
+mb < phylo_mrBayes.sh > ${OUTPUT}_mrBayesgamma.log &
+```  
   
 > Something to bear in mind is that MrBayes uses "nexus" format and not "fasta". This can be easily exported/transformed in AliView.  
   
@@ -222,9 +242,13 @@ Alternatively, you can type each one of the lines from the script that we called
   
 And in this script ([phylo_BEAST.xml](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/scripts/3.4.3_phylo_BEAST.xml)) you can find an example of a **BEAST** xml file in its most simple format (don't panic! such xml file can be created through the graphical user interface package [BEAUti](https://beast.community/beauti)), that can be run as follows:  
   
-```beast -seed $RANDOM -beagle_SSE phylo_BEAST.xml```  
+```bash  
+beast -seed $RANDOM -beagle_SSE phylo_BEAST.xml
+```  
 And now we have to summarise the chain with [treeannotator](https://beast.community/treeannotator):  
-```treeannotator -burnin 1000000 -heights median OUTPUT.trees OUTPUT_mcmc.tre```   
+```bash  
+treeannotator -burnin 1000000 -heights median OUTPUT.trees OUTPUT_mcmc.tre
+```   
   
 The main problem (or advantage, depends on your question) is that BEAST assumes a clock model. But the [molecular clock](https://en.wikipedia.org/wiki/Molecular_clock) concept is getting out of scope. If you are very interested, please have a look at this excellent practical guide to molecular dating published by [Hervé Sauquet (2013)](https://www.sciencedirect.com/science/article/pii/S1631068313001097), and if you already have a solid tree that you want to date in time, you can have a look at [MCMCTree](http://abacus.gene.ucl.ac.uk/software/MCMCtree.Tutorials.pdf) from the [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) package.  
   
@@ -233,7 +257,9 @@ The main problem (or advantage, depends on your question) is that BEAST assumes 
 The parsimony approach assumes that the minimum number of changes best explains phylogenetic relatedness. Due to the big simplification of the incredibly complex process that is evolution, this approach has been heavily criticised and almost abandoned. However I believe it is still very useful to understand and know it exists since parsimony yields very good results when used as a starting tree for both ML and BI approaches. Indeed, raxml-ng implements in its pipeline the use of parsimony to estimate the initial tree.  
 We can quickly have a look at a parsimonious tree as follows with **RAxML**:  
   
-```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-parsimony-GTRgamma -s $FILE -y -m GTRGAMMA -p```    
+```bash  
+raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-parsimony-GTRgamma -s $FILE -y -m GTRGAMMA -p
+```    
   
 Besides, as you might have figured out by now, your scientific question is the most important part when it comes to take decision on the methodological approach. In this context, ML and BI yields very good results for complex DNA or protein sequences. But when it comes to **ancestral state reconstruction** of non-neutral traits, such as habitat or specific morphological traits, the simplification of parsimonious approaches seems to result in more plausible hypothesis ([Holland et al. 2020](https://www.nature.com/articles/s41598-020-64647-4)). It is important to understand that most of the times such analyses are performed over an already inferred phylogenetic tree, and therefore the analyses is no longer about phylogenetic inferring (but about ancestral state reconstruction). In this context, other softwares (such as [Mesquite](https://www.mesquiteproject.org/) or [TNT](http://gensoft.pasteur.fr/docs/TNT/1.5/)) and approaches (such as [Maximum Parsimony](https://en.wikipedia.org/wiki/Maximum_parsimony_(phylogenetics))) have been developed. My experience in this area is very limited and I do not feel comfortable explaining them. Besides, as pointed out by [Holland et al. (2020)](https://www.nature.com/articles/s41598-020-64647-4), ancestral state reconstruction analyses should be considered and evaluated carefully.  
 
@@ -329,29 +355,43 @@ Phylogenetic patterns are constantly changing with new tools being developed tha
 **Step 1**. **Select your *species* carefully**, both the ingroup and the outgroup, depending on your **scientific question**.
   
 Set the variables:  
-```FASTA="file.fasta"```  
-```ALIGNED=${INPUT/.fasta/_align.fasta}```  
-```FILE=${ALIGNED/.fasta/_trimed.fasta}```  
-```OUTPUT="test1"```  
-```THREADS=2```  
-```BS=100```  
-```MEM="2GB"```  
+```bash  
+FASTA="file.fasta"  
+ALIGNED=${FASTA/.fasta/_align.fasta}  
+FILE=${ALIGNED/.fasta/_trimed.fasta}  
+OUTPUT="test1"  
+THREADS=2  
+BS=100  
+MEM="2GB"  
+```
 
 **Step 2**. Align the sequences:  
-```mafft $FASTA > $ALIGNED```  
+```bash  
+mafft $FASTA > $ALIGNED
+```  
   
 **Step 3**. Manual check of the alignment if unsure of the quality of the sequences before trimming:  
-```trimal -in $ALIGNED -out $FILE -gt 05```  
+```bash  
+trimal -in $ALIGNED -out $FILE -gt 05
+```  
   
 **Step 4**. Run a phylogeny using a **Maximum Likelihood** approach:  
 with **RAxML**:  
-```raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRgamma -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T 2```  
+```bash  
+raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-GTRgamma -s $FILE -m GTRGAMMA -p $RANDOM -x $(date +%s) -f a -N $BS -T 2
+```  
 and/or **RAxML-ng**:  
-```raxml-ng --all --msa $FILE --model GTR+G --tree pars{10} --prefix ${OUTPUT}_raxml-ng-GTRgamma --seed $RANDOM --threads $THREADS --bs-trees $BS```  
+```bash  
+raxml-ng --all --msa $FILE --model GTR+G --tree pars{10} --prefix ${OUTPUT}_raxml-ng-GTRgamma --seed $RANDOM --threads $THREADS --bs-trees $BS
+```  
 and/or **IQ-TREE**:  
-```iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree-mt -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl```  
+```bash  
+iqtree -s $FILE -st "DNA" -pre ${OUTPUT}_IQtree-mt -b $BS -seed $(date +%s) -mem $MEM -nt $THREADS -wbtl
+```  
 and/or using a **Bayesian Inference** approach with **MrBayes** (you can find an example script here: [phylo_mrBayes.sh](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/scripts/3.4.1_MrBayes_set.sh)):  
-```mb < phylo_mrBayes.sh > ${OUTPUT]_mrBayesgamma.log```  
+```bash  
+mb < phylo_mrBayes.sh > ${OUTPUT]_mrBayesgamma.log
+```  
   
 **Step 5**. **Interpret your phylogenetic tree**.  
 First from a **methodological point of view**: Are all nodes highly supported? Are there no polytomic nodes? Are there no long branches?  
