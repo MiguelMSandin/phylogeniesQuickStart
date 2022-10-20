@@ -27,7 +27,7 @@ Briefly, the structure of a tree is rather simple. A phylogenetic tree assumes a
   
 ![Tree structure](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure1_tree_structure.png)  
   
-### What is the root of the tree?  
+### The root of the tree  
   
 The node gathering all *species* is called the **root** of the tree, and is normally used to give a biological and evolutionary interpretation of the tree beyond a pure relative comparison among the *species*. This node, when present, corresponds to the last common ancestor of all *species* considered in the tree. It tells you what are the earliest diverging nodes and therefore the "direction" of the evolution.  
   
