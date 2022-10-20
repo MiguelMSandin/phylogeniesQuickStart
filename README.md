@@ -35,6 +35,8 @@ In the example below, you have the exact same tree rooted (right) and unrooted (
   
  ![Unrooted and rooted tree](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure2_tree_root.png)   
   
+### How to write trees  
+  
 In terms of formating, the simplest tree format is called [newick](https://en.wikipedia.org/wiki/Newick_format), and it is simply a nested grouping of trees, where tips are separated by commas, and nodes are grouped by parentheses. The example above would look like as follows:  
 ```((a,b),((c,d),(e,f)));```  
 Note the semicolon (";") terminating the tree.  
