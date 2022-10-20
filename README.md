@@ -25,9 +25,15 @@ A phylogenetic tree represents a comparative analysis that measures the **accumu
   
 Briefly, the structure of a tree is rather simple. A phylogenetic tree assumes a **bifurcating diversification** in which a given **branch** splits into two branches in one given **node**. Each node and all its descendent taxa correspond to a (monophyletic) **clade**. A node with no further descendents is a terminal node and is frequently called **tip or leaf** of the tree, representing the *phylogenetic species*.  
   
-The node gathering all *species* is called the **root** of the tree, and is normally used to give a biological and evolutionary interpretation of the tree beyond a pure relative comparison among the *species*. This node, when present, corresponds to the last common ancestor of all *species* considered in the tree.  
-  
 ![Tree structure](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure1_tree_structure.png)  
+  
+### What is the root of the tree?  
+  
+The node gathering all *species* is called the **root** of the tree, and is normally used to give a biological and evolutionary interpretation of the tree beyond a pure relative comparison among the *species*. This node, when present, corresponds to the last common ancestor of all *species* considered in the tree. It tells you what are the earliest diverging nodes and therefore the "direction" of the evolution.  
+  
+In the example below, you have the exact same tree rooted (right) and unrooted (left). In this example the root is splitting the first diverging clade (gathering "a" and "b") and the rest of the taxa.  
+  
+ ![Unrooted and rooted tree](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure2_tree_root.png)   
   
 In terms of formating, the simplest tree format is called [newick](https://en.wikipedia.org/wiki/Newick_format), and it is simply a nested grouping of trees, where tips are separated by commas, and nodes are grouped by parentheses. The example above would look like as follows:  
 ```((a,b),((c,d),(e,f)));```  
@@ -64,21 +70,13 @@ Unfortunately, accessing all known diversity is not a straightforward task. **Ar
 Let's suppose that you have sequenced one organism that has never been sequenced and you want to know its phylogenetic patterns. A quick BLAST will let you know what broad group you are dealing with. Now comes the **literature research**: check previous phylogenetic analysis of the group of interest and try to retrieve similar sequences that have been previously used in other studies and complement with newly available sequences.  
 I normally prefer to start from a few and well established sequences of my group of interest and then remove and add more sequences in consecutive phylogenetic runs, depending on the given results and my question.  
   
-Closely related sequences will allow you accessing the phylogenetic relationships of your group of interest. Yet, to infer an evolutionary history and get a broader context of your group of interest it is needed to "order" the tree in an evolutionary sense: we need to **root the tree**.  
+Closely related sequences will allow you accessing the phylogenetic relationships of your group of interest. Yet, to infer an evolutionary history and get a broader context of your group of interest it is needed to "order" the tree in an evolutionary sense: we need to **root the tree**.
   
-### What is the root of the tree?  
-  
-The root of the tree represents the **last common ancestor** of all *species* in the tree. It tells you what are the earliest diverging nodes and therefore the "direction" of the evolution.  
-  
-In the example below, you have the exact same tree rooted (right) and unrooted (left). In this example the root is splitting the first diverging clade (gathering "a" and "b") and the rest of the taxa.  
-  
- ![Unrooted and rooted tree](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure2_tree_root.png)   
-  
-When it comes to real data, you might be interested in the closest relatives of your group of interest (or **outgroup**) that are not your group of interest (or **ingroup**). For example if your group of interest are birds, then you might want to choose an outgroup within reptiles.  
+When it comes to real data, the root of the tree should be the closest relatives of your group of interest (or **outgroup**) that are not your group of interest (or **ingroup**). For example if your group of interest are birds, then you might want to choose an outgroup within reptiles.  
   
 And if you are unsure of the quality or nature of your sequences, choosing more than one outgroup is very important to quickly spot artefacts or alignment problems.  
   
-Choosing a correct outgroup(s) is as important as choosing the correct *species* for your ingroup. However, many times it is simply not possible to choose, because of (for example) lack of resolved phylogenetic patterns, so you will have to make a decision among different options.  
+Choosing a correct outgroup(s) is as important as choosing the correct *species* for your ingroup. However, many times it is simply not possible to choose, because of (for example) lack of resolved phylogenetic patterns, so you will have to make a decision among different options. For example if your group of interest is Rhizaria, you might want to include Stramenopiles, Alveolates and Telonemia as outgroups.  
   
 ---
   
