@@ -221,20 +221,21 @@ Because of the long sampling, when you choose a Bayesian approach it is very imp
 Bayesian approaches are available in many different softwares. Such as [MrBayes](https://nbisweden.github.io/MrBayes/), [BEAST](https://beast.community/), [BEAST2](https://www.beast2.org/) or [PhyloBayes](http://www.atgc-montpellier.fr/phylobayes/). Yet, they need most of the times to be run in different blocks, where different parameters need to be set that will influence your analysis. Instead of running them from a single command, as we did for ML approaches, here we save all our options in a simple text (or xml) file and we run the file within the BI software.  
   
 Here you have an example of a script to be run using **MrBayes**, let's save it as "**phylo_mrBayes.sh**":  
-```
-set autoclose=yes nowarnings=yes  
-execute FILE.nexus  
-lset nst=6 rates=gamma  
-mcmc ngen=10000000 Nruns=3 savebrlens=yes file=OUTPUT_mrBayesgamma  
-sump  
-sumt  
-quit  
+```nexus
+begin mrbayes;
+	set autoclose=yes nowarn=yes;
+	execute FILE.nexus;
+	lset nst=6 rates=gamma;
+	mcmc ngen=10000000 Nruns=4 savebrlens=yes file=OUTPUT;
+	sump;
+	sumt;
+end;
 ```  
 >#The mcmc command assumes a burnin of 25%: `relburnin=yes` and `burninfrac=0.25`  
   
 That can be run as follows:  
 ```bash  
-mb < phylo_mrBayes.sh > ${OUTPUT}_mrBayesgamma.log &
+mb 3.4.1_MrBayes_set.nexus > ${OUTPUT}_mrBayesgamma.log
 ```  
   
 > Something to bear in mind is that MrBayes uses "nexus" format and not "fasta". This can be easily exported/transformed in AliView.  
