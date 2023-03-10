@@ -2,4 +2,4 @@
 
 FILE=""
 
-mb < 3.3.1_MrBayes_set.sh > ${FILE/.fasta/.log} &
+mb 3.4.1_MrBayes_set.nexus > ${FILE/.fasta/.log}
