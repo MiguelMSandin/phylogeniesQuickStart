@@ -260,7 +260,7 @@ The parsimony approach assumes that the minimum number of changes best explains 
 We can quickly have a look at a parsimonious tree as follows with **RAxML**:  
   
 ```bash  
-raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-parsimony-GTRgamma -s $FILE -y -m GTRGAMMA -p
+raxmlHPC-PTHREADS-SSE3 -n ${OUTPUT}_raxml-parsimony-GTRgamma -s $FILE -y -m GTRGAMMA -p $RANDOM
 ```    
   
 Besides, as you might have figured out by now, your scientific question is the most important part when it comes to take decision on the methodological approach. In this context, ML and BI yields very good results for complex DNA or protein sequences. But when it comes to **ancestral state reconstruction** of non-neutral traits, such as habitat or specific morphological traits, the simplification of parsimonious approaches seems to result in more plausible hypothesis ([Holland et al. 2020](https://www.nature.com/articles/s41598-020-64647-4)). It is important to understand that most of the times such analyses are performed over an already inferred phylogenetic tree, and therefore the analyses is no longer about phylogenetic inferring (but about ancestral state reconstruction). In this context, other softwares (such as [Mesquite](https://www.mesquiteproject.org/) or [TNT](http://gensoft.pasteur.fr/docs/TNT/1.5/)) and approaches (such as [Maximum Parsimony](https://en.wikipedia.org/wiki/Maximum_parsimony_(phylogenetics))) have been developed. My experience in this area is very limited and I do not feel comfortable explaining them. Besides, as pointed out by [Holland et al. (2020)](https://www.nature.com/articles/s41598-020-64647-4), ancestral state reconstruction analyses should be considered and evaluated carefully.  
