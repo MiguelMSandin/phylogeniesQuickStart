@@ -1,0 +1,46 @@
+format: jb-book
+root: course/
+parts:
+  - caption: Introduction
+    numbered: true  # Only applies to chapters in Part 1.
+    chapters:
+    - file: course/01_intro.md
+    - file: course/02_why_trees.md
+    - file: course/03_what_is_a_tree.md
+    - file: course/04_the_root.md
+    - file: course/05_write_trees.md
+  - caption: Phylogenetic inference in a nutshell
+    numbered: true
+    chapters:
+    - file: course/06_main_steps.md
+    - file: course/07_dependencies.md
+  - caption: Species selection
+    numbered: true
+    chapters:
+    - file: course/08.1_species_selection.md
+  - caption: The pipeline
+    numbered: true
+    chapters:
+    - file: course/08.2_align.md
+    - file: course/08.3_trim.md
+    - file: course/08.4_phylogenetic_analyses.md
+    - file: course/08.4.1_ML.md
+    - file: course/08.4.2_BI.md
+    - file: course/08.4.3_parsimony.md
+    - file: course/08.4.4_combining.md
+  - caption: Interpreting phylogenetic trees
+    numbered: true
+    chapters:
+    - file: course/08.5_interpreting_trees.md
+    - file: course/08.5.1_methodologically.md
+    - file: course/08.5.2_biologically.md
+    - file: course/08.5.3_broad_integration.md
+  - caption: Conclusion
+    numbered: true
+    chapters:
+    - file: course/09_conclusion.md
+    - file: course/10_summary.md
+  - caption: Further reading
+    numbered: true
+    chapters:
+    - file: course/11_further_reading.md
