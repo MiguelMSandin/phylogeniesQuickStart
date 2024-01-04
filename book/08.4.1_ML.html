@@ -1,0 +1,547 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Using a Maximum Likelihood (ML) approach &#8212; A hands-on introduction on molecular phylogenetic studies</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/08.4.1_ML';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using a Bayesian Inference (BI) approach" href="08.4.2_BI.html" />
+    <link rel="prev" title="Phylogenetic analyses (step 4)" href="08.4_phylogenetic_analyses.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="01_intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/intro_phylo.png" class="logo__image only-light" alt="A hands-on introduction on molecular phylogenetic studies - Home"/>
+    <script>document.write(`<img src="../_static/intro_phylo.png" class="logo__image only-dark" alt="A hands-on introduction on molecular phylogenetic studies - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="01_intro.html">
+                    A hands-on introduction on molecular phylogenetic studies
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="02_why_trees.html">Before starting, why phylogenetic inference?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_what_is_a_tree.html">What is a phylogenetic tree?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_the_root.html">The root of the tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_write_trees.html">How to write trees</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Phylogenetic analyses in a nutshell</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="06_main_steps.html">Main steps for phylogenetic reconstruction</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="07_dependencies.html">Dependencies and softwares used for:</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Species selection</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="08.1_species_selection.html"><em>Species</em> selection (step 1)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">A phylogenetic pipeline</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="08.2_align.html">Align (step 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08.3_trim.html">Trim alignment of redundant or low informative positions/columns (step 3)</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="08.4_phylogenetic_analyses.html">Phylogenetic analyses (step 4)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Using a Maximum Likelihood (ML) approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.4.2_BI.html">Using a Bayesian Inference (BI) approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.4.3_parsimony.html">Using a parsimony approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.4.4_combining.html">Combining different approaches.</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tree thinking</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="08.5_interpreting_trees.html">Interpreting the tree (step 5)</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="08.5.1_methodologically.html">Interpreting the tree from a methodological point of view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.5.2_biologically.html">Interpreting the tree from a biological point of view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.5.3_broad_integration.html">Integrating the tree in a broader evolutionary context</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Conclusion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="09_conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_further_reading.html">Further reading</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MiguelMSandin/phylogeniesQuickStart" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MiguelMSandin/phylogeniesQuickStart/issues/new?title=Issue%20on%20page%20%2Fbook/08.4.1_ML.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/08.4.1_ML.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Using a Maximum Likelihood (ML) approach</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="using-a-maximum-likelihood-ml-approach">
+<h1>Using a Maximum Likelihood (ML) approach<a class="headerlink" href="#using-a-maximum-likelihood-ml-approach" title="Permalink to this heading">#</a></h1>
+<p>Maximum Likelihood (<a class="reference external" href="https://link.springer.com/article/10.1007/BF01734359">Felsenstein, 1981</a>) maximises model parameters (treated as constants) across different <a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstraps</a> (or “replicates”) to find a higher likelihood.</p>
+<p>At the end, all the different replicates can be summarised into a <strong>consensus</strong> tree <strong>or</strong> simply take the <strong>best likelihood scoring</strong> tree. Either way, nodes can be annotated on the basis of how many times a given node has appeared across the different bootstraps, which is referred to as the <strong>bootstrap support</strong> (from 1 to 100).</p>
+<img src="../resources/Figure6_step4.2_ML.png" alt="Maximum Likelihood" width="60%"/>  
+<p>We need now new variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">THREADS</span><span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="c1"># Normally 1 thread for every 500-1000bp alignment positions works fine.  </span>
+<span class="nv">BS</span><span class="o">=</span><span class="m">100</span><span class="w">  </span><span class="c1"># The number of Bootstraps  </span>
+</pre></div>
+</div>
+<p>Here you have different softwares:</p>
+<p>The first example with <strong>RAxML</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>raxmlHPC-PTHREADS-SSE3<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUT</span><span class="si">}</span>_raxml-GTRgamma<span class="w"> </span>-s<span class="w"> </span><span class="nv">$FILE</span><span class="w"> </span>-m<span class="w"> </span>GTRGAMMA<span class="w"> </span>-p<span class="w"> </span><span class="nv">$RANDOM</span><span class="w"> </span>-x<span class="w"> </span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span><span class="w"> </span>-f<span class="w"> </span>a<span class="w"> </span>-N<span class="w"> </span><span class="nv">$BS</span><span class="w"> </span>-T<span class="w"> </span><span class="nv">$THREADS</span>
+</pre></div>
+</div>
+<p>or faster model and most of the times very similar output:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>raxmlHPC-PTHREADS-SSE3<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUT</span><span class="si">}</span>_raxml-GTRcat<span class="w"> </span>-s<span class="w"> </span><span class="nv">$FILE</span><span class="w"> </span>-m<span class="w"> </span>GTRCAT<span class="w"> </span>-c<span class="w"> </span><span class="m">25</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$RANDOM</span><span class="w"> </span>-x<span class="w"> </span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span><span class="w"> </span>-f<span class="w"> </span>a<span class="w"> </span>-N<span class="w"> </span><span class="nv">$BS</span><span class="w"> </span>-T<span class="w"> </span><span class="nv">$THREADS</span>
+</pre></div>
+</div>
+<p>With <strong>RAxML-ng</strong> you could use the Graphical User Interface option through their server: <a class="reference external" href="https://raxml-ng.vital-it.ch/#/">RAxML-NG</a>, or have a look at <a class="reference external" href="https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.2_RAxML-ng.sh">this script</a> for further details through the command line.</p>
+<p>With <strong>IQ-TREE</strong> you can run <strong>modelTest</strong>, which is used to select the best substitution model fitting your data:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">MEM</span><span class="o">=</span>2GB<span class="w">  </span>
+iqtree<span class="w"> </span>-s<span class="w"> </span><span class="nv">$FILE</span><span class="w"> </span>-st<span class="w"> </span><span class="s2">&quot;DNA&quot;</span><span class="w"> </span>-pre<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUT</span><span class="si">}</span>_IQtree<span class="w"> </span>-b<span class="w"> </span><span class="nv">$BS</span><span class="w"> </span>-seed<span class="w"> </span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span><span class="w"> </span>-mem<span class="w"> </span><span class="nv">$MEM</span><span class="w"> </span>-nt<span class="w"> </span><span class="nv">$THREADS</span><span class="w"> </span>-wbtl
+</pre></div>
+</div>
+<p>And if you know the model of evolution to be used you can add it to the command. Most of the times, the best model is the Generalised Time Reversible model (Tabaré, 1986; <em>Lectures Math. Life Sci</em> 17:2,57-86) with a Gamma distribution and proportion of Invariant sites for rate heterogeneity (GTR+G+I, but it also is the most complex model): <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">GTR+I+G</span></code><br />
+IQ-Tree can also be used interactively in <a class="reference external" href="http://iqtree.cibiv.univie.ac.at/">this server</a>.</p>
+<p>ModelTest can also be run in <a class="reference external" href="https://www.r-project.org/"><strong>R</strong></a>, with the packages <a class="reference external" href="https://cran.r-project.org/web/packages/ape/index.html"><em>ape</em></a> and <a class="reference external" href="https://cran.r-project.org/web/packages/phangorn/index.html"><em>phangorn</em></a> (see <a class="reference external" href="https://github.com/MiguelMSandin/phylogeniesKickStart/blob/main/scripts/3.5_PhyML_in_R.R">this script</a> for further details).</p>
+<p>Once again, different options will address better different questions…</p>
+<p>It is important to check the <strong>log</strong> file reporting the different analytical steps. Here you check the likelihood of the tree over the different bootstraps, the model parameters optimization or the proportion of invariant sites in the alignment, etc. Basically, you check that there is indeed an improvement and that the alignment is actually informative.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="08.4_phylogenetic_analyses.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Phylogenetic analyses (step 4)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="08.4.2_BI.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using a Bayesian Inference (BI) approach</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Miguel M. Sandin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
