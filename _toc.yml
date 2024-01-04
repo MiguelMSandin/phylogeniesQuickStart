@@ -1,0 +1,41 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: book/01_intro.md
+parts:
+  - caption: Introduction
+    chapters:
+    - file: book/02_why_trees.md
+    - file: book/03_what_is_a_tree.md
+    - file: book/04_the_root.md
+    - file: book/05_write_trees.md
+  - caption: Phylogenetic analyses in a nutshell
+    chapters:
+    - file: book/06_main_steps.md
+    - file: book/07_dependencies.md
+  - caption: Species selection
+    chapters:
+    - file: book/08.1_species_selection.md
+  - caption: A phylogenetic pipeline
+    chapters:
+    - file: book/08.2_align.md
+    - file: book/08.3_trim.md
+    - file: book/08.4_phylogenetic_analyses.md
+      sections:
+      - file: book/08.4.1_ML.md
+      - file: book/08.4.2_BI.md
+      - file: book/08.4.3_parsimony.md
+      - file: book/08.4.4_combining.md
+  - caption: Tree thinking
+    chapters:
+    - file: book/08.5_interpreting_trees.md
+      sections:
+      - file: book/08.5.1_methodologically.md
+      - file: book/08.5.2_biologically.md
+      - file: book/08.5.3_broad_integration.md
+  - caption: Conclusion
+    chapters:
+    - file: book/09_conclusion.md
+    - file: book/10_summary.md
+    - file: book/11_further_reading.md
