@@ -3,6 +3,8 @@ Here you will find a brief introduction on how to get started with phylogenetic 
   
 Bear in mind that this is a quick practical guide for phylogenetic inferenceo of nucleotide sequences. I tried to explain only important or crucial concepts for a non-expert audience, so these lines are far from exhaustive and very simplified.  
   
+For a rendered version of this readme, have a look at the book at: [https://MiguelMSandin.github.io/phylogeniesQuickStart/](https://MiguelMSandin.github.io/phylogeniesQuickStart/)  
+  
 ## Dependencies and softwares used for:  
 - **Sequence visualization**: [AliView](https://ormbunkar.se/aliview/) or a much simpler and faster option [SeaView](http://doua.prabi.fr/software/seaview)  
 - **Sequence alignments**: [MAFFT](https://mafft.cbrc.jp/alignment/software/)  
