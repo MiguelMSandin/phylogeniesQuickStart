@@ -1,4 +1,4 @@
-### How to write trees  
+# How to write trees  
   
 In terms of formating, the simplest tree format is called [newick](https://en.wikipedia.org/wiki/Newick_format), and it is simply a nested grouping of trees, where tips are separated by commas, and nodes are grouped by parentheses.  
 <img src="../resources/Figure2_tree_root.png" alt="Tree root" width="60%"/>  

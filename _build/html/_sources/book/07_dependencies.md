@@ -1,4 +1,4 @@
-## Dependencies and softwares  
+# Dependencies and softwares  
 - **Sequence visualization**: [AliView](https://ormbunkar.se/aliview/) or a much simpler and faster option [SeaView](http://doua.prabi.fr/software/seaview)  
 - **Sequence alignments**: [MAFFT](https://mafft.cbrc.jp/alignment/software/)  
 - **Trimming alignment**: [trimAl](http://trimal.cgenomics.org/downloads)  

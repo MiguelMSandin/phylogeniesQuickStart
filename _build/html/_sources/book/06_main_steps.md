@@ -1,4 +1,4 @@
-## Main steps for phylogenetic reconstruction
+# Main steps for phylogenetic reconstruction
 [1.](/book/08.1_species_selection.md) Select your *species*.  (<-- the most important step!)  
 [2.](/book/08.2_align.md) Align sequences.  
 [3.](/book/08.3_trim.md) Remove uninformative positions/columns.  

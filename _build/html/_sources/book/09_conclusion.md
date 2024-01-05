@@ -1,4 +1,4 @@
-## Conclusion
+# Conclusion
   
 Phylogenetic trees are hypotheses of the given data, dependent from a specific methodological approach. Therefore it is of paramount importance to adjust as far as possible your dataset and your methods to the scope of your scientific question. Even the same question, if tackled from different methods and datasets, might result in different or even contradicting hypotheses. And yet, such both hypotheses might be correct, they will just represent **different pictures of the same reality**.  
 Let's imagine going somewhere beyond the tropics and taking a picture in the exact same location through the different seasons. Or going within the tropics but changing the zoom throughout different pictures. In the first example we only changed the time, whereas in the second the method.  

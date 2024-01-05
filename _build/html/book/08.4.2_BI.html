@@ -178,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Phylogenetic analyses in a nutshell</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="06_main_steps.html">Main steps for phylogenetic reconstruction</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="07_dependencies.html">Dependencies and softwares</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Species selection</span></p>
@@ -408,7 +407,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="using-a-bayesian-inference-bi-approach">
+  <section class="tex2jax_ignore mathjax_ignore" id="using-a-bayesian-inference-bi-approach">
 <h1>Using a Bayesian Inference (BI) approach<a class="headerlink" href="#using-a-bayesian-inference-bi-approach" title="Permalink to this heading">#</a></h1>
 <p>Bayesian Inference (<a class="reference external" href="https://link.springer.com/article/10.1007/BF02338839">Rannala and Yang, 1996</a>; <a class="reference external" href="https://academic.oup.com/mbe/article/14/7/717/1119795">Yang and Rannala, 1997</a>) randomly estimates the model parameters across a statistical distribution resulting in different trees. The likelihood of the trees are computed <em>a posteriori</em> (actually they are approximated by <a class="reference external" href="https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo">Markov Chain Monte Carlo</a> -MCMC- methods) resulting in <strong>posterior probabilities</strong>, which can be understood as the probability of a tree being right given the randomly selected model parameters.</p>
 <p>Briefly, <a class="reference external" href="https://en.wikipedia.org/wiki/Bayesian_inference">bayesian Inference</a> collects information along the way to update and improve the model parameters. A single inference will most likely yield a rather poor tree, since the search for model parameters is predefined or random (to an extent). Yet in the following <strong>cycles</strong> (sometimes also called iterations, generations or even chains) model parameters are going to be adjusted based on previously collected information resulting in trees with higher and higher likelihood. In this sense, the number of generations will affect the random sampling, and therefore your results.<br />
@@ -417,14 +416,14 @@ Because of the long sampling, when you choose a Bayesian approach it is very imp
 <img src="../resources/Figure7_step4.3_BI.png" alt="Bayesian Analyses" width="80%"/>  
 <p>Bayesian approaches are available in many different softwares. Such as <a class="reference external" href="https://nbisweden.github.io/MrBayes/">MrBayes</a>, <a class="reference external" href="https://beast.community/">BEAST</a>, <a class="reference external" href="https://www.beast2.org/">BEAST2</a> or <a class="reference external" href="http://www.atgc-montpellier.fr/phylobayes/">PhyloBayes</a>. Yet, they need most of the times to be run in different blocks, where different parameters need to be set that will influence your analysis. Instead of running them from a single command, as we did for ML approaches, here we save all our options in a simple text (or xml) file and we run the file within the BI software.</p>
 <p>Here you have an example of a script to be run using <strong>MrBayes</strong>, let’s save it as “<strong>phylo_mrBayes.nexus</strong>”:</p>
-<div class="highlight-nex notranslate"><div class="highlight"><pre><span></span>begin mrbayes;
-	set autoclose=yes nowarn=yes;
-	execute FILE.nexus;
-	lset nst=6 rates=gamma;
-	mcmc ngen=10000000 Nruns=4 savebrlens=yes file=OUTPUT;
-	sump;
-	sumt;
-end;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">begin</span> <span class="n">mrbayes</span><span class="p">;</span>
+	<span class="nb">set</span> <span class="n">autoclose</span><span class="o">=</span><span class="n">yes</span> <span class="n">nowarn</span><span class="o">=</span><span class="n">yes</span><span class="p">;</span>
+	<span class="n">execute</span> <span class="n">FILE</span><span class="o">.</span><span class="n">nexus</span><span class="p">;</span>
+	<span class="n">lset</span> <span class="n">nst</span><span class="o">=</span><span class="mi">6</span> <span class="n">rates</span><span class="o">=</span><span class="n">gamma</span><span class="p">;</span>
+	<span class="n">mcmc</span> <span class="n">ngen</span><span class="o">=</span><span class="mi">10000000</span> <span class="n">Nruns</span><span class="o">=</span><span class="mi">4</span> <span class="n">savebrlens</span><span class="o">=</span><span class="n">yes</span> <span class="n">file</span><span class="o">=</span><span class="n">OUTPUT</span><span class="p">;</span>
+	<span class="n">sump</span><span class="p">;</span>
+	<span class="n">sumt</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
 </pre></div>
 </div>
 <blockquote>

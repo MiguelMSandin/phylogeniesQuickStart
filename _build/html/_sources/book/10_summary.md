@@ -1,4 +1,4 @@
-## Summary
+# Summary
   
 **Step 1**. **Select your *species* carefully**, both the ingroup and the outgroup, depending on your **scientific question**.
   

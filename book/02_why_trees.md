@@ -1,4 +1,4 @@
-## Before starting, why phylogenetic inference?  
+# Before starting, why phylogenetic inference?  
 (If you are only interested on the 'how', you can directly go to the [summary](/book/10_summary.md) section).
   
 Phylogenetic inference allows the exploration of **evolutionary relationships** among taxa beyond a pure pair-wise comparison of their differences.  
