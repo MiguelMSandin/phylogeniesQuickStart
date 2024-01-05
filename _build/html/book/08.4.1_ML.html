@@ -179,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="06_main_steps.html">Main steps for phylogenetic reconstruction</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="07_dependencies.html">Dependencies and softwares used for:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dependencies.html">Dependencies and softwares</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Species selection</span></p>
 <ul class="nav bd-sidenav">
@@ -412,7 +412,7 @@ document.write(`
 <h1>Using a Maximum Likelihood (ML) approach<a class="headerlink" href="#using-a-maximum-likelihood-ml-approach" title="Permalink to this heading">#</a></h1>
 <p>Maximum Likelihood (<a class="reference external" href="https://link.springer.com/article/10.1007/BF01734359">Felsenstein, 1981</a>) maximises model parameters (treated as constants) across different <a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstraps</a> (or “replicates”) to find a higher likelihood.</p>
 <p>At the end, all the different replicates can be summarised into a <strong>consensus</strong> tree <strong>or</strong> simply take the <strong>best likelihood scoring</strong> tree. Either way, nodes can be annotated on the basis of how many times a given node has appeared across the different bootstraps, which is referred to as the <strong>bootstrap support</strong> (from 1 to 100).</p>
-<img src="../resources/Figure6_step4.2_ML.png" alt="Maximum Likelihood" width="60%"/>  
+<img src="../resources/Figure6_step4.2_ML.png" alt="Maximum Likelihood" width="80%"/>  
 <p>We need now new variables:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">THREADS</span><span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="c1"># Normally 1 thread for every 500-1000bp alignment positions works fine.  </span>
 <span class="nv">BS</span><span class="o">=</span><span class="m">100</span><span class="w">  </span><span class="c1"># The number of Bootstraps  </span>

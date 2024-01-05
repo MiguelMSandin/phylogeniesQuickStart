@@ -179,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="06_main_steps.html">Main steps for phylogenetic reconstruction</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="07_dependencies.html">Dependencies and softwares used for:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dependencies.html">Dependencies and softwares</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Species selection</span></p>
 <ul class="nav bd-sidenav">
@@ -414,7 +414,7 @@ document.write(`
 <p>Briefly, <a class="reference external" href="https://en.wikipedia.org/wiki/Bayesian_inference">bayesian Inference</a> collects information along the way to update and improve the model parameters. A single inference will most likely yield a rather poor tree, since the search for model parameters is predefined or random (to an extent). Yet in the following <strong>cycles</strong> (sometimes also called iterations, generations or even chains) model parameters are going to be adjusted based on previously collected information resulting in trees with higher and higher likelihood. In this sense, the number of generations will affect the random sampling, and therefore your results.<br />
 It is recommended to monitor the likelihood per cycle to be sure that your model optimization is arriving to a <strong>convergence</strong>. Normally, a safe option is to opt for a very long chain, but an excessively long chain might result in a waste of computational resources. If you are interested in a trade-off between ensuring convergence and not spending several days, weeks or months in a redundant analysis you can, for example, explore the <a class="reference external" href="https://beast.community/ess_tutorial">Effective Sample Size</a> of the MCMC run in the software <a class="reference external" href="https://beast.community/tracer">Tracer</a>.<br />
 Because of the long sampling, when you choose a Bayesian approach it is very important to check the likelihood over the different cycles and remove the “learning slope”, normally referred to as <strong>burn-in</strong>.</p>
-<img src="../resources/Figure7_step4.3_BI.png" alt="Bayesian Analyses" width="60%"/>  
+<img src="../resources/Figure7_step4.3_BI.png" alt="Bayesian Analyses" width="80%"/>  
 <p>Bayesian approaches are available in many different softwares. Such as <a class="reference external" href="https://nbisweden.github.io/MrBayes/">MrBayes</a>, <a class="reference external" href="https://beast.community/">BEAST</a>, <a class="reference external" href="https://www.beast2.org/">BEAST2</a> or <a class="reference external" href="http://www.atgc-montpellier.fr/phylobayes/">PhyloBayes</a>. Yet, they need most of the times to be run in different blocks, where different parameters need to be set that will influence your analysis. Instead of running them from a single command, as we did for ML approaches, here we save all our options in a simple text (or xml) file and we run the file within the BI software.</p>
 <p>Here you have an example of a script to be run using <strong>MrBayes</strong>, let’s save it as “<strong>phylo_mrBayes.nexus</strong>”:</p>
 <div class="highlight-nex notranslate"><div class="highlight"><pre><span></span>begin mrbayes;
