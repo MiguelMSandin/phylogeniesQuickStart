@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/06_main_steps';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Dependencies and softwares used for:" href="07_dependencies.html" />
+    <link rel="next" title="Dependencies and softwares" href="07_dependencies.html" />
     <link rel="prev" title="How to write trees" href="05_write_trees.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -178,8 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Phylogenetic analyses in a nutshell</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Main steps for phylogenetic reconstruction</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="07_dependencies.html">Dependencies and softwares used for:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dependencies.html">Dependencies and softwares</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Species selection</span></p>
 <ul class="nav bd-sidenav">
@@ -406,10 +405,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Main steps for phylogenetic reconstruction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-pipeline">Basic pipeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-pipeline">Basic pipeline</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -420,7 +417,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="main-steps-for-phylogenetic-reconstruction">
+  <section class="tex2jax_ignore mathjax_ignore" id="main-steps-for-phylogenetic-reconstruction">
 <h1>Main steps for phylogenetic reconstruction<a class="headerlink" href="#main-steps-for-phylogenetic-reconstruction" title="Permalink to this heading">#</a></h1>
 <p><a class="reference internal" href="08.1_species_selection.html"><span class="doc std std-doc">1.</span></a> Select your <em>species</em>.  (&lt;– the most important step!)<br />
 <a class="reference internal" href="08.2_align.html"><span class="doc std std-doc">2.</span></a> Align sequences.<br />
@@ -429,13 +426,11 @@ document.write(`
 <a class="reference internal" href="08.5_interpreting_trees.html"><span class="doc std std-doc">5.</span></a> Understand your phylogenetic tree.  (&lt;– the most important step!)<br />
 6. Come back to step 1, if needed.</p>
 <p>The most important steps of phylogenetic inference are the <strong><em>species</em> selection</strong> and the <strong>interpretation of your resulting tree</strong>. Yet, to be able to fully understand a phylogenetic tree, you need to understand how to build it. Here we will quickly go through every step. Yet keep in mind that <strong>each tree is a hypothesis</strong> of your given data, and therefore the selection of your <em>species</em>, the phylogenetic inference and the interpretation of the tree will highly rely on your <strong>scientific question</strong>.</p>
-</section>
 <section id="basic-pipeline">
-<h1>Basic pipeline<a class="headerlink" href="#basic-pipeline" title="Permalink to this heading">#</a></h1>
+<h2>Basic pipeline<a class="headerlink" href="#basic-pipeline" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p>Please, bear in mind that there are many different ways to infer phylogenetic patterns among genes, proteins or even morphological characters (or other traits). Here I will just guide you through a basic step-by-step pipeline that I normally use for quick and exploratory analyses of DNA sequences.</p>
 </div></blockquote>
-<p>We have already selected our <em>species</em> (both ingroup and outgroup or outgroups), let’s build now a phylogenetic tree.</p>
 <p>First we set the variable name of our input fasta file as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">FASTA</span><span class="o">=</span><span class="s2">&quot;file.fasta&quot;</span><span class="w">  </span><span class="c1"># The raw fasta file</span>
 
@@ -445,6 +440,7 @@ document.write(`
 <span class="nv">OUTPUT</span><span class="o">=</span><span class="s2">&quot;test1&quot;</span><span class="w">  </span><span class="c1"># The tree name prefix</span>
 </pre></div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -491,7 +487,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Dependencies and softwares used for:</p>
+        <p class="prev-next-title">Dependencies and softwares</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -510,10 +506,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Main steps for phylogenetic reconstruction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-pipeline">Basic pipeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-pipeline">Basic pipeline</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

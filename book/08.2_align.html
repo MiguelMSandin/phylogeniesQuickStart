@@ -178,8 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Phylogenetic analyses in a nutshell</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="06_main_steps.html">Main steps for phylogenetic reconstruction</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="07_dependencies.html">Dependencies and softwares used for:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dependencies.html">Dependencies and softwares</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Species selection</span></p>
 <ul class="nav bd-sidenav">
@@ -408,10 +407,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="align-step-2">
+  <section class="tex2jax_ignore mathjax_ignore" id="align-step-2">
 <h1>Align (step 2)<a class="headerlink" href="#align-step-2" title="Permalink to this heading">#</a></h1>
 <p>Different genes evolve at different rates, and so do different regions of the gene. Therefore, we have to make the sequences comparable to one another so we can actually estimate divergence from different regions of different sequences that share a functional or structural role. And to do so, we have to <strong>align</strong> the sequences.</p>
-<img src="../resources/Figure3_step2_align.png" alt="Aligning" width="60%"/>  
+<img src="../resources/Figure3_step2_align.png" alt="Aligning" width="80%"/>  
 <p>For example using <strong>MAFFT</strong>, for large dataset I normally use the default options:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mafft<span class="w"> </span><span class="nv">$FASTA</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$ALIGNED</span>
 </pre></div>

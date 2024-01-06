@@ -1,4 +1,4 @@
-## What is a phylogenetic tree?  
+# What is a phylogenetic tree?  
 The simplest answer is **a hypothesis** on the evolutionary relationships among the studied set of taxa or *phylogenetic species*, understanding such *species* as genes, proteins or specific morphological traits.  
   
 A phylogenetic tree represents a comparative analysis that measures the **accumulated change** between pairs of *species*, normally measured in rate of nucleotide substitution and interpreted as evolutionary change. In this sense, the **phylogenetic distance** between two given species is the accumulated horizontal length between them, independently of their vertical position in the tree.  

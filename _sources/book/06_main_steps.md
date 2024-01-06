@@ -1,4 +1,4 @@
-## Main steps for phylogenetic reconstruction
+# Main steps for phylogenetic reconstruction
 [1.](/book/08.1_species_selection.md) Select your *species*.  (<-- the most important step!)  
 [2.](/book/08.2_align.md) Align sequences.  
 [3.](/book/08.3_trim.md) Remove uninformative positions/columns.  
@@ -11,8 +11,6 @@ The most important steps of phylogenetic inference are the ***species* selection
 ## Basic pipeline
 
 > Please, bear in mind that there are many different ways to infer phylogenetic patterns among genes, proteins or even morphological characters (or other traits). Here I will just guide you through a basic step-by-step pipeline that I normally use for quick and exploratory analyses of DNA sequences.
-
-We have already selected our *species* (both ingroup and outgroup or outgroups), let's build now a phylogenetic tree.
 
 First we set the variable name of our input fasta file as follows:
 ```bash
