@@ -1,7 +1,7 @@
 # Main steps for phylogenetic reconstruction
 [1.](/book/08.1_species_selection.md) Select your *species*.  (<-- the most important step!)  
 [2.](/book/08.2_align.md) Align sequences.  
-[3.](/book/08.3_trim.md) Remove uninformative positions/columns.  
+[3.](/book/08.3_trim.md) Remove irrelevant ot positions/columns that add noise.  
 [4.](/book/08.4_phylogenetic_analyses.md) Run phylogenetic inference.  
 [5.](/book/08.5_interpreting_trees.md) Understand your phylogenetic tree.  (<-- the most important step!)  
 6. Come back to step 1, if needed.  

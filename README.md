@@ -44,7 +44,7 @@ And finally, it is possible to add names to the nodes by simply including such n
 ## Main steps for phylogenetic reconstruction
 [1.](https://github.com/MiguelMSandin/phylogeniesQuickStart#species-selection-step-1) Select your *species*.  (<-- the most important step!)  
 [2.](https://github.com/MiguelMSandin/phylogeniesQuickStart#align-step-2) Align sequences.  
-[3.](https://github.com/MiguelMSandin/phylogeniesQuickStart#trim-alignment-of-redundant-or-low-informative-positionscolumns-step-3) Remove uninformative positions/columns.  
+[3.](https://github.com/MiguelMSandin/phylogeniesQuickStart#trim-alignment-of-redundant-or-low-informative-positionscolumns-step-3) Remove irrelevant ot positions/columns that add noise.  
 [4.](https://github.com/MiguelMSandin/phylogeniesQuickStart#phylogenetic-analyses-step-4) Run phylogenetic inference.  
 [5.](https://github.com/MiguelMSandin/phylogeniesQuickStart#interpreting-the-tree-step-6) Understand your phylogenetic tree.  (<-- the most important step!)  
 6. Come back to step 1, if needed.  
@@ -124,7 +124,7 @@ It is also possible (yet requires experience) to align the sequences based on co
   
 ## Trim alignment of redundant or low informative positions/columns (step 3)  
   
-In this step we want to remove position that might be irrelevant, add noise, with very little information or even uninformative.  
+In this step we want to remove position that might be irrelevant or add noise.  
   
 ![Step3 trim alignment](https://github.com/MiguelMSandin/phylogeniesQuickStart/blob/main/resources/Figure4_step3_trim.png)  
   
