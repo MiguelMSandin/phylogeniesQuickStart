@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Trim alignment of redundant or low informative positions/columns (step 3) &#8212; A hands-on introduction on molecular phylogenetic studies</title>
+    <title>Trim alignment of irrelevant or positions/columns that might add noise (step 3) &#8212; A hands-on introduction on molecular phylogenetic studies</title>
   
   
   
@@ -187,7 +187,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">A phylogenetic pipeline</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="08.2_align.html">Align (step 2)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Trim alignment of redundant or low informative positions/columns (step 3)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Trim alignment of irrelevant or positions/columns that might add noise (step 3)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="08.4_phylogenetic_analyses.html">Phylogenetic analyses (step 4)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="08.4.1_ML.html">Using a Maximum Likelihood (ML) approach</a></li>
 <li class="toctree-l2"><a class="reference internal" href="08.4.2_BI.html">Using a Bayesian Inference (BI) approach</a></li>
@@ -393,7 +393,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Trim alignment of redundant or low informative positions/columns (step 3)</h1>
+    <h1>Trim alignment of irrelevant or positions/columns that might add noise (step 3)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -407,9 +407,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="trim-alignment-of-redundant-or-low-informative-positions-columns-step-3">
-<h1>Trim alignment of redundant or low informative positions/columns (step 3)<a class="headerlink" href="#trim-alignment-of-redundant-or-low-informative-positions-columns-step-3" title="Permalink to this heading">#</a></h1>
-<p>In this step we want to remove positions that might be irrelevant, add noise, with very little information or even uninformative.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="trim-alignment-of-irrelevant-or-positions-columns-that-might-add-noise-step-3">
+<h1>Trim alignment of irrelevant or positions/columns that might add noise (step 3)<a class="headerlink" href="#trim-alignment-of-irrelevant-or-positions-columns-that-might-add-noise-step-3" title="Permalink to this heading">#</a></h1>
+<p>In this step we want to remove position that might be irrelevant or add noise.</p>
 <img src="../resources/Figure4_step3_trim.png" alt="Trimming" width="80%"/>  
 <p>We can automatically do that with <strong>trimAl</strong> as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>trimal<span class="w"> </span>-in<span class="w"> </span><span class="nv">$ALIGNED</span><span class="w"> </span>-out<span class="w"> </span><span class="nv">$FILE</span><span class="w"> </span>-gt<span class="w"> </span>X
